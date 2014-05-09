@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "72C33FC719094B4D0070FA26"
-               BuildableName = "XiaoWei.app"
+               BuildableName = "&#x5c0f;&#x5fae;&#x4fe1;&#x8d37;.app"
                BlueprintName = "XiaoWei"
                ReferencedContainer = "container:XiaoWei.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "72C33FC719094B4D0070FA26"
-            BuildableName = "XiaoWei.app"
+            BuildableName = "&#x5c0f;&#x5fae;&#x4fe1;&#x8d37;.app"
             BlueprintName = "XiaoWei"
             ReferencedContainer = "container:XiaoWei.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "72C33FC719094B4D0070FA26"
-            BuildableName = "XiaoWei.app"
+            BuildableName = "&#x5c0f;&#x5fae;&#x4fe1;&#x8d37;.app"
             BlueprintName = "XiaoWei"
             ReferencedContainer = "container:XiaoWei.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "72C33FC719094B4D0070FA26"
-            BuildableName = "XiaoWei.app"
+            BuildableName = "&#x5c0f;&#x5fae;&#x4fe1;&#x8d37;.app"
             BlueprintName = "XiaoWei"
             ReferencedContainer = "container:XiaoWei.xcodeproj">
          </BuildableReference>

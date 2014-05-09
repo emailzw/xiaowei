@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class MenuViewController;
+
 @interface XWAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (strong, nonatomic) MenuViewController *viewController;
 
 @end
