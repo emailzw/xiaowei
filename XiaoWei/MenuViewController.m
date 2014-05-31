@@ -8,7 +8,12 @@
 #import "SampleViewController.h"
 #import "XWSearchViewController.h"
 #import "XWSearchProductConditonViewController.h"
-
+#import "XWMyMessageController.h"
+#import "XWRegisterController.h"
+#import "XWMyfavolistViewController.h"
+#import "XWNewinfoViewController.h"
+#import "XWAboutViewController.h"
+#import "XWChangePasswordViewController.h"
 
 @interface MenuViewController()
 - (NSArray *)createMenuItems;
@@ -35,7 +40,7 @@
 	NSMutableArray *items = [[NSMutableArray alloc] init];
 //	NSString *path = [[NSBundle mainBundle] pathForResource:@"search" ofType:@"png"];
 //    UIImage *myImage = [UIImage imageWithContentsOfFile:path];
-
+    
 	// First Item
 	NAMenuItem *item1 = [[NAMenuItem alloc] initWithTitle:@"产品查询"
 													 image:[UIImage imageNamed:@"search.png"]
@@ -45,37 +50,37 @@
 	// Second Item
 	NAMenuItem *item2 = [[NAMenuItem alloc] initWithTitle:@"我的留言"
 													 image:[UIImage imageNamed:@"message.png"]
-												   vcClass:[XWSearchProductConditonViewController class]];
+												   vcClass:[XWMyMessageController class]];
 	[items addObject:item2];
 	
 	// Third Item
-	NAMenuItem *item3 = [[NAMenuItem alloc] initWithTitle:@"共公咨询"
+	NAMenuItem *item3 = [[NAMenuItem alloc] initWithTitle:@"公共资讯"
 													 image:[UIImage imageNamed:@"info.png"]
-												   vcClass:[SampleViewController class]];
+												   vcClass:[XWNewinfoViewController class]];
 	[items addObject:item3];
 	
 	// Fourth Item
 	NAMenuItem *item4 = [[NAMenuItem alloc] initWithTitle:@"我的收藏"
 													 image:[UIImage imageNamed:@"favorite.png"]
-												   vcClass:[SampleViewController class]];
+												   vcClass:[XWMyfavolistViewController class]];
 	[items addObject:item4];
 	
 	// Fifth Item
 	NAMenuItem *item5 = [[NAMenuItem alloc] initWithTitle:@"注册信息"
 													 image:[UIImage imageNamed:@"register.png"]
-												   vcClass:[SampleViewController class]];
+												   vcClass:[XWRegisterController class]];
 	[items addObject:item5];
 	
 	// Sixth Item
 	NAMenuItem *item6 = [[NAMenuItem alloc] initWithTitle:@"密码修改"
 													 image:[UIImage imageNamed:@"password.png"]
-												   vcClass:[SampleViewController class]];
+												   vcClass:[XWChangePasswordViewController class]];
 	[items addObject:item6];
 	
 	// Seventh Ite
 	NAMenuItem *item7 = [[NAMenuItem alloc] initWithTitle:@"关于我们"
 													 image:[UIImage imageNamed:@"about.png"]
-												   vcClass:[SampleViewController class]];
+												   vcClass:[XWAboutViewController class]];
 	[items addObject:item7];
 	
 
@@ -98,7 +103,21 @@
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- 	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+ 	//return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return false;
+}
+
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return NO;
+}
+
+
+
+- (BOOL)shouldAutorotate
+{
+    return NO;
 }
 
 - (void)viewDidLoad {

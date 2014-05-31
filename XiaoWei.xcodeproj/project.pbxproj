@@ -29,6 +29,29 @@
 		7239A5FC190F94AD00F2004E /* XWGuarantSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7239A5FA190F94AD00F2004E /* XWGuarantSelectViewController.m */; };
 		7239A5FD190F94AD00F2004E /* XWGuarantSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7239A5FB190F94AD00F2004E /* XWGuarantSelectViewController.xib */; };
 		7239A601190FA77D00F2004E /* XWGuarantSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7239A600190FA77D00F2004E /* XWGuarantSelection.m */; };
+		725D187F192109F700B9CE31 /* XWContactBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 725D187D192109F700B9CE31 /* XWContactBankViewController.m */; };
+		725D1880192109F700B9CE31 /* XWContactBankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 725D187E192109F700B9CE31 /* XWContactBankViewController.xib */; };
+		725D1884192307F500B9CE31 /* XWMyMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 725D1882192307F500B9CE31 /* XWMyMessageController.m */; };
+		725D1885192307F500B9CE31 /* XWMyMessageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 725D1883192307F500B9CE31 /* XWMyMessageController.xib */; };
+		725D188719230BD200B9CE31 /* XWMessageListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 725D188619230BD200B9CE31 /* XWMessageListItem.m */; };
+		725D188E192327A400B9CE31 /* MKNumberBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 725D188B192327A400B9CE31 /* MKNumberBadgeView.m */; };
+		725D188F192327A400B9CE31 /* MKTextBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 725D188D192327A400B9CE31 /* MKTextBadgeView.m */; };
+		725D189319287F7600B9CE31 /* XWMymessageDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 725D189119287F7600B9CE31 /* XWMymessageDetailController.m */; };
+		725D189419287F7600B9CE31 /* XWMymessageDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 725D189219287F7600B9CE31 /* XWMymessageDetailController.xib */; };
+		72AA4C6C1936255900A0B3FD /* XWChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AA4C6A1936255900A0B3FD /* XWChangePasswordViewController.m */; };
+		72AA4C6D1936255900A0B3FD /* XWChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72AA4C6B1936255900A0B3FD /* XWChangePasswordViewController.xib */; };
+		72AF64D61934DAC8004FA986 /* testController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF64D41934DAC8004FA986 /* testController.m */; };
+		72AF64D71934DAC8004FA986 /* testController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72AF64D51934DAC8004FA986 /* testController.xib */; };
+		72AF64DB1934DDA2004FA986 /* XWSingleSelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF64D91934DDA2004FA986 /* XWSingleSelectionTableViewController.m */; };
+		72AF64DC1934DDA2004FA986 /* XWSingleSelectionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72AF64DA1934DDA2004FA986 /* XWSingleSelectionTableViewController.xib */; };
+		72AF64DE19358E67004FA986 /* huaxia.png in Resources */ = {isa = PBXBuildFile; fileRef = 72AF64DD19358E67004FA986 /* huaxia.png */; };
+		72AF64E019358E6B004FA986 /* jiaotong.png in Resources */ = {isa = PBXBuildFile; fileRef = 72AF64DF19358E6B004FA986 /* jiaotong.png */; };
+		72AF64E419359317004FA986 /* XWMyfavolistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF64E219359317004FA986 /* XWMyfavolistViewController.m */; };
+		72AF64E519359317004FA986 /* XWMyfavolistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72AF64E319359317004FA986 /* XWMyfavolistViewController.xib */; };
+		72AF64E91935A2A9004FA986 /* XWAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF64E71935A2A9004FA986 /* XWAboutViewController.m */; };
+		72AF64EA1935A2A9004FA986 /* XWAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72AF64E81935A2A9004FA986 /* XWAboutViewController.xib */; };
+		72AF64F11935A55A004FA986 /* XWNewinfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF64EF1935A55A004FA986 /* XWNewinfoViewController.m */; };
+		72AF64F21935A55A004FA986 /* XWNewinfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72AF64F01935A55A004FA986 /* XWNewinfoViewController.xib */; };
 		72C33FCC19094B4D0070FA26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C33FCB19094B4D0070FA26 /* Foundation.framework */; };
 		72C33FCE19094B4D0070FA26 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C33FCD19094B4D0070FA26 /* CoreGraphics.framework */; };
 		72C33FD019094B4D0070FA26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C33FCF19094B4D0070FA26 /* UIKit.framework */; };
@@ -58,6 +81,10 @@
 		72C3402419095FBE0070FA26 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C3402319095FBE0070FA26 /* MenuViewController.m */; };
 		72C34028190960AD0070FA26 /* SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C34026190960AD0070FA26 /* SampleViewController.m */; };
 		72C34029190960AD0070FA26 /* SampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72C34027190960AD0070FA26 /* SampleViewController.xib */; };
+		72CA6A69192CEE990041F728 /* XWComanyResiterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CA6A67192CEE990041F728 /* XWComanyResiterController.m */; };
+		72CA6A6A192CEE990041F728 /* XWComanyResiterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72CA6A68192CEE990041F728 /* XWComanyResiterController.xib */; };
+		72CA6A6E192D01350041F728 /* XWRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CA6A6C192D01350041F728 /* XWRegisterController.m */; };
+		72CA6A6F192D01350041F728 /* XWRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72CA6A6D192D01350041F728 /* XWRegisterController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +130,41 @@
 		7239A5FB190F94AD00F2004E /* XWGuarantSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWGuarantSelectViewController.xib; sourceTree = "<group>"; };
 		7239A5FF190FA77D00F2004E /* XWGuarantSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWGuarantSelection.h; sourceTree = "<group>"; };
 		7239A600190FA77D00F2004E /* XWGuarantSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWGuarantSelection.m; sourceTree = "<group>"; };
+		725D187C192109F700B9CE31 /* XWContactBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWContactBankViewController.h; sourceTree = "<group>"; };
+		725D187D192109F700B9CE31 /* XWContactBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWContactBankViewController.m; sourceTree = "<group>"; };
+		725D187E192109F700B9CE31 /* XWContactBankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWContactBankViewController.xib; sourceTree = "<group>"; };
+		725D1881192307F500B9CE31 /* XWMyMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWMyMessageController.h; sourceTree = "<group>"; };
+		725D1882192307F500B9CE31 /* XWMyMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWMyMessageController.m; sourceTree = "<group>"; };
+		725D1883192307F500B9CE31 /* XWMyMessageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWMyMessageController.xib; sourceTree = "<group>"; };
+		725D188619230BD200B9CE31 /* XWMessageListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWMessageListItem.m; sourceTree = "<group>"; };
+		725D188819230BF200B9CE31 /* XWMessageListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWMessageListItem.h; sourceTree = "<group>"; };
+		725D188A192327A400B9CE31 /* MKNumberBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNumberBadgeView.h; sourceTree = "<group>"; };
+		725D188B192327A400B9CE31 /* MKNumberBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNumberBadgeView.m; sourceTree = "<group>"; };
+		725D188C192327A400B9CE31 /* MKTextBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTextBadgeView.h; sourceTree = "<group>"; };
+		725D188D192327A400B9CE31 /* MKTextBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTextBadgeView.m; sourceTree = "<group>"; };
+		725D189019287F7600B9CE31 /* XWMymessageDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWMymessageDetailController.h; sourceTree = "<group>"; };
+		725D189119287F7600B9CE31 /* XWMymessageDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWMymessageDetailController.m; sourceTree = "<group>"; };
+		725D189219287F7600B9CE31 /* XWMymessageDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWMymessageDetailController.xib; sourceTree = "<group>"; };
+		72AA4C691936255900A0B3FD /* XWChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWChangePasswordViewController.h; sourceTree = "<group>"; };
+		72AA4C6A1936255900A0B3FD /* XWChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWChangePasswordViewController.m; sourceTree = "<group>"; };
+		72AA4C6B1936255900A0B3FD /* XWChangePasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWChangePasswordViewController.xib; sourceTree = "<group>"; };
+		72AF64D31934DAC8004FA986 /* testController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testController.h; sourceTree = "<group>"; };
+		72AF64D41934DAC8004FA986 /* testController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testController.m; sourceTree = "<group>"; };
+		72AF64D51934DAC8004FA986 /* testController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = testController.xib; sourceTree = "<group>"; };
+		72AF64D81934DDA2004FA986 /* XWSingleSelectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSingleSelectionTableViewController.h; sourceTree = "<group>"; };
+		72AF64D91934DDA2004FA986 /* XWSingleSelectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSingleSelectionTableViewController.m; sourceTree = "<group>"; };
+		72AF64DA1934DDA2004FA986 /* XWSingleSelectionTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWSingleSelectionTableViewController.xib; sourceTree = "<group>"; };
+		72AF64DD19358E67004FA986 /* huaxia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = huaxia.png; sourceTree = "<group>"; };
+		72AF64DF19358E6B004FA986 /* jiaotong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jiaotong.png; sourceTree = "<group>"; };
+		72AF64E119359317004FA986 /* XWMyfavolistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWMyfavolistViewController.h; sourceTree = "<group>"; };
+		72AF64E219359317004FA986 /* XWMyfavolistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWMyfavolistViewController.m; sourceTree = "<group>"; };
+		72AF64E319359317004FA986 /* XWMyfavolistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWMyfavolistViewController.xib; sourceTree = "<group>"; };
+		72AF64E61935A2A9004FA986 /* XWAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWAboutViewController.h; sourceTree = "<group>"; };
+		72AF64E71935A2A9004FA986 /* XWAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWAboutViewController.m; sourceTree = "<group>"; };
+		72AF64E81935A2A9004FA986 /* XWAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWAboutViewController.xib; sourceTree = "<group>"; };
+		72AF64EE1935A55A004FA986 /* XWNewinfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWNewinfoViewController.h; sourceTree = "<group>"; };
+		72AF64EF1935A55A004FA986 /* XWNewinfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWNewinfoViewController.m; sourceTree = "<group>"; };
+		72AF64F01935A55A004FA986 /* XWNewinfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWNewinfoViewController.xib; sourceTree = "<group>"; };
 		72C33FC819094B4D0070FA26 /* 小微信贷.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "小微信贷.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72C33FCB19094B4D0070FA26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		72C33FCD19094B4D0070FA26 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -142,7 +204,13 @@
 		72C3402319095FBE0070FA26 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		72C34025190960AD0070FA26 /* SampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleViewController.h; sourceTree = "<group>"; };
 		72C34026190960AD0070FA26 /* SampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleViewController.m; sourceTree = "<group>"; };
-		72C34027190960AD0070FA26 /* SampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SampleViewController.xib; path = XiaoWei/SampleViewController.xib; sourceTree = "<group>"; };
+		72C34027190960AD0070FA26 /* SampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleViewController.xib; sourceTree = "<group>"; };
+		72CA6A66192CEE990041F728 /* XWComanyResiterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWComanyResiterController.h; sourceTree = "<group>"; };
+		72CA6A67192CEE990041F728 /* XWComanyResiterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWComanyResiterController.m; sourceTree = "<group>"; };
+		72CA6A68192CEE990041F728 /* XWComanyResiterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWComanyResiterController.xib; sourceTree = "<group>"; };
+		72CA6A6B192D01350041F728 /* XWRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWRegisterController.h; sourceTree = "<group>"; };
+		72CA6A6C192D01350041F728 /* XWRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWRegisterController.m; sourceTree = "<group>"; };
+		72CA6A6D192D01350041F728 /* XWRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWRegisterController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,15 +241,45 @@
 			isa = PBXGroup;
 			children = (
 				7219A20B19164F7D00A79E2F /* nanjing.png */,
+				72AF64DD19358E67004FA986 /* huaxia.png */,
 				7219A20D19164F8700A79E2F /* zhaoshang.png */,
+				72AF64DF19358E6B004FA986 /* jiaotong.png */,
 				7219A20919164F6600A79E2F /* zheshang.png */,
 			);
 			name = bankicon;
 			sourceTree = "<group>";
 		};
+		725D18891923279200B9CE31 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				725D188A192327A400B9CE31 /* MKNumberBadgeView.h */,
+				725D188B192327A400B9CE31 /* MKNumberBadgeView.m */,
+				725D188C192327A400B9CE31 /* MKTextBadgeView.h */,
+				725D188D192327A400B9CE31 /* MKTextBadgeView.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		72AF64D21934DA76004FA986 /* ProductSearch */ = {
+			isa = PBXGroup;
+			children = (
+				7239A5FF190FA77D00F2004E /* XWGuarantSelection.h */,
+				7239A600190FA77D00F2004E /* XWGuarantSelection.m */,
+				7239A5F9190F94AD00F2004E /* XWGuarantSelectViewController.h */,
+				7239A5FA190F94AD00F2004E /* XWGuarantSelectViewController.m */,
+				7239A5FB190F94AD00F2004E /* XWGuarantSelectViewController.xib */,
+				72AF64D81934DDA2004FA986 /* XWSingleSelectionTableViewController.h */,
+				72AF64D91934DDA2004FA986 /* XWSingleSelectionTableViewController.m */,
+				72AF64DA1934DDA2004FA986 /* XWSingleSelectionTableViewController.xib */,
+			);
+			name = ProductSearch;
+			sourceTree = "<group>";
+		};
 		72C33FBF19094B4D0070FA26 = {
 			isa = PBXGroup;
 			children = (
+				72AF64D21934DA76004FA986 /* ProductSearch */,
+				725D18891923279200B9CE31 /* Tools */,
 				72C3402A190964D80070FA26 /* Resources */,
 				72C33FD119094B4D0070FA26 /* XiaoWei */,
 				72C33FF019094B4D0070FA26 /* XiaoWeiTests */,
@@ -224,10 +322,17 @@
 				72C3402319095FBE0070FA26 /* MenuViewController.m */,
 				722C2B78190A18490019D715 /* XWSearchViewController.h */,
 				722C2B79190A18490019D715 /* XWSearchViewController.m */,
+				72C34027190960AD0070FA26 /* SampleViewController.xib */,
 				72C34025190960AD0070FA26 /* SampleViewController.h */,
 				72C34026190960AD0070FA26 /* SampleViewController.m */,
 				72C33FE319094B4D0070FA26 /* Images.xcassets */,
 				72C33FD219094B4D0070FA26 /* Supporting Files */,
+				72CA6A6B192D01350041F728 /* XWRegisterController.h */,
+				72CA6A6C192D01350041F728 /* XWRegisterController.m */,
+				72CA6A6D192D01350041F728 /* XWRegisterController.xib */,
+				72AF64D31934DAC8004FA986 /* testController.h */,
+				72AF64D41934DAC8004FA986 /* testController.m */,
+				72AF64D51934DAC8004FA986 /* testController.xib */,
 			);
 			path = XiaoWei;
 			sourceTree = "<group>";
@@ -302,17 +407,14 @@
 			children = (
 				722C2B94190EA4CF0019D715 /* PSTextField.h */,
 				722C2B95190EA4CF0019D715 /* PSTextField.m */,
-				72C34027190960AD0070FA26 /* SampleViewController.xib */,
-				7239A5FF190FA77D00F2004E /* XWGuarantSelection.h */,
-				7239A600190FA77D00F2004E /* XWGuarantSelection.m */,
-				7239A5F9190F94AD00F2004E /* XWGuarantSelectViewController.h */,
-				7239A5FA190F94AD00F2004E /* XWGuarantSelectViewController.m */,
-				7239A5FB190F94AD00F2004E /* XWGuarantSelectViewController.xib */,
 				72207DD019172E8A004A1F97 /* XWProductDetail.h */,
 				72207DD119172E8A004A1F97 /* XWProductDetail.m */,
 				72207DD319173068004A1F97 /* XWProductDetailViewController.h */,
 				72207DD419173069004A1F97 /* XWProductDetailViewController.m */,
 				72207DD519173069004A1F97 /* XWProductDetailViewController.xib */,
+				725D187C192109F700B9CE31 /* XWContactBankViewController.h */,
+				725D187D192109F700B9CE31 /* XWContactBankViewController.m */,
+				725D187E192109F700B9CE31 /* XWContactBankViewController.xib */,
 				722C2B8D190D71330019D715 /* XWSearchProductConditonViewController.h */,
 				722C2B8E190D71330019D715 /* XWSearchProductConditonViewController.m */,
 				722C2B8F190D71330019D715 /* XWSearchProductConditonViewController.xib */,
@@ -321,8 +423,31 @@
 				7219A2021916486A00A79E2F /* XWSearchProductResultViewController.xib */,
 				7219A2051916499200A79E2F /* XWSearchResultItem.h */,
 				7219A2061916499200A79E2F /* XWSearchResultItem.m */,
+				725D188819230BF200B9CE31 /* XWMessageListItem.h */,
+				725D188619230BD200B9CE31 /* XWMessageListItem.m */,
 				722C2B8A190D704F0019D715 /* XWtbViewController.h */,
 				722C2B8B190D704F0019D715 /* XWtbViewController.m */,
+				725D1881192307F500B9CE31 /* XWMyMessageController.h */,
+				725D1882192307F500B9CE31 /* XWMyMessageController.m */,
+				725D1883192307F500B9CE31 /* XWMyMessageController.xib */,
+				725D189019287F7600B9CE31 /* XWMymessageDetailController.h */,
+				725D189119287F7600B9CE31 /* XWMymessageDetailController.m */,
+				725D189219287F7600B9CE31 /* XWMymessageDetailController.xib */,
+				72CA6A66192CEE990041F728 /* XWComanyResiterController.h */,
+				72CA6A67192CEE990041F728 /* XWComanyResiterController.m */,
+				72CA6A68192CEE990041F728 /* XWComanyResiterController.xib */,
+				72AF64E119359317004FA986 /* XWMyfavolistViewController.h */,
+				72AF64E219359317004FA986 /* XWMyfavolistViewController.m */,
+				72AF64E319359317004FA986 /* XWMyfavolistViewController.xib */,
+				72AF64E61935A2A9004FA986 /* XWAboutViewController.h */,
+				72AF64E71935A2A9004FA986 /* XWAboutViewController.m */,
+				72AF64E81935A2A9004FA986 /* XWAboutViewController.xib */,
+				72AF64EE1935A55A004FA986 /* XWNewinfoViewController.h */,
+				72AF64EF1935A55A004FA986 /* XWNewinfoViewController.m */,
+				72AF64F01935A55A004FA986 /* XWNewinfoViewController.xib */,
+				72AA4C691936255900A0B3FD /* XWChangePasswordViewController.h */,
+				72AA4C6A1936255900A0B3FD /* XWChangePasswordViewController.m */,
+				72AA4C6B1936255900A0B3FD /* XWChangePasswordViewController.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -407,25 +532,38 @@
 				722C2B98190F48B90019D715 /* blueButton.png in Resources */,
 				72C33FE419094B4D0070FA26 /* Images.xcassets in Resources */,
 				7219A20E19164F8700A79E2F /* zhaoshang.png in Resources */,
+				72AF64DC1934DDA2004FA986 /* XWSingleSelectionTableViewController.xib in Resources */,
 				7219A20A19164F6600A79E2F /* zheshang.png in Resources */,
 				72207DD719173069004A1F97 /* XWProductDetailViewController.xib in Resources */,
+				725D189419287F7600B9CE31 /* XWMymessageDetailController.xib in Resources */,
 				72207DCD191722E7004A1F97 /* icon.png in Resources */,
+				725D1885192307F500B9CE31 /* XWMyMessageController.xib in Resources */,
 				722C2B9C190F76390019D715 /* btn.png in Resources */,
 				72C33FD619094B4D0070FA26 /* InfoPlist.strings in Resources */,
 				72C3400D190956310070FA26 /* favorite.png in Resources */,
+				72AF64F21935A55A004FA986 /* XWNewinfoViewController.xib in Resources */,
+				72CA6A6F192D01350041F728 /* XWRegisterController.xib in Resources */,
 				722C2B93190DFFE90019D715 /* btquery.jpg in Resources */,
 				72C34010190956310070FA26 /* password.png in Resources */,
 				72C34011190956310070FA26 /* register.png in Resources */,
 				72C3401F190957A80070FA26 /* NAMenuItemView.xib in Resources */,
+				72AF64E519359317004FA986 /* XWMyfavolistViewController.xib in Resources */,
 				72C34012190956310070FA26 /* search.png in Resources */,
 				7219A2041916486A00A79E2F /* XWSearchProductResultViewController.xib in Resources */,
 				7239A5FD190F94AD00F2004E /* XWGuarantSelectViewController.xib in Resources */,
+				72CA6A6A192CEE990041F728 /* XWComanyResiterController.xib in Resources */,
+				725D1880192109F700B9CE31 /* XWContactBankViewController.xib in Resources */,
+				72AF64D71934DAC8004FA986 /* testController.xib in Resources */,
+				72AA4C6D1936255900A0B3FD /* XWChangePasswordViewController.xib in Resources */,
 				72207DCF19172690004A1F97 /* icon@2x.png in Resources */,
 				72C33FDF19094B4D0070FA26 /* Main.storyboard in Resources */,
+				72AF64E019358E6B004FA986 /* jiaotong.png in Resources */,
 				72C3400C190956310070FA26 /* about.png in Resources */,
 				722C2B91190D71330019D715 /* XWSearchProductConditonViewController.xib in Resources */,
 				72C3400E190956310070FA26 /* info.png in Resources */,
+				72AF64EA1935A2A9004FA986 /* XWAboutViewController.xib in Resources */,
 				72C34029190960AD0070FA26 /* SampleViewController.xib in Resources */,
+				72AF64DE19358E67004FA986 /* huaxia.png in Resources */,
 				72C3400F190956310070FA26 /* message.png in Resources */,
 				7219A20C19164F7D00A79E2F /* nanjing.png in Resources */,
 			);
@@ -446,25 +584,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72CA6A69192CEE990041F728 /* XWComanyResiterController.m in Sources */,
 				7239A5FC190F94AD00F2004E /* XWGuarantSelectViewController.m in Sources */,
 				72207DD219172E8A004A1F97 /* XWProductDetail.m in Sources */,
+				725D189319287F7600B9CE31 /* XWMymessageDetailController.m in Sources */,
 				72C34020190957A80070FA26 /* NAMenuView.m in Sources */,
+				72AF64DB1934DDA2004FA986 /* XWSingleSelectionTableViewController.m in Sources */,
+				72AA4C6C1936255900A0B3FD /* XWChangePasswordViewController.m in Sources */,
+				725D1884192307F500B9CE31 /* XWMyMessageController.m in Sources */,
+				72AF64E91935A2A9004FA986 /* XWAboutViewController.m in Sources */,
 				722C2B90190D71330019D715 /* XWSearchProductConditonViewController.m in Sources */,
+				72AF64D61934DAC8004FA986 /* testController.m in Sources */,
 				722C2B7A190A18490019D715 /* XWSearchViewController.m in Sources */,
 				7219A2031916486A00A79E2F /* XWSearchProductResultViewController.m in Sources */,
 				72C34021190957A80070FA26 /* NAMenuViewController.m in Sources */,
 				72C33FD819094B4D0070FA26 /* main.m in Sources */,
+				72AF64E419359317004FA986 /* XWMyfavolistViewController.m in Sources */,
 				722C2B96190EA4CF0019D715 /* PSTextField.m in Sources */,
 				72C3402419095FBE0070FA26 /* MenuViewController.m in Sources */,
+				725D187F192109F700B9CE31 /* XWContactBankViewController.m in Sources */,
 				72C33FE219094B4D0070FA26 /* XWViewController.m in Sources */,
+				72CA6A6E192D01350041F728 /* XWRegisterController.m in Sources */,
+				725D188719230BD200B9CE31 /* XWMessageListItem.m in Sources */,
 				72C3401E190957A80070FA26 /* NAMenuItemView.m in Sources */,
 				7239A601190FA77D00F2004E /* XWGuarantSelection.m in Sources */,
 				72C3401D190957A80070FA26 /* NAMenuItem.m in Sources */,
+				72AF64F11935A55A004FA986 /* XWNewinfoViewController.m in Sources */,
 				72207DD619173069004A1F97 /* XWProductDetailViewController.m in Sources */,
 				72C33FDC19094B4D0070FA26 /* XWAppDelegate.m in Sources */,
+				725D188E192327A400B9CE31 /* MKNumberBadgeView.m in Sources */,
 				72C34028190960AD0070FA26 /* SampleViewController.m in Sources */,
 				722C2B8C190D704F0019D715 /* XWtbViewController.m in Sources */,
 				7219A2071916499200A79E2F /* XWSearchResultItem.m in Sources */,
+				725D188F192327A400B9CE31 /* MKTextBadgeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

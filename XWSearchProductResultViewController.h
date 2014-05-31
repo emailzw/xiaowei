@@ -29,6 +29,7 @@ struct XWProductDetail {
 
     NSString *ProdcutName;
     NSString *ProdcutName;
+ #2586d4
 
     
 };

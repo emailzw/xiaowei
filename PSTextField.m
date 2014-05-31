@@ -81,8 +81,8 @@
 							  bounds.size.height);
     return inset;
 }
-
-/*-(CGRect)placeholderRectForBounds:(CGRect)bounds
+/*
+-(CGRect)placeholderRectForBounds:(CGRect)bounds
 {
     
     CGRect inset = CGRectMake(bounds.origin.x+100, bounds.origin.y, bounds.size.width -100, bounds.size.height);

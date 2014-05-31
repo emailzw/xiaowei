@@ -52,7 +52,21 @@
     [section addOptions:[NSDictionary  dictionaryWithObjectsAndKeys:@"存单",@"Value",@"zy-01",@"Key" ,nil]];
     [section addOptions:[NSDictionary  dictionaryWithObjectsAndKeys:@"仓库",@"Value",@"zy-02",@"Key" ,nil]];
     [section addOptions:[NSDictionary  dictionaryWithObjectsAndKeys:@"保单",@"Value",@"zy-03",@"Key" ,nil]];
+    [section addOptions:[NSDictionary  dictionaryWithObjectsAndKeys:@"应收账款",@"Value",@"zy-03",@"Key" ,nil]];
+    [section addOptions:[NSDictionary  dictionaryWithObjectsAndKeys:@"知识产权",@"Value",@"zy-03",@"Key" ,nil]];
+    [section addOptions:[NSDictionary  dictionaryWithObjectsAndKeys:@"其他",@"Value",@"zy-03",@"Key" ,nil]];
     [items addObject:section];
+    section = [[XWGuarantSelection alloc] initWithType:@"担保"];
+    [section addOptions:[NSDictionary  dictionaryWithObjectsAndKeys:@"个人连带",@"Value",@"zy-01",@"Key" ,nil]];
+    [section addOptions:[NSDictionary  dictionaryWithObjectsAndKeys:@"企业担保",@"Value",@"zy-02",@"Key" ,nil]];
+    [section addOptions:[NSDictionary  dictionaryWithObjectsAndKeys:@"担保公司担保",@"Value",@"zy-03",@"Key" ,nil]];
+    [section addOptions:[NSDictionary  dictionaryWithObjectsAndKeys:@"无需担保",@"Value",@"zy-03",@"Key" ,nil]];
+    [section addOptions:[NSDictionary  dictionaryWithObjectsAndKeys:@"其他",@"Value",@"zy-03",@"Key" ,nil]];
+    
+    
+    [items addObject:section];
+    
+    
     
     return items;
 }
@@ -258,25 +272,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    UITableViewCell *scell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    scell.accessoryType = UITableViewCellAccessoryCheckmark;
+}
+
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
     
     UITableViewCell *scell = [tableView cellForRowAtIndexPath:indexPath];
-    if(scell.accessoryType == UITableViewCellAccessoryCheckmark ){
-        scell.accessoryType = UITableViewCellAccessoryNone;
-    }else{
-        scell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-  /*  <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-
-    // Pass the selected object to the new view controller.
+    scell.accessoryType = UITableViewCellAccessoryNone;
     
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];*/
-   //  [self.navigationController pushViewController:detailViewController animated:YES]；
-  //  [self.navigationController.childViewControllers];
+    
 }
- 
+
+
 
 @end

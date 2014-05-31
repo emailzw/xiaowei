@@ -1,20 +1,22 @@
 //
-//  XWSearchProductResultViewController.m
+//  XWMyMessageController.m
 //  XiaoWei
 //
-//  Created by 张玮 on 14-5-4.
+//  Created by 张玮 on 14-5-14.
 //  Copyright (c) 2014年 Tonknet. All rights reserved.
 //
 
-#import "XWSearchProductResultViewController.h"
-#import "XWSearchResultItem.h"
-#import "XWProductDetailViewController.h"
+#import "XWMyMessageController.h"
+#import "MKNumberBadgeView.h"
+#import "XWMymessageDetailController.h"
 
-@interface XWSearchProductResultViewController ()
+@interface XWMyMessageController ()
 
 @end
 
-@implementation XWSearchProductResultViewController
+@implementation XWMyMessageController
+
+
 
 - (UIImage*)imageWithImage:(UIImage*)image
               scaledToSize:(CGSize)newSize;
@@ -27,25 +29,44 @@
     return newImage;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    XWMessageListItem *item = [[XWMessageListItem alloc] init];
+    
+    item.messageTitle = @"关于“三年贷”产品的咨询";
+    item.postDate = @"2014/4/15";
+    item.status = @"已读取";
+    
+    [result addObject:item];
+    
+    
+    item = [[XWMessageListItem alloc] init];
+    item.messageTitle = @"关于“全额贷”产品的咨询";
+    item.postDate = @"2014/4/16";
+    item.status = @"未读取";
+    [result addObject:item];
+    
+    item = [[XWMessageListItem alloc] init];
+    item.messageTitle = @"宽限期的疑问！";
+    item.postDate = @"2014/4/26";
+    item.status = @"已读取";
+    [result addObject:item];
+    
+    
+    self.results = result;
+    self.title = @"我的留言";
+
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil] ;
-
-
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -68,6 +89,7 @@
     return self.results.count;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"ProductCell";
@@ -75,59 +97,51 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:CellIdentifier];
     }
-    XWSearchResultItem *item =[self.results objectAtIndex:indexPath.row];
+    XWMessageListItem *item =[self.results objectAtIndex:indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryNone;
 
-    //UIImage *bankicon = [UIImage imageNamed:[item.bankIcon stringByAppendingString:@".png"]];
-
-    NSString *path = [[NSBundle mainBundle] pathForResource:item.bankIcon ofType:@"png"];
-    UIImage *bankicon = [UIImage imageWithContentsOfFile:path];
-    CGSize iconsize; ;
-    iconsize.height=42;
-    iconsize.width=42;
-    
-    UIImage *resizedImage = [self imageWithImage:bankicon scaledToSize:iconsize];
-    UIImageView *resizedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 45, 45)];
-    resizedImageView.image = bankicon;
-//    resizedImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
-    [cell addSubview:resizedImageView];
    
-    // cell.imageView.image =resizedImage;
-    //使用自定义定位
-
-    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(55.0, 4.0, 155.0, 30)];
-    lbl.text = item.productName;
+    
+    //留言标题
+    
+    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(55, 4.0, 155.0, 25)];
+    lbl.text = item.messageTitle;
     lbl.font = [UIFont boldSystemFontOfSize:14];
     [cell.contentView addSubview:lbl];
     
     
-//    cell.textLabel.text = item.productName;
-//    cell.textLabel.font = [UIFont boldSystemFontOfSize:13];
-
-    //银行名称
-    cell.accessoryType = UITableViewCellAccessoryNone;
-     lbl = [[UILabel alloc] initWithFrame:CGRectMake(225.0, 5, 80.0, 30)];
-    lbl.text = item.bankName;
+    //留言日期
+    
+    lbl = [[UILabel alloc] initWithFrame:CGRectMake(55, 30, 155.0, 15)];
+    lbl.text = [NSString stringWithFormat:@"留言日期:%@",item.postDate];
     lbl.font = [UIFont boldSystemFontOfSize:10];
     lbl.textColor =UIColorFromRGB(0x9e9e9e);
     [cell.contentView addSubview:lbl];
     
-    //还款方式
-    lbl = [[UILabel alloc] initWithFrame:CGRectMake(55.0, 26.0, 160.0, 25)];
-    lbl.text = item.productDesc;
-    lbl.font = [UIFont systemFontOfSize:10];;
-    [cell.contentView addSubview:lbl];
     
-    //日期
-    lbl = [[UILabel alloc] initWithFrame:CGRectMake(225, 26.0, 80, 25)];
-    lbl.text = item.releaseDate;
-    lbl.font = [UIFont systemFontOfSize:10];;
+    //    cell.textLabel.text = item.productName;
+    //    cell.textLabel.font = [UIFont boldSystemFontOfSize:13];
+    
+    //留言状态
+    lbl = [[UILabel alloc] initWithFrame:CGRectMake(220, 30, 80.0, 15)];
+    lbl.text = [NSString stringWithFormat:@"留言状态:%@",item.status];
+    lbl.font = [UIFont boldSystemFontOfSize:10];
     lbl.textColor =UIColorFromRGB(0x9e9e9e);
-
     [cell.contentView addSubview:lbl];
     
-    
+    if(indexPath.row==0){
+//MKNumberBadgeView *num = [MKNumberBadgeView
+    MKNumberBadgeView *numview = [[MKNumberBadgeView alloc] initWithFrame:CGRectMake(10, 2, 40, 30)];
+    numview.shadow=false;
+    numview.shine=false;
+    numview.value=2;
+    numview.font = [UIFont boldSystemFontOfSize:13];
+    [cell.contentView addSubview:numview];
+    }
     return cell;
+
 }
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -145,8 +159,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
@@ -176,14 +189,13 @@
 {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    XWProductDetailViewController  *detailViewController = [[XWProductDetailViewController alloc] initWithNibName:@"XWProductDetailViewController" bundle:nil];
-//
-//    // Pass the selected object to the new view controller.
-//    
-//    // Push the view controller.
+    XWMymessageDetailController *detailViewController = [[XWMymessageDetailController alloc] initWithNibName:@"XWMymessageDetailController" bundle:nil];
+    
+    // Pass the selected object to the new view controller.
+    
+    // Push the view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
- 
- 
+
 
 @end

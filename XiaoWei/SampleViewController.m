@@ -15,7 +15,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	self.navigationItem.title = @"Another Page :)";
+	self.navigationItem.title = @"To-do";
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
