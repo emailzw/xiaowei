@@ -249,6 +249,81 @@
 			name = bankicon;
 			sourceTree = "<group>";
 		};
+		7225B9B919650A5F0050D633 /* Mymessage */ = {
+			isa = PBXGroup;
+			children = (
+				725D1881192307F500B9CE31 /* XWMyMessageController.h */,
+				725D1882192307F500B9CE31 /* XWMyMessageController.m */,
+				725D1883192307F500B9CE31 /* XWMyMessageController.xib */,
+				725D189019287F7600B9CE31 /* XWMymessageDetailController.h */,
+				725D189119287F7600B9CE31 /* XWMymessageDetailController.m */,
+				725D189219287F7600B9CE31 /* XWMymessageDetailController.xib */,
+				725D188819230BF200B9CE31 /* XWMessageListItem.h */,
+				725D188619230BD200B9CE31 /* XWMessageListItem.m */,
+			);
+			name = Mymessage;
+			sourceTree = "<group>";
+		};
+		7225B9BA19650A860050D633 /* PublicNews */ = {
+			isa = PBXGroup;
+			children = (
+				72AF64EE1935A55A004FA986 /* XWNewinfoViewController.h */,
+				72AF64EF1935A55A004FA986 /* XWNewinfoViewController.m */,
+				72AF64F01935A55A004FA986 /* XWNewinfoViewController.xib */,
+			);
+			name = PublicNews;
+			sourceTree = "<group>";
+		};
+		7225B9BB196523220050D633 /* Favourite */ = {
+			isa = PBXGroup;
+			children = (
+				72AF64E319359317004FA986 /* XWMyfavolistViewController.xib */,
+				72AF64E119359317004FA986 /* XWMyfavolistViewController.h */,
+				72AF64E219359317004FA986 /* XWMyfavolistViewController.m */,
+			);
+			name = Favourite;
+			sourceTree = "<group>";
+		};
+		7225B9BC1965390A0050D633 /* ContactBank */ = {
+			isa = PBXGroup;
+			children = (
+				725D187C192109F700B9CE31 /* XWContactBankViewController.h */,
+				725D187D192109F700B9CE31 /* XWContactBankViewController.m */,
+				725D187E192109F700B9CE31 /* XWContactBankViewController.xib */,
+			);
+			name = ContactBank;
+			sourceTree = "<group>";
+		};
+		7225B9BD1965391F0050D633 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				72AF64E61935A2A9004FA986 /* XWAboutViewController.h */,
+				72AF64E71935A2A9004FA986 /* XWAboutViewController.m */,
+				72AF64E81935A2A9004FA986 /* XWAboutViewController.xib */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		7225B9BE196539240050D633 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				72CA6A66192CEE990041F728 /* XWComanyResiterController.h */,
+				72CA6A67192CEE990041F728 /* XWComanyResiterController.m */,
+				72CA6A68192CEE990041F728 /* XWComanyResiterController.xib */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
+		7225B9BF196539310050D633 /* Changepassword */ = {
+			isa = PBXGroup;
+			children = (
+				72AA4C691936255900A0B3FD /* XWChangePasswordViewController.h */,
+				72AA4C6A1936255900A0B3FD /* XWChangePasswordViewController.m */,
+				72AA4C6B1936255900A0B3FD /* XWChangePasswordViewController.xib */,
+			);
+			name = Changepassword;
+			sourceTree = "<group>";
+		};
 		725D18891923279200B9CE31 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +338,11 @@
 		72AF64D21934DA76004FA986 /* ProductSearch */ = {
 			isa = PBXGroup;
 			children = (
+				7219A2001916486A00A79E2F /* XWSearchProductResultViewController.h */,
+				7219A2011916486A00A79E2F /* XWSearchProductResultViewController.m */,
+				7219A2021916486A00A79E2F /* XWSearchProductResultViewController.xib */,
+				7219A2051916499200A79E2F /* XWSearchResultItem.h */,
+				7219A2061916499200A79E2F /* XWSearchResultItem.m */,
 				7239A5FF190FA77D00F2004E /* XWGuarantSelection.h */,
 				7239A600190FA77D00F2004E /* XWGuarantSelection.m */,
 				7239A5F9190F94AD00F2004E /* XWGuarantSelectViewController.h */,
@@ -271,6 +351,14 @@
 				72AF64D81934DDA2004FA986 /* XWSingleSelectionTableViewController.h */,
 				72AF64D91934DDA2004FA986 /* XWSingleSelectionTableViewController.m */,
 				72AF64DA1934DDA2004FA986 /* XWSingleSelectionTableViewController.xib */,
+				722C2B8D190D71330019D715 /* XWSearchProductConditonViewController.h */,
+				722C2B8E190D71330019D715 /* XWSearchProductConditonViewController.m */,
+				722C2B8F190D71330019D715 /* XWSearchProductConditonViewController.xib */,
+				72207DD019172E8A004A1F97 /* XWProductDetail.h */,
+				72207DD119172E8A004A1F97 /* XWProductDetail.m */,
+				72207DD319173068004A1F97 /* XWProductDetailViewController.h */,
+				72207DD419173069004A1F97 /* XWProductDetailViewController.m */,
+				72207DD519173069004A1F97 /* XWProductDetailViewController.xib */,
 			);
 			name = ProductSearch;
 			sourceTree = "<group>";
@@ -278,6 +366,13 @@
 		72C33FBF19094B4D0070FA26 = {
 			isa = PBXGroup;
 			children = (
+				7225B9BF196539310050D633 /* Changepassword */,
+				7225B9BE196539240050D633 /* Register */,
+				7225B9BD1965391F0050D633 /* About */,
+				7225B9BC1965390A0050D633 /* ContactBank */,
+				7225B9BB196523220050D633 /* Favourite */,
+				7225B9BA19650A860050D633 /* PublicNews */,
+				7225B9B919650A5F0050D633 /* Mymessage */,
 				72AF64D21934DA76004FA986 /* ProductSearch */,
 				725D18891923279200B9CE31 /* Tools */,
 				72C3402A190964D80070FA26 /* Resources */,
@@ -407,47 +502,8 @@
 			children = (
 				722C2B94190EA4CF0019D715 /* PSTextField.h */,
 				722C2B95190EA4CF0019D715 /* PSTextField.m */,
-				72207DD019172E8A004A1F97 /* XWProductDetail.h */,
-				72207DD119172E8A004A1F97 /* XWProductDetail.m */,
-				72207DD319173068004A1F97 /* XWProductDetailViewController.h */,
-				72207DD419173069004A1F97 /* XWProductDetailViewController.m */,
-				72207DD519173069004A1F97 /* XWProductDetailViewController.xib */,
-				725D187C192109F700B9CE31 /* XWContactBankViewController.h */,
-				725D187D192109F700B9CE31 /* XWContactBankViewController.m */,
-				725D187E192109F700B9CE31 /* XWContactBankViewController.xib */,
-				722C2B8D190D71330019D715 /* XWSearchProductConditonViewController.h */,
-				722C2B8E190D71330019D715 /* XWSearchProductConditonViewController.m */,
-				722C2B8F190D71330019D715 /* XWSearchProductConditonViewController.xib */,
-				7219A2001916486A00A79E2F /* XWSearchProductResultViewController.h */,
-				7219A2011916486A00A79E2F /* XWSearchProductResultViewController.m */,
-				7219A2021916486A00A79E2F /* XWSearchProductResultViewController.xib */,
-				7219A2051916499200A79E2F /* XWSearchResultItem.h */,
-				7219A2061916499200A79E2F /* XWSearchResultItem.m */,
-				725D188819230BF200B9CE31 /* XWMessageListItem.h */,
-				725D188619230BD200B9CE31 /* XWMessageListItem.m */,
 				722C2B8A190D704F0019D715 /* XWtbViewController.h */,
 				722C2B8B190D704F0019D715 /* XWtbViewController.m */,
-				725D1881192307F500B9CE31 /* XWMyMessageController.h */,
-				725D1882192307F500B9CE31 /* XWMyMessageController.m */,
-				725D1883192307F500B9CE31 /* XWMyMessageController.xib */,
-				725D189019287F7600B9CE31 /* XWMymessageDetailController.h */,
-				725D189119287F7600B9CE31 /* XWMymessageDetailController.m */,
-				725D189219287F7600B9CE31 /* XWMymessageDetailController.xib */,
-				72CA6A66192CEE990041F728 /* XWComanyResiterController.h */,
-				72CA6A67192CEE990041F728 /* XWComanyResiterController.m */,
-				72CA6A68192CEE990041F728 /* XWComanyResiterController.xib */,
-				72AF64E119359317004FA986 /* XWMyfavolistViewController.h */,
-				72AF64E219359317004FA986 /* XWMyfavolistViewController.m */,
-				72AF64E319359317004FA986 /* XWMyfavolistViewController.xib */,
-				72AF64E61935A2A9004FA986 /* XWAboutViewController.h */,
-				72AF64E71935A2A9004FA986 /* XWAboutViewController.m */,
-				72AF64E81935A2A9004FA986 /* XWAboutViewController.xib */,
-				72AF64EE1935A55A004FA986 /* XWNewinfoViewController.h */,
-				72AF64EF1935A55A004FA986 /* XWNewinfoViewController.m */,
-				72AF64F01935A55A004FA986 /* XWNewinfoViewController.xib */,
-				72AA4C691936255900A0B3FD /* XWChangePasswordViewController.h */,
-				72AA4C6A1936255900A0B3FD /* XWChangePasswordViewController.m */,
-				72AA4C6B1936255900A0B3FD /* XWChangePasswordViewController.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";

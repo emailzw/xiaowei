@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSArray *mainbodyOptions;
 @property (strong, nonatomic) NSArray *tradeOptions;
 @property (strong, nonatomic) NSArray *establishYearOptions;
-@property (strong, nonatomic) NSArray *registerPlaceOptions;
+@property (strong, nonatomic) NSArray *registerPlaceOptions	;
 
 
 

@@ -880,20 +880,19 @@
             
             
             
-            NSError *error;
-            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.201:3000/customertype"]];
-            NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-            NSArray *options = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableContainers  error:&error];
- 
-            NSLog(@"主体类型 options%@", options );
+            
             NSMutableArray *items = [[NSMutableArray alloc] init];
-            
-            for ( int i=0; i<[options count] ;i++){
-                
-                NSDictionary *section = [NSDictionary dictionaryWithObjectsAndKeys:options[i],@"Value",options[i],@"Key",nil];
-                [items addObject:section];
-            }
-            
+            NSDictionary *section = [NSDictionary dictionaryWithObjectsAndKeys:@"本地",@"Value",@"company",@"Key",nil];
+            [items addObject:section];
+            section = [NSDictionary dictionaryWithObjectsAndKeys:@"异地",@"Value",@"person",@"Key",nil];
+            [items addObject:section];
+            section = [NSDictionary dictionaryWithObjectsAndKeys:@"不限",@"Value",@"person",@"Key",nil];
+            [items addObject:section];
+            self.registerPlace.menuItems = items;
+            self.registerPlaceOptions =  [[NSMutableArray alloc] init];
+            self.registerPlace.target = self.registerPlaceOptions;
+            self.registerPlace.title =@"企业注册地";
+  
            
             self.mainBody.menuItems = items;
             self.mainbodyOptions =  [[NSMutableArray alloc] init];
