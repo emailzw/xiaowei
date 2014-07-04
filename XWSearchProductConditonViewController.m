@@ -12,6 +12,7 @@
 #import "XWSearchResultItem.h"
 #import "PSTextField.h"
 #import "XWSearchProductConditonViewController.h"
+#
 
 
 @interface XWSearchProductConditonViewController ()
@@ -878,15 +879,30 @@
             self.mainBody = [[ XWSingleSelectionTableViewController alloc] initWithNibName:@"XWSingleSelectionTableViewController" bundle:nil];
             
             
+            
+            NSError *error;
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.201:3000/customertype"]];
+            NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+            NSArray *options = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableContainers  error:&error];
+ 
+            NSLog(@"主体类型 options%@", options );
             NSMutableArray *items = [[NSMutableArray alloc] init];
-            NSDictionary *section = [NSDictionary dictionaryWithObjectsAndKeys:@"公司",@"Value",@"company",@"Key",nil];
-            [items addObject:section];
-            section = [NSDictionary dictionaryWithObjectsAndKeys:@"个人",@"Value",@"person",@"Key",nil];
-            [items addObject:section];
+            
+            for ( int i=0; i<[options count] ;i++){
+                
+                NSDictionary *section = [NSDictionary dictionaryWithObjectsAndKeys:options[i],@"Value",options[i],@"Key",nil];
+                [items addObject:section];
+            }
+            
+           
             self.mainBody.menuItems = items;
             self.mainbodyOptions =  [[NSMutableArray alloc] init];
             self.mainBody.target = self.mainbodyOptions;
             self.mainBody.title =@"贷款主体";
+            
+            
+            
+            
             
         }
         
