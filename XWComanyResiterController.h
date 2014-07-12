@@ -7,7 +7,36 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PSTextField.h"
+#import "XWSingleSelectionTableViewController.h"
 
-@interface XWComanyResiterController : UITableViewController
+@interface XWComanyResiterController : NSObject <UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate>
+
+
+@property (strong, nonatomic) UITextField *userCode;
+@property (strong, nonatomic) UITextField *customerName;
+@property (strong, nonatomic) PSTextField *Password;
+@property (strong, nonatomic) PSTextField *Password2;
+@property (strong, nonatomic) PSTextField *registerAddrType;
+@property (strong, nonatomic) PSTextField *ageLimit;
+@property (strong, nonatomic) PSTextField *industry2;
+@property (strong, nonatomic) PSTextField *contactPerson;
+@property (strong, nonatomic) PSTextField *contactPhone;
+@property (strong,nonatomic)   UINavigationController  *navigationController;
+@property (strong, nonatomic) UITableView *tableView;
+
+
+
+
+@property (strong, nonatomic) NSArray *tradeOptions;
+@property (strong, nonatomic) NSArray *establishYearOptions;
+@property (strong, nonatomic) NSArray *registerPlaceOptions	;
+
+@property (strong, nonatomic) XWSingleSelectionTableViewController *trade;
+@property (strong, nonatomic) XWSingleSelectionTableViewController *establishYear;
+@property (strong, nonatomic) XWSingleSelectionTableViewController *registerPlace;
+
+-(void) loadSelction ;
+
 
 @end

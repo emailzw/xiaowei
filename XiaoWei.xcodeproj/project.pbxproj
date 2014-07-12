@@ -26,6 +26,10 @@
 		722C2B96190EA4CF0019D715 /* PSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 722C2B95190EA4CF0019D715 /* PSTextField.m */; };
 		722C2B98190F48B90019D715 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 722C2B97190F48B90019D715 /* blueButton.png */; };
 		722C2B9C190F76390019D715 /* btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 722C2B9B190F76390019D715 /* btn.png */; };
+		722DC7BE196849EA0005F823 /* UnderlineUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 722DC7BD196849EA0005F823 /* UnderlineUILabel.m */; };
+		722DC7C0196A38F10005F823 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 722DC7BF196A38F10005F823 /* list.png */; };
+		7238A35A196BA5890021ED36 /* XWRegisterPersonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7238A359196BA5890021ED36 /* XWRegisterPersonController.m */; };
+		7238A363196BE8BB0021ED36 /* XWRegisterTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7238A362196BE8BB0021ED36 /* XWRegisterTabViewController.m */; };
 		7239A5FC190F94AD00F2004E /* XWGuarantSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7239A5FA190F94AD00F2004E /* XWGuarantSelectViewController.m */; };
 		7239A5FD190F94AD00F2004E /* XWGuarantSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7239A5FB190F94AD00F2004E /* XWGuarantSelectViewController.xib */; };
 		7239A601190FA77D00F2004E /* XWGuarantSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7239A600190FA77D00F2004E /* XWGuarantSelection.m */; };
@@ -52,6 +56,7 @@
 		72AF64EA1935A2A9004FA986 /* XWAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72AF64E81935A2A9004FA986 /* XWAboutViewController.xib */; };
 		72AF64F11935A55A004FA986 /* XWNewinfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF64EF1935A55A004FA986 /* XWNewinfoViewController.m */; };
 		72AF64F21935A55A004FA986 /* XWNewinfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72AF64F01935A55A004FA986 /* XWNewinfoViewController.xib */; };
+		72B959EB1970F06A00688786 /* XWPersonResiterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B959EA1970F06A00688786 /* XWPersonResiterController.m */; };
 		72C33FCC19094B4D0070FA26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C33FCB19094B4D0070FA26 /* Foundation.framework */; };
 		72C33FCE19094B4D0070FA26 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C33FCD19094B4D0070FA26 /* CoreGraphics.framework */; };
 		72C33FD019094B4D0070FA26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C33FCF19094B4D0070FA26 /* UIKit.framework */; };
@@ -82,7 +87,6 @@
 		72C34028190960AD0070FA26 /* SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C34026190960AD0070FA26 /* SampleViewController.m */; };
 		72C34029190960AD0070FA26 /* SampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72C34027190960AD0070FA26 /* SampleViewController.xib */; };
 		72CA6A69192CEE990041F728 /* XWComanyResiterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CA6A67192CEE990041F728 /* XWComanyResiterController.m */; };
-		72CA6A6A192CEE990041F728 /* XWComanyResiterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72CA6A68192CEE990041F728 /* XWComanyResiterController.xib */; };
 		72CA6A6E192D01350041F728 /* XWRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CA6A6C192D01350041F728 /* XWRegisterController.m */; };
 		72CA6A6F192D01350041F728 /* XWRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72CA6A6D192D01350041F728 /* XWRegisterController.xib */; };
 /* End PBXBuildFile section */
@@ -125,6 +129,13 @@
 		722C2B95190EA4CF0019D715 /* PSTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTextField.m; sourceTree = "<group>"; };
 		722C2B97190F48B90019D715 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButton.png; sourceTree = "<group>"; };
 		722C2B9B190F76390019D715 /* btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn.png; sourceTree = "<group>"; };
+		722DC7BC196849EA0005F823 /* UnderlineUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderlineUILabel.h; sourceTree = "<group>"; };
+		722DC7BD196849EA0005F823 /* UnderlineUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderlineUILabel.m; sourceTree = "<group>"; };
+		722DC7BF196A38F10005F823 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
+		7238A358196BA5260021ED36 /* XWRegisterPersonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XWRegisterPersonController.h; path = XiaoWei/XWRegisterPersonController.h; sourceTree = "<group>"; };
+		7238A359196BA5890021ED36 /* XWRegisterPersonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XWRegisterPersonController.m; path = XiaoWei/XWRegisterPersonController.m; sourceTree = "<group>"; };
+		7238A361196BE8BB0021ED36 /* XWRegisterTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWRegisterTabViewController.h; sourceTree = "<group>"; };
+		7238A362196BE8BB0021ED36 /* XWRegisterTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWRegisterTabViewController.m; sourceTree = "<group>"; };
 		7239A5F9190F94AD00F2004E /* XWGuarantSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWGuarantSelectViewController.h; sourceTree = "<group>"; };
 		7239A5FA190F94AD00F2004E /* XWGuarantSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWGuarantSelectViewController.m; sourceTree = "<group>"; };
 		7239A5FB190F94AD00F2004E /* XWGuarantSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWGuarantSelectViewController.xib; sourceTree = "<group>"; };
@@ -165,6 +176,8 @@
 		72AF64EE1935A55A004FA986 /* XWNewinfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWNewinfoViewController.h; sourceTree = "<group>"; };
 		72AF64EF1935A55A004FA986 /* XWNewinfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWNewinfoViewController.m; sourceTree = "<group>"; };
 		72AF64F01935A55A004FA986 /* XWNewinfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWNewinfoViewController.xib; sourceTree = "<group>"; };
+		72B959E91970F06200688786 /* XWPersonResiterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWPersonResiterController.h; sourceTree = "<group>"; };
+		72B959EA1970F06A00688786 /* XWPersonResiterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWPersonResiterController.m; sourceTree = "<group>"; };
 		72C33FC819094B4D0070FA26 /* 小微信贷.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "小微信贷.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72C33FCB19094B4D0070FA26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		72C33FCD19094B4D0070FA26 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -207,10 +220,9 @@
 		72C34027190960AD0070FA26 /* SampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleViewController.xib; sourceTree = "<group>"; };
 		72CA6A66192CEE990041F728 /* XWComanyResiterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWComanyResiterController.h; sourceTree = "<group>"; };
 		72CA6A67192CEE990041F728 /* XWComanyResiterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWComanyResiterController.m; sourceTree = "<group>"; };
-		72CA6A68192CEE990041F728 /* XWComanyResiterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWComanyResiterController.xib; sourceTree = "<group>"; };
-		72CA6A6B192D01350041F728 /* XWRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWRegisterController.h; sourceTree = "<group>"; };
-		72CA6A6C192D01350041F728 /* XWRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWRegisterController.m; sourceTree = "<group>"; };
-		72CA6A6D192D01350041F728 /* XWRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWRegisterController.xib; sourceTree = "<group>"; };
+		72CA6A6B192D01350041F728 /* XWRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XWRegisterController.h; path = XiaoWei/XWRegisterController.h; sourceTree = "<group>"; };
+		72CA6A6C192D01350041F728 /* XWRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XWRegisterController.m; path = XiaoWei/XWRegisterController.m; sourceTree = "<group>"; };
+		72CA6A6D192D01350041F728 /* XWRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XWRegisterController.xib; path = XiaoWei/XWRegisterController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,9 +319,17 @@
 		7225B9BE196539240050D633 /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				7238A361196BE8BB0021ED36 /* XWRegisterTabViewController.h */,
+				7238A362196BE8BB0021ED36 /* XWRegisterTabViewController.m */,
+				72CA6A6B192D01350041F728 /* XWRegisterController.h */,
+				72CA6A6C192D01350041F728 /* XWRegisterController.m */,
+				72CA6A6D192D01350041F728 /* XWRegisterController.xib */,
+				7238A358196BA5260021ED36 /* XWRegisterPersonController.h */,
+				7238A359196BA5890021ED36 /* XWRegisterPersonController.m */,
 				72CA6A66192CEE990041F728 /* XWComanyResiterController.h */,
 				72CA6A67192CEE990041F728 /* XWComanyResiterController.m */,
-				72CA6A68192CEE990041F728 /* XWComanyResiterController.xib */,
+				72B959E91970F06200688786 /* XWPersonResiterController.h */,
+				72B959EA1970F06A00688786 /* XWPersonResiterController.m */,
 			);
 			name = Register;
 			sourceTree = "<group>";
@@ -366,10 +386,10 @@
 		72C33FBF19094B4D0070FA26 = {
 			isa = PBXGroup;
 			children = (
+				7225B9BC1965390A0050D633 /* ContactBank */,
 				7225B9BF196539310050D633 /* Changepassword */,
 				7225B9BE196539240050D633 /* Register */,
 				7225B9BD1965391F0050D633 /* About */,
-				7225B9BC1965390A0050D633 /* ContactBank */,
 				7225B9BB196523220050D633 /* Favourite */,
 				7225B9BA19650A860050D633 /* PublicNews */,
 				7225B9B919650A5F0050D633 /* Mymessage */,
@@ -422,9 +442,6 @@
 				72C34026190960AD0070FA26 /* SampleViewController.m */,
 				72C33FE319094B4D0070FA26 /* Images.xcassets */,
 				72C33FD219094B4D0070FA26 /* Supporting Files */,
-				72CA6A6B192D01350041F728 /* XWRegisterController.h */,
-				72CA6A6C192D01350041F728 /* XWRegisterController.m */,
-				72CA6A6D192D01350041F728 /* XWRegisterController.xib */,
 				72AF64D31934DAC8004FA986 /* testController.h */,
 				72AF64D41934DAC8004FA986 /* testController.m */,
 				72AF64D51934DAC8004FA986 /* testController.xib */,
@@ -471,6 +488,7 @@
 				72C34005190956310070FA26 /* about.png */,
 				72C3400B190956310070FA26 /* search.png */,
 				72C34006190956310070FA26 /* favorite.png */,
+				722DC7BF196A38F10005F823 /* list.png */,
 				72C34007190956310070FA26 /* info.png */,
 				72C34008190956310070FA26 /* message.png */,
 				72C34009190956310070FA26 /* password.png */,
@@ -504,6 +522,8 @@
 				722C2B95190EA4CF0019D715 /* PSTextField.m */,
 				722C2B8A190D704F0019D715 /* XWtbViewController.h */,
 				722C2B8B190D704F0019D715 /* XWtbViewController.m */,
+				722DC7BC196849EA0005F823 /* UnderlineUILabel.h */,
+				722DC7BD196849EA0005F823 /* UnderlineUILabel.m */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -607,7 +627,6 @@
 				72C34012190956310070FA26 /* search.png in Resources */,
 				7219A2041916486A00A79E2F /* XWSearchProductResultViewController.xib in Resources */,
 				7239A5FD190F94AD00F2004E /* XWGuarantSelectViewController.xib in Resources */,
-				72CA6A6A192CEE990041F728 /* XWComanyResiterController.xib in Resources */,
 				725D1880192109F700B9CE31 /* XWContactBankViewController.xib in Resources */,
 				72AF64D71934DAC8004FA986 /* testController.xib in Resources */,
 				72AA4C6D1936255900A0B3FD /* XWChangePasswordViewController.xib in Resources */,
@@ -616,6 +635,7 @@
 				72AF64E019358E6B004FA986 /* jiaotong.png in Resources */,
 				72C3400C190956310070FA26 /* about.png in Resources */,
 				722C2B91190D71330019D715 /* XWSearchProductConditonViewController.xib in Resources */,
+				722DC7C0196A38F10005F823 /* list.png in Resources */,
 				72C3400E190956310070FA26 /* info.png in Resources */,
 				72AF64EA1935A2A9004FA986 /* XWAboutViewController.xib in Resources */,
 				72C34029190960AD0070FA26 /* SampleViewController.xib in Resources */,
@@ -648,17 +668,21 @@
 				72AF64DB1934DDA2004FA986 /* XWSingleSelectionTableViewController.m in Sources */,
 				72AA4C6C1936255900A0B3FD /* XWChangePasswordViewController.m in Sources */,
 				725D1884192307F500B9CE31 /* XWMyMessageController.m in Sources */,
+				72B959EB1970F06A00688786 /* XWPersonResiterController.m in Sources */,
 				72AF64E91935A2A9004FA986 /* XWAboutViewController.m in Sources */,
 				722C2B90190D71330019D715 /* XWSearchProductConditonViewController.m in Sources */,
 				72AF64D61934DAC8004FA986 /* testController.m in Sources */,
 				722C2B7A190A18490019D715 /* XWSearchViewController.m in Sources */,
+				7238A35A196BA5890021ED36 /* XWRegisterPersonController.m in Sources */,
 				7219A2031916486A00A79E2F /* XWSearchProductResultViewController.m in Sources */,
+				7238A363196BE8BB0021ED36 /* XWRegisterTabViewController.m in Sources */,
 				72C34021190957A80070FA26 /* NAMenuViewController.m in Sources */,
 				72C33FD819094B4D0070FA26 /* main.m in Sources */,
 				72AF64E419359317004FA986 /* XWMyfavolistViewController.m in Sources */,
 				722C2B96190EA4CF0019D715 /* PSTextField.m in Sources */,
 				72C3402419095FBE0070FA26 /* MenuViewController.m in Sources */,
 				725D187F192109F700B9CE31 /* XWContactBankViewController.m in Sources */,
+				722DC7BE196849EA0005F823 /* UnderlineUILabel.m in Sources */,
 				72C33FE219094B4D0070FA26 /* XWViewController.m in Sources */,
 				72CA6A6E192D01350041F728 /* XWRegisterController.m in Sources */,
 				725D188719230BD200B9CE31 /* XWMessageListItem.m in Sources */,

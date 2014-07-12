@@ -42,7 +42,70 @@
 
 - (NSArray *)createMenuItems {
 	NSMutableArray *items = [[NSMutableArray alloc] init];
-	XWGuarantSelection *section = [[XWGuarantSelection alloc] initWithType:@"抵押"];
+	
+    
+    
+    NSArray *raw =  [XWSearchProductConditonViewController getOptionsFromServer:@"wayOfGuaranty"  View:self.view];
+
+    
+  //  NSMutableArray *items = [[NSMutableArray alloc] init];
+    
+    @try{
+        
+        NSMutableString  *url =  [[NSMutableString alloc] initWithString:SERVER_URL];
+        [url appendString:@"wayOfGuaranty"];
+        
+        NSError *error;
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSDictionary *raw = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves  error:&error];
+        NSString *code = [raw objectForKey:@"code"];
+        if(![code isEqualToString:@"101"]){
+            UIAlertView * alert =
+            [[UIAlertView alloc]
+             initWithTitle:@"错误"
+             message: [[NSString alloc] initWithFormat:@"数据加载失败:%@",code]
+             delegate:self
+             cancelButtonTitle:nil
+             otherButtonTitles:@"OK", nil];
+            [alert show];
+            return nil;
+            
+        }
+        NSArray *options = [raw objectForKey:@"message"];
+        NSLog(@"%@: options%@", @"wayOfGuaranty",options );
+        
+        
+        for ( int i=0; i<[options count] ;i++){
+            
+            NSDictionary *dict = [options objectAtIndex:i];
+            XWGuarantSelection *section = [[XWGuarantSelection alloc] initWithType:[dict objectForKey:@"type"]];
+            NSArray *list = [dict objectForKey:@"list"];
+            for(int j=0;j<[list count];j++){
+                NSDictionary *subDict = [list objectAtIndex:j];
+                [section addOptions:[NSDictionary  dictionaryWithObjectsAndKeys:[subDict objectForKey:@"value"] ,@"Value",[subDict objectForKey:@"key"],@"Key" ,nil]];
+
+            }
+            [items addObject:section];
+        }
+    }@catch (NSException *e){
+        NSLog(@"Exception: %@", e);
+        UIAlertView * alert =
+        [[UIAlertView alloc]
+         initWithTitle:@"错误"
+         message: [[NSString alloc] initWithFormat:@"数据加载失败"]
+         delegate:self
+         cancelButtonTitle:nil
+         otherButtonTitles:@"OK", nil];
+        [alert show];
+        return  nil;
+    }
+
+    
+    
+    
+    /*
+    XWGuarantSelection *section = [[XWGuarantSelection alloc] initWithType:@"抵押"];
     [section addOptions:[NSDictionary  dictionaryWithObjectsAndKeys:@"商业房产",@"Value",@"dy-01",@"Key" ,nil]];
     [section addOptions:[NSDictionary  dictionaryWithObjectsAndKeys:@"厂房",@"Value",@"dy-02",@"Key" ,nil]];
     [section addOptions:[NSDictionary  dictionaryWithObjectsAndKeys:@"机器设备",@"Value",@"dy-03",@"Key" ,nil]];
@@ -65,8 +128,7 @@
     
     
     [items addObject:section];
-    
-    
+    */
     
     return items;
 }

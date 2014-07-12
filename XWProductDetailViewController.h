@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface XWProductDetailViewController : UITableViewController
-
+@property (nonatomic, retain) NSString *productID;
+@property (nonatomic, retain) NSDictionary *productDetail;
 @end

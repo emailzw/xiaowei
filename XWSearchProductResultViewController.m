@@ -72,31 +72,34 @@
 {
     static NSString *CellIdentifier = @"ProductCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
+  //  if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:CellIdentifier];
-    }
+    //}
     XWSearchResultItem *item =[self.results objectAtIndex:indexPath.row];
 
     //UIImage *bankicon = [UIImage imageNamed:[item.bankIcon stringByAppendingString:@".png"]];
 
-    NSString *path = [[NSBundle mainBundle] pathForResource:item.bankIcon ofType:@"png"];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:item.bankIcon ofType:@"png"];
+      NSString *path = [[NSBundle mainBundle] pathForResource:@"list" ofType:@"png"];
     UIImage *bankicon = [UIImage imageWithContentsOfFile:path];
     CGSize iconsize; ;
-    iconsize.height=42;
-    iconsize.width=42;
-    
+    iconsize.height=14;
+    iconsize.width=12;
+    //关闭图片显示
     UIImage *resizedImage = [self imageWithImage:bankicon scaledToSize:iconsize];
-    UIImageView *resizedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 45, 45)];
+   // UIImageView *resizedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 45, 45)];
+     UIImageView *resizedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 15, 14, 12)];
     resizedImageView.image = bankicon;
-//    resizedImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
-    [cell addSubview:resizedImageView];
+    resizedImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
+  //  [cell addSubview:resizedImageView];
    
     // cell.imageView.image =resizedImage;
-    //使用自定义定位
+    //产品名称
 
-    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(55.0, 4.0, 155.0, 30)];
+    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 4.0, 155.0, 30)];
     lbl.text = item.productName;
     lbl.font = [UIFont boldSystemFontOfSize:14];
+    lbl.textColor = UIColorFromRGB(0xFF9933);
     [cell.contentView addSubview:lbl];
     
     
@@ -105,23 +108,24 @@
 
     //银行名称
     cell.accessoryType = UITableViewCellAccessoryNone;
-     lbl = [[UILabel alloc] initWithFrame:CGRectMake(225.0, 5, 80.0, 30)];
+     lbl = [[UILabel alloc] initWithFrame:CGRectMake(205.0, 5, 95.0, 30)];
     lbl.text = item.bankName;
-    lbl.font = [UIFont boldSystemFontOfSize:10];
+    lbl.font = [UIFont boldSystemFontOfSize:11];
     lbl.textColor =UIColorFromRGB(0x9e9e9e);
     [cell.contentView addSubview:lbl];
     
     //还款方式
-    lbl = [[UILabel alloc] initWithFrame:CGRectMake(55.0, 26.0, 160.0, 25)];
+    lbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 26.0, 280, 25)];
     lbl.text = item.productDesc;
-    lbl.font = [UIFont systemFontOfSize:10];;
+    lbl.font = [UIFont systemFontOfSize:11];
+    lbl.textColor = UIColorFromRGB(0x0033cc);
     [cell.contentView addSubview:lbl];
     
     //日期
-    lbl = [[UILabel alloc] initWithFrame:CGRectMake(225, 26.0, 80, 25)];
-    lbl.text = item.releaseDate;
-    lbl.font = [UIFont systemFontOfSize:10];;
-    lbl.textColor =UIColorFromRGB(0x9e9e9e);
+//    lbl = [[UILabel alloc] initWithFrame:CGRectMake(225, 26.0, 80, 25)];
+//    lbl.text = item.releaseDate;
+//    lbl.font = [UIFont systemFontOfSize:10];;
+//    lbl.textColor =UIColorFromRGB(0x9e9e9e);
 
     [cell.contentView addSubview:lbl];
     
@@ -177,6 +181,9 @@
     // Navigation logic may go here, for example:
     // Create the next view controller.
     XWProductDetailViewController  *detailViewController = [[XWProductDetailViewController alloc] initWithNibName:@"XWProductDetailViewController" bundle:nil];
+    XWSearchResultItem *item =[self.results objectAtIndex:indexPath.row];
+
+    detailViewController.productID =  item.productid;
 //
 //    // Pass the selected object to the new view controller.
 //    

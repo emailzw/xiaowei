@@ -15,5 +15,7 @@
 @property (nonatomic, retain) NSString *productDesc;
 @property (nonatomic, retain) NSString *releaseDate;
 @property (nonatomic, retain) NSString *conditionDesc;
+@property (nonatomic, retain) NSString *productid;
+
 
 @end

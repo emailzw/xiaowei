@@ -9,12 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "PSTextField.h"
 #import "XWSingleSelectionTableViewController.h"
-@interface XWRegisterController : UIViewController  <UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate>
+@interface XWRegisterPersonController:NSObject  <UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate>
 
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
-
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) UITextField *userCode;
 @property (strong, nonatomic) PSTextField *Password;
@@ -24,8 +21,7 @@
 @property (strong, nonatomic) PSTextField *industry2;
 @property (strong, nonatomic) PSTextField *contactPerson;
 @property (strong, nonatomic) PSTextField *contactPhone;
-@property  NSInteger tab;
-
+@property (strong,nonatomic)   UINavigationController  *navigationController;
 
 
 

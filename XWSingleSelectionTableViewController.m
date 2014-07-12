@@ -59,17 +59,30 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
+    UITableViewCell *cell;//= [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    @try{
+        NSDictionary *s = [self.menuItems objectAtIndex:indexPath.row];
+        cell.textLabel.text = [s objectForKey:@"Value"];
+        cell.restorationIdentifier = [s objectForKey:@"Value"];
+        cell.textLabel.textColor =UIColorFromRGB(0x686868);
+        cell.textLabel.font = [UIFont systemFontOfSize:15];
+    }@catch (NSException *exception) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        
+        [alert show];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        return cell;
+    }
+    @finally {
         
     }
-    NSDictionary *s = [self.menuItems objectAtIndex:indexPath.row];
-    cell.textLabel.text = [s objectForKey:@"Value"];
-    cell.restorationIdentifier = [s objectForKey:@"Value"];
-    cell.textLabel.textColor =UIColorFromRGB(0x686868);
-    cell.textLabel.font = [UIFont systemFontOfSize:15];
+    
     return cell;
 }
 
@@ -120,8 +133,8 @@
         
         
     }
-    XWSearchProductConditonViewController *searchctl  = [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
-    //searchctl.mainbodyOptions = options;
+//    XWSearchProductConditonViewController *searchctl  = [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
+//    //searchctl.mainbodyOptions = options;
     [self.target removeAllObjects];
     [self.target  addObjectsFromArray:options];
     [self.navigationController popViewControllerAnimated:YES];

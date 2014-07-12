@@ -6,15 +6,15 @@
 //  Copyright (c) 2014年 Tonknet. All rights reserved.
 //
 
-#import "XWComanyResiterController.h"
+#import "XWPersonResiterController.h"
 #import "PSTextField.h"
 #import "XWSearchProductConditonViewController.h"
 
-@interface XWComanyResiterController ()
+@interface XWPersonResiterController ()
 
 @end
 
-@implementation XWComanyResiterController
+@implementation XWPersonResiterController
 
 
 
@@ -30,7 +30,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 10;
+    return 6;
 }
 
 
@@ -43,15 +43,7 @@
         cell.textLabel.font = [UIFont systemFontOfSize:11];
         cell.textLabel.textColor =[UIColor redColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        /*  UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(80, 0.0, 200, 44.0)];
-         lbl.text = @"宁波银行上海分行";
-         lbl.font = [UIFont boldSystemFontOfSize:15];;
-         lbl.textColor =UIColorFromRGB(0x9e9e9e);
-         [cell.contentView addSubview:lbl];*/
     }else if(indexPath.row == 1){
-        
-        //   cell = //[tableView dequeueReusableCellWithIdentifier:@"row1"];
-        // if (cell == nil || true) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"row1"];
         // }else{
         //     return cell;
@@ -161,7 +153,7 @@
         // }else{
         //     return cell;
         // }
-        cell.textLabel.text = @"公司名：";
+        cell.textLabel.text = @"姓名：";
         cell.textLabel.font = [UIFont systemFontOfSize:15];
         cell.textLabel.textColor = UIColorFromRGB(0x000000);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -197,7 +189,7 @@
     else if(indexPath.row == 4){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"row4"];
         cell.tag = 4;
-        cell.textLabel.text = @"公司注册地：";
+        cell.textLabel.text = @"出生年月：";
         cell.textLabel.font = [UIFont systemFontOfSize:15];
         cell.textLabel.textColor = UIColorFromRGB(0x000000);
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -209,42 +201,13 @@
         [cell.contentView addSubview:lbl];
         
     } else if(indexPath.row == 5){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"row5"];
-        cell.tag = 5;
-        cell.textLabel.text = @"成立年限：";
-        cell.textLabel.font = [UIFont systemFontOfSize:15];
-        cell.textLabel.textColor = UIColorFromRGB(0x000000);
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(230.0, 0.0, 100.0, 44.0)];
-        lbl.text = @"请选择";
-        lbl.font = [UIFont boldSystemFontOfSize:15];;
-        lbl.textColor =UIColorFromRGB(0x9e9e9e);
-        [cell.contentView addSubview:lbl];
-        
-    } else if(indexPath.row == 6){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"row6"];
-        cell.tag = 6;
-        
-        cell.textLabel.text = @"所属行业：";
-        cell.textLabel.font = [UIFont systemFontOfSize:15];
-        cell.textLabel.textColor = UIColorFromRGB(0x000000);
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(230.0, 0.0, 100.0, 44.0)];
-        lbl.text = @"请选择";
-        lbl.font = [UIFont boldSystemFontOfSize:15];;
-        lbl.textColor =UIColorFromRGB(0x9e9e9e);
-        [cell.contentView addSubview:lbl];
-        
-    }else if(indexPath.row == 7){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"row7"];
-        cell.textLabel.text = @"联系人：";
+        cell.textLabel.text = @"所属公司：";
         cell.textLabel.font = [UIFont systemFontOfSize:15];
         cell.textLabel.textColor = UIColorFromRGB(0x000000);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        self.contactPerson = [[PSTextField alloc] initWithFrame:CGRectMake(90, 4.5, 210,35)
+        self.company = [[PSTextField alloc] initWithFrame:CGRectMake(90, 4.5, 210,35)
                                                     cornerRadio:5
                                                     borderColor:RGB(166.0, 166.0, 166.0)
                                                     borderWidth:0
@@ -254,7 +217,7 @@
                                                 backgroundColor:UIColorFromRGB(0xdff0ff)
                               ];
         
-        UITextField  *tf = self.contactPerson;
+        UITextField  *tf = self.company;
         tf.placeholder = @"";
         tf.delegate = self;
         tf.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -265,7 +228,7 @@
         tf.returnKeyType = UIReturnKeyDone;
         [cell.contentView addSubview:tf];
         
-    }else if(indexPath.row == 8){
+    }else if(indexPath.row == 6){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"row8"];
         cell.textLabel.text = @"联系电话：";
         cell.textLabel.font = [UIFont systemFontOfSize:15];
@@ -293,7 +256,7 @@
         tf.keyboardType = UIKeyboardTypeDefault;
         tf.returnKeyType = UIReturnKeyDone;
         [cell.contentView addSubview:tf];
-    }else if(indexPath.row == 9){
+    }else if(indexPath.row == 7){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"footer"];
         UIButton *button =  [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [button setTitle: @"注册" forState:UIControlStateNormal];
@@ -358,7 +321,7 @@
     NSString* trimedCompany = [self.customerName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if([trimedCompany length]==0){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入公司名称"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入姓名"
                                                         message:nil
                                                        delegate:self
                                               cancelButtonTitle:@"确定"
@@ -406,41 +369,11 @@
     }
     
     
-    if([self.establishYearOptions count]==0){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择企业成立年限"
-                                                        message:nil
-                                                       delegate:self
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil, nil];
-        [alert show];
-        return;
-    }
     
-    if([self.registerPlaceOptions count]==0){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择企业注册地"
-                                                        message:nil
-                                                       delegate:self
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil, nil];
-        [alert show];
-        return;
-    }
-    
-    
-    if([self.tradeOptions count]==0){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择所属行业或类型"
-                                                        message:nil
-                                                       delegate:self
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil, nil];
-        [alert show];
-        return;
-    }
-    
-    NSString* trimedcontactPerson = [self.contactPerson.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString* trimedcontactPerson = [self.company.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if([trimedcontactPerson length]==0){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入联系人"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输公司名"
                                                         message:nil
                                                        delegate:self
                                               cancelButtonTitle:@"确定"
@@ -465,25 +398,9 @@
     
     
     NSMutableString  *urlstring =  [[NSMutableString alloc] initWithString:SERVER_URL];
-    [urlstring appendString:@"register/company"];
+    [urlstring appendString:@"register/individual"];
     NSURL *url = [NSURL URLWithString:urlstring];
-    
-    //所属行业或类型
-    NSString *strTrade =[[self.tradeOptions objectAtIndex:0] objectForKey:@"Key"];
-    if (strTrade == nil){
-        strTrade = @"";
-    }
-    
-    //成立年限
-    NSString *strEstablish =[[self.establishYearOptions objectAtIndex:0] objectForKey:@"Key"];
-    if (strEstablish == nil){
-        strEstablish = @"";
-    }
-    //注册地
-    NSString *strRegisterPlace =[[self.registerPlaceOptions objectAtIndex:0] objectForKey:@"Key"];
-    if (strRegisterPlace == nil){
-        strRegisterPlace = @"";
-    }
+   
     
     
     NSString *postString =[NSString stringWithFormat:
@@ -634,7 +551,7 @@
 
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField == self.contactPerson) {
+    if (textField == self.company) {
         
         [self.tableView setContentOffset:CGPointMake(0, 112) animated:YES];
     }else if (textField == self.contactPhone) {
@@ -650,74 +567,12 @@
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //企业注册地
-    if (indexPath.row == 4){
-        if(!self.registerPlace){
-            self.registerPlace = [[ XWSingleSelectionTableViewController alloc] initWithNibName:@"XWSingleSelectionTableViewController" bundle:nil];
-            
-            NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"registerAddrType"  View:self.tableView];
-            
-            
-            
-            
-            self.registerPlace.menuItems = items;
-            self.registerPlaceOptions =  [[NSMutableArray alloc] init];
-            self.registerPlace.target = self.registerPlaceOptions;
-            self.registerPlace.title =@"企业注册地";
-            
-            
-        }
-        
-        [self.navigationController pushViewController:self.registerPlace  animated:YES];
-        
-        
-    }
-    //成立年限
-    else if (indexPath.row == 5){
-        if(!self.establishYear){
-            self.establishYear = [[ XWSingleSelectionTableViewController alloc] initWithNibName:@"XWSingleSelectionTableViewController" bundle:nil];
-            
-            NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"ageLimit"  View:self.tableView];
-            
-            
-            
-            self.establishYear.menuItems = items;
-            self.establishYearOptions =  [[NSMutableArray alloc] init];
-            self.establishYear.target = self.establishYearOptions;
-            self.establishYear.title =@"成立年限";
-            
-            
-        }
-        
-        [self.navigationController pushViewController:self.establishYear  animated:YES];
-        
-        
-    }
     
-    //所属行业
-    else if (indexPath.row == 6){
-        if(!self.trade){
-            self.trade = [[ XWSingleSelectionTableViewController alloc] initWithNibName:@"XWSingleSelectionTableViewController" bundle:nil];
-            
-            NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"industry"  View:self.tableView];
-            
-            
-            
-            self.trade.menuItems = items;
-            self.tradeOptions =  [[NSMutableArray alloc] init];
-            self.trade.target = self.tradeOptions;
-            self.trade.title =@"所属行业";
-            
-            
-        }
-        
-        [self.navigationController pushViewController:self.trade  animated:YES];
-        
-        
-    }}
+    
+}
 
 -(void) loadSelction {
-    //取消选中状态
+ /*   //取消选中状态
     for(int i=0;i<[self.tableView numberOfRowsInSection:0];i++){
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         if (cell.selected) {
@@ -810,7 +665,6 @@
         lbl.text = @"请选择";
     }
 
-}
+}*/
 
 
-@end

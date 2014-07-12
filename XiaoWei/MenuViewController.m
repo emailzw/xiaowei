@@ -14,6 +14,8 @@
 #import "XWNewinfoViewController.h"
 #import "XWAboutViewController.h"
 #import "XWChangePasswordViewController.h"
+#import "XWRegisterTabViewController.h"
+#import "XWComanyResiterController.h"
 
 @interface MenuViewController()
 - (NSArray *)createMenuItems;
@@ -66,9 +68,16 @@
 	[items addObject:item4];
 	
 	// Fifth Item
-	NAMenuItem *item5 = [[NAMenuItem alloc] initWithTitle:@"注册信息"
-													 image:[UIImage imageNamed:@"register.png"]
-												   vcClass:[XWRegisterController class]];
+//	NAMenuItem *item5 = [[NAMenuItem alloc] initWithTitle:@"注册信息"
+//													 image:[UIImage imageNamed:@"register.png"]
+//												   vcClass:[XWRegisterController class]];
+    
+    NAMenuItem *item5 = [[NAMenuItem alloc] initWithTitle:@"注册信息"
+                                                    image:[UIImage imageNamed:@"register.png"]
+                                               //
+                                                  vcClass:[XWRegisterTabViewController class]];
+                         
+    
 	[items addObject:item5];
 	
 	// Sixth Item
