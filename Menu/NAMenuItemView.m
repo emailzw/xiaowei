@@ -29,6 +29,25 @@
 }
 
 
+
+- (id)initForIP4 {
+	self = [super init];
+	
+	if (self) {
+		NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"NAMenuItemViewIP4" owner:self options:nil];
+		[self addSubview:[views objectAtIndex:0]];
+		
+		// customize the view a bit
+		self.imageView.layer.borderWidth = 0;
+		self.imageView.layer.borderColor = [UIColor colorWithWhite:0.4 alpha:0.4].CGColor;
+		self.imageView.clipsToBounds = NO;
+		self.imageView.layer.cornerRadius = 5.0;
+	}
+	
+	return self;
+}
+
+
 - (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents {
 	[self.button addTarget:target action:action forControlEvents:controlEvents];
 }

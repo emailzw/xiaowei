@@ -45,7 +45,6 @@
 	
     
     
-    NSArray *raw =  [XWSearchProductConditonViewController getOptionsFromServer:@"wayOfGuaranty"  View:self.view];
 
     
   //  NSMutableArray *items = [[NSMutableArray alloc] init];

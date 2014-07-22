@@ -27,3 +27,5 @@
 
 #define LOGIN @"UserCode"
 #define LOGIN_NAME @"UserName"
+
+#define DEVICE_IS_IPHONE4 ([[UIScreen mainScreen] bounds].size.height == 480)

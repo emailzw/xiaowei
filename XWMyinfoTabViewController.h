@@ -30,7 +30,7 @@
 @property (strong, nonatomic) PSTextField *company;
 
 
-@property (strong,nonatomic)   UINavigationController  *navigationController;
+//@property (strong,nonatomic,retain)   UINavigationController  *navigationController;
 
 
 

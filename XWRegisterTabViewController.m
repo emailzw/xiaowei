@@ -43,7 +43,7 @@
     
   //  UISegmentedControl *segment = UISegmentedControl
     NSArray *contents = [[NSArray alloc] initWithObjects:@"企业注册",@"个人注册",nil];
-    [self.segment initWithItems:contents];
+    self.segment =[self.segment initWithItems:contents];
     [self.segment setFrame:frame];
     [self.segment setSelectedSegmentIndex:0];
     [self.view addSubview:self.segment];

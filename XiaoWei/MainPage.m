@@ -4,8 +4,6 @@
 
 
 #import "MainPage.h"
-#import "SampleViewController.h"
-#import "XWSearchViewController.h"
 #import "XWSearchProductConditonViewController.h"
 #import "XWMyMessageController.h"
 #import "XWRegisterController.h"
@@ -18,11 +16,10 @@
 #import "XWLoginController.h"
 #import "TOWebViewController.h"
 #import "NAMenuItemView.h"
-#import "WeixinSessionActivity.h"
-#import "WeixinTimelineActivity.h"
 #import "XWSearchResultItem.h"
 #import "XWMyinfoTabViewController.h"
 #import "XWMessageListItem.h"
+
 
 @interface MainPage(){
     NSArray *activity;
@@ -37,6 +34,15 @@
 	self = [super init];
 	
 	
+    
+  /*  self.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin
+    | UIViewAutoresizingFlexibleRightMargin |  UIViewAutoresizingFlexibleBottomMargin
+    | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin
+    | UIViewAutoresizingFlexibleRightMargin |  UIViewAutoresizingFlexibleBottomMargin
+    | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    */
 	return self;
 }
 
@@ -45,14 +51,6 @@
 - (void)layoutSubviews {
     //	[super layoutSubviews];
     //登录信息
-    
-    
-    NSString *uid =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN];
-    NSString *uname =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_NAME];
-    
-    
-    NSLog([NSString stringWithFormat:@"userlogin:%@",uname ]);
-    
     
     
   
@@ -73,42 +71,32 @@
     return NO;
 }
 
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- 	//return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    return false;
-}
-
-
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return NO;
+    return UIInterfaceOrientationMaskPortraitUpsideDown;
 }
-
 
 
 - (BOOL)shouldAutorotate
 {
-    return NO;
+    return false;
+}
+
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    
-    
-    NSString *uid =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN];
-    NSString *uname =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_NAME];
-    
-    
-    NSLog([NSString stringWithFormat:@"userlogin1111:%@",uname ]);
-    
-    
+        
     
 }
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-    activity = @[[[WeixinSessionActivity alloc] init], [[WeixinTimelineActivity alloc] init]];
     
     
     //    UILabel *lbtitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
@@ -152,18 +140,55 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     
+    if(! DEVICE_IS_IPHONE4){
+        [self layoutIphone5];
+    }else{
+        [self layoutIphone4];
+
+    }
+    
+}
+
+
+
+- (void) layoutIphone5{
     //背景图片
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"middle" ofType:@"png"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"middle" ofType:@"jpg"];
     UIImage *middleimg = [UIImage imageWithContentsOfFile:path];
     CGSize iconsize; ;
     iconsize.height=151;
     iconsize.width=320;
     UIImage *resizedImage = [self imageWithImage:middleimg scaledToSize:iconsize];
-    UIImageView *resizedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,63, 320, 151)];
+    UIImageView *resizedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,64, 320, 151)];
+    
     resizedImageView.image = resizedImage;
     resizedImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:resizedImageView];
     
+    //登录图标
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button setTitle: @"" forState:UIControlStateNormal];
+    
+    [button addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [button setBackgroundImage:[UIImage imageNamed:@"usericon.png"] forState:UIControlStateNormal];
+    button.frame = CGRectMake(20,155,35,35);
+
+    [self.view addSubview:button];
+    
+   //消息
+     path = [[NSBundle mainBundle] pathForResource:@"main-message" ofType:@"png"];
+    middleimg = [UIImage imageWithContentsOfFile:path];
+    iconsize.height=20;
+    iconsize.width=220;
+     resizedImage = [self imageWithImage:middleimg scaledToSize:iconsize];
+    resizedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(60,165, 220,20)];
+    
+    resizedImageView.image = resizedImage;
+    resizedImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:resizedImageView];
+
     
     path = [[NSBundle mainBundle] pathForResource:@"bottom" ofType:@"png"];
     UIImage *bottomimg = [UIImage imageWithContentsOfFile:path];
@@ -171,19 +196,13 @@
     iconsize.width=320;
     resizedImage = [self imageWithImage:bottomimg scaledToSize:iconsize];
     resizedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,214, 320, 355)];
+    
     resizedImageView.image = resizedImage;
     resizedImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:resizedImageView];
     
     
-    //登录信息
-    
-    
-    NSString *uid =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN];
-    NSString *uname =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_NAME];
-    
-    
-    NSLog([NSString stringWithFormat:@"userlogin:%@",uname ]);
+
     
     
     //按钮
@@ -191,11 +210,11 @@
     NAMenuItemView *itemView = [[NAMenuItemView alloc] init];
     path = [[NSBundle mainBundle] pathForResource:@"query" ofType:@"png"];
     middleimg = [UIImage imageWithContentsOfFile:path];
-    iconsize.height=151;
-    iconsize.width=320;
+    iconsize.height=60;
+    iconsize.width=60;
     resizedImage = [self imageWithImage:middleimg scaledToSize:iconsize];
     
-    itemView.frame = CGRectMake(20,230, 60, 60);
+    itemView.frame = CGRectMake(20,230, 100, 100);
     itemView.label.text = @"产品查询";
     itemView.imageView.image = resizedImage;
     [itemView addTarget:self action:@selector(queryProduct:) forControlEvents:UIControlEventTouchUpInside];
@@ -207,11 +226,11 @@
     itemView = [[NAMenuItemView alloc] init];
     path = [[NSBundle mainBundle] pathForResource:@"message" ofType:@"png"];
     middleimg = [UIImage imageWithContentsOfFile:path];
-    iconsize.height=151;
-    iconsize.width=320;
+    iconsize.height=60;
+    iconsize.width=60;
     resizedImage = [self imageWithImage:middleimg scaledToSize:iconsize];
     
-    itemView.frame = CGRectMake(115,230, 60, 60);
+    itemView.frame = CGRectMake(115,230, 100, 100);
     itemView.label.text = @"我的留言";
     itemView.imageView.image = resizedImage;
     [itemView addTarget:self action:@selector(myMessage:) forControlEvents:UIControlEventTouchUpInside];
@@ -222,11 +241,11 @@
     itemView = [[NAMenuItemView alloc] init];
     path = [[NSBundle mainBundle] pathForResource:@"info" ofType:@"png"];
     middleimg = [UIImage imageWithContentsOfFile:path];
-    iconsize.height=151;
-    iconsize.width=320;
+    iconsize.height=60;
+    iconsize.width=60;
     resizedImage = [self imageWithImage:middleimg scaledToSize:iconsize];
     
-    itemView.frame = CGRectMake(205,230, 60, 60);
+    itemView.frame = CGRectMake(205,230, 100, 100);
     itemView.label.text = @"公共资讯";
     itemView.imageView.image = resizedImage;
     [itemView addTarget:self action:@selector(info:) forControlEvents:UIControlEventTouchUpInside];
@@ -242,11 +261,11 @@
     itemView = [[NAMenuItemView alloc] init];
     path = [[NSBundle mainBundle] pathForResource:@"favorite" ofType:@"png"];
     middleimg = [UIImage imageWithContentsOfFile:path];
-    iconsize.height=151;
-    iconsize.width=320;
+    iconsize.height=60;
+    iconsize.width=60;
     resizedImage = [self imageWithImage:middleimg scaledToSize:iconsize];
     
-    itemView.frame = CGRectMake(20,330, 60, 60);
+    itemView.frame = CGRectMake(20,330, 100, 100);
     itemView.label.text = @"我的收藏";
     itemView.imageView.image = resizedImage;
     [itemView addTarget:self action:@selector(favorit:) forControlEvents:UIControlEventTouchUpInside];
@@ -258,11 +277,11 @@
     itemView = [[NAMenuItemView alloc] init];
     path = [[NSBundle mainBundle] pathForResource:@"register" ofType:@"png"];
     middleimg = [UIImage imageWithContentsOfFile:path];
-    iconsize.height=151;
-    iconsize.width=320;
+    iconsize.height=60;
+    iconsize.width=60;
     resizedImage = [self imageWithImage:middleimg scaledToSize:iconsize];
     
-    itemView.frame = CGRectMake(115,330, 60, 60);
+    itemView.frame = CGRectMake(115,330, 100, 100);
     itemView.label.text = @"注册信息";
     itemView.imageView.image = resizedImage;
     [itemView addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
@@ -273,11 +292,11 @@
     itemView = [[NAMenuItemView alloc] init];
     path = [[NSBundle mainBundle] pathForResource:@"password" ofType:@"png"];
     middleimg = [UIImage imageWithContentsOfFile:path];
-    iconsize.height=151;
-    iconsize.width=320;
+    iconsize.height=60;
+    iconsize.width=60;
     resizedImage = [self imageWithImage:middleimg scaledToSize:iconsize];
     
-    itemView.frame = CGRectMake(205,330, 60, 60);
+    itemView.frame = CGRectMake(205,330, 100, 100);
     itemView.label.text = @"密码修改";
     itemView.imageView.image = resizedImage;
     [itemView addTarget:self action:@selector(password:) forControlEvents:UIControlEventTouchUpInside];
@@ -293,11 +312,11 @@
     itemView = [[NAMenuItemView alloc] init];
     path = [[NSBundle mainBundle] pathForResource:@"about" ofType:@"png"];
     middleimg = [UIImage imageWithContentsOfFile:path];
-    iconsize.height=151;
-    iconsize.width=320;
+    iconsize.height=60;
+    iconsize.width=60;
     resizedImage = [self imageWithImage:middleimg scaledToSize:iconsize];
     
-    itemView.frame = CGRectMake(20,430, 60, 60);
+    itemView.frame = CGRectMake(20,430, 100, 100);
     itemView.label.text = @"关于我们";
     itemView.imageView.image = resizedImage;
     [itemView addTarget:self action:@selector(about:) forControlEvents:UIControlEventTouchUpInside];
@@ -305,21 +324,21 @@
     [self.view addSubview:itemView];
     
     /*
-    //分享
-    itemView = [[NAMenuItemView alloc] init];
-    path = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"png"];
-    middleimg = [UIImage imageWithContentsOfFile:path];
-    iconsize.height=151;
-    iconsize.width=320;
-    resizedImage = [self imageWithImage:middleimg scaledToSize:iconsize];
-    
-    itemView.frame = CGRectMake(115,430, 60, 60);
-    itemView.label.text = @"分享";
-    itemView.imageView.image = resizedImage;
-    [itemView addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:itemView];
-    */
+     //分享
+     itemView = [[NAMenuItemView alloc] init];
+     path = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"png"];
+     middleimg = [UIImage imageWithContentsOfFile:path];
+     iconsize.height=151;
+     iconsize.width=320;
+     resizedImage = [self imageWithImage:middleimg scaledToSize:iconsize];
+     
+     itemView.frame = CGRectMake(115,430, 60, 60);
+     itemView.label.text = @"分享";
+     itemView.imageView.image = resizedImage;
+     [itemView addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
+     
+     [self.view addSubview:itemView];
+     */
     
     //网址
     UITextView *utl = [[UITextView alloc] initWithFrame:CGRectMake(0, 530, 320, 38)];
@@ -331,11 +350,203 @@
     utl.textColor =UIColorFromRGB(0x6e6e6e);
     utl.textAlignment = NSTextAlignmentCenter;
     
+    
     [self.view addSubview:utl];
+    
     
     
 }
 
+
+
+- (void) layoutIphone4{
+    //背景图片
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"middle-small" ofType:@"png"];
+    UIImage *middleimg = [UIImage imageWithContentsOfFile:path];
+    CGSize iconsize; ;
+    iconsize.height=108;
+    iconsize.width=320;
+    UIImage *resizedImage = [self imageWithImage:middleimg scaledToSize:iconsize];
+    UIImageView *resizedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,64, 320, 108)];
+    
+    resizedImageView.image = resizedImage;
+    resizedImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:resizedImageView];
+    
+    
+    path = [[NSBundle mainBundle] pathForResource:@"bottom-small" ofType:@"png"];
+    UIImage *bottomimg = [UIImage imageWithContentsOfFile:path];
+    iconsize.height=308;
+    iconsize.width=320;
+    resizedImage = [self imageWithImage:bottomimg scaledToSize:iconsize];
+    resizedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,172, 320, 308)];
+    
+    resizedImageView.image = resizedImage;
+    resizedImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:resizedImageView];
+    
+    
+    
+    
+    
+    //登录图标
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button setTitle: @"" forState:UIControlStateNormal];
+    
+    [button addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [button setBackgroundImage:[UIImage imageNamed:@"usericon.png"] forState:UIControlStateNormal];
+    button.frame = CGRectMake(20,115,35,35);
+    
+    [self.view addSubview:button];
+    
+    //消息
+    path = [[NSBundle mainBundle] pathForResource:@"main-message" ofType:@"png"];
+    middleimg = [UIImage imageWithContentsOfFile:path];
+    iconsize.height=20;
+    iconsize.width=220;
+    resizedImage = [self imageWithImage:middleimg scaledToSize:iconsize];
+    resizedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(60,130, 220,20)];
+    
+    resizedImageView.image = resizedImage;
+    resizedImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:resizedImageView];
+
+    
+    
+    
+    
+    
+    //按钮
+    //产品查询
+    NAMenuItemView *itemView = [[NAMenuItemView alloc] initForIP4];
+    path = [[NSBundle mainBundle] pathForResource:@"query" ofType:@"png"];
+    middleimg = [UIImage imageWithContentsOfFile:path];
+    itemView.frame = CGRectMake(20,180, 80, 80);
+    itemView.label.text = @"产品查询";
+    itemView.imageView.image = middleimg;
+    [itemView addTarget:self action:@selector(queryProduct:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:itemView];
+    
+    
+    //我的留言
+    itemView = [[NAMenuItemView alloc] initForIP4];
+    path = [[NSBundle mainBundle] pathForResource:@"message" ofType:@"png"];
+    middleimg = [UIImage imageWithContentsOfFile:path];
+    
+    itemView.frame = CGRectMake(115,180, 80, 80);
+    itemView.label.text = @"我的留言";
+    itemView.imageView.image = middleimg;
+    [itemView addTarget:self action:@selector(myMessage:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:itemView];
+    
+    
+    itemView = [[NAMenuItemView alloc] initForIP4];
+    path = [[NSBundle mainBundle] pathForResource:@"info" ofType:@"png"];
+    middleimg = [UIImage imageWithContentsOfFile:path];
+    itemView.frame = CGRectMake(205,180, 80, 80);
+    itemView.label.text = @"公共资讯";
+    itemView.imageView.image = middleimg;
+    [itemView addTarget:self action:@selector(info:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:itemView];
+    
+    
+    
+    //第二排
+    
+    //按钮
+    //我的收藏
+    itemView = [[NAMenuItemView alloc] initForIP4];
+    path = [[NSBundle mainBundle] pathForResource:@"favorite" ofType:@"png"];
+    middleimg = [UIImage imageWithContentsOfFile:path];
+    
+    itemView.frame = CGRectMake(20,270, 80, 80);
+    itemView.label.text = @"我的收藏";
+    itemView.imageView.image = middleimg;
+    [itemView addTarget:self action:@selector(favorit:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:itemView];
+    
+    
+    //注册信息
+    itemView = [[NAMenuItemView alloc] initForIP4];
+    path = [[NSBundle mainBundle] pathForResource:@"register" ofType:@"png"];
+    middleimg = [UIImage imageWithContentsOfFile:path];
+    
+    
+    itemView.frame = CGRectMake(115,270, 80, 80);
+    itemView.label.text = @"注册信息";
+    itemView.imageView.image = middleimg;
+    [itemView addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:itemView];
+    
+    //密码修改
+    itemView = [[NAMenuItemView alloc] initForIP4];
+    path = [[NSBundle mainBundle] pathForResource:@"password" ofType:@"png"];
+    middleimg = [UIImage imageWithContentsOfFile:path];
+    
+    itemView.frame = CGRectMake(205,270, 80, 80);
+    itemView.label.text = @"密码修改";
+    itemView.imageView.image = middleimg;
+    [itemView addTarget:self action:@selector(password:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:itemView];
+    
+    
+    
+    //第三排
+    
+    //按钮
+    //关于我们
+    itemView = [[NAMenuItemView alloc] initForIP4];
+    path = [[NSBundle mainBundle] pathForResource:@"about" ofType:@"png"];
+    middleimg = [UIImage imageWithContentsOfFile:path];
+    
+    itemView.frame = CGRectMake(20,370, 80, 80);
+    itemView.label.text = @"关于我们";
+    itemView.imageView.image = middleimg;
+    [itemView addTarget:self action:@selector(about:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:itemView];
+    
+    /*
+     //分享
+     itemView = [[NAMenuItemView alloc] init];
+     path = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"png"];
+     middleimg = [UIImage imageWithContentsOfFile:path];
+     iconsize.height=151;
+     iconsize.width=320;
+     resizedImage = [self imageWithImage:middleimg scaledToSize:iconsize];
+     
+     itemView.frame = CGRectMake(115,430, 60, 60);
+     itemView.label.text = @"分享";
+     itemView.imageView.image = resizedImage;
+     [itemView addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
+     
+     [self.view addSubview:itemView];
+     */
+    
+    //网址
+    UITextView *utl = [[UITextView alloc] initWithFrame:CGRectMake(0, 450, 320, 38)];
+    utl.text = @"http://loan.sbacn.org";
+    utl.backgroundColor = [UIColor clearColor];
+    utl.editable = NO;
+    utl.dataDetectorTypes = UIDataDetectorTypeAll;
+    utl.font = [UIFont systemFontOfSize:14];
+    utl.textColor =UIColorFromRGB(0x6e6e6e);
+    utl.textAlignment = NSTextAlignmentCenter;
+    
+    
+    [self.view addSubview:utl];
+    
+    
+    
+}
 
 
 - (UIImage*)imageWithImage:(UIImage*)image
@@ -354,7 +565,7 @@
 	NSParameterAssert(sender);
     
     XWSearchProductConditonViewController *viewController = [[XWSearchProductConditonViewController alloc] init] ;
-    viewController.navigationController = self.navigationController;
+   // viewController.navigationController = self.navigationController;
     [self.navigationController pushViewController:viewController animated:YES];
     
 }
@@ -483,7 +694,7 @@
                                                }
                                                XWMyMessageController *viewController = [[XWMyMessageController alloc] init] ;
                                                viewController.results = result;
-                                               viewController.navigationController = self.navigationController;
+                                              // viewController.navigationController = self.navigationController;
                                                [self.navigationController pushViewController:viewController animated:YES];
                                            }//end 101
                                        }
@@ -547,7 +758,6 @@
     
     NSMutableString  *url =  [[NSMutableString alloc] initWithString:SERVER_URL];
     [url appendString: [NSString  stringWithFormat: @"showinfo/%@",uid]];
-    NSLog(url);
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     
     
@@ -606,7 +816,7 @@
                                            }else if([code isEqualToString:@"101"]){
                                                 XWMyinfoTabViewController *viewController = [[XWMyinfoTabViewController alloc] init] ;
                                                viewController.info = customerinfo;
-                                               viewController.navigationController = self.navigationController;
+                                              // viewController.navigationController = self.navigationController;
                                                [self.navigationController pushViewController:viewController animated:YES];
                                            }//end 101
                                        }
@@ -851,7 +1061,6 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(alertView.tag==100){
-        NSLog([NSString stringWithFormat:@"index:%i" ,buttonIndex]);
         if( buttonIndex == 1 ){
             XWLoginController *viewController = [[XWLoginController alloc] init] ;
             [self.navigationController pushViewController:viewController animated:YES];

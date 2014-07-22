@@ -103,7 +103,6 @@
     iconsize.height=14;
     iconsize.width=12;
     //关闭图片显示
-    UIImage *resizedImage = [self imageWithImage:bankicon scaledToSize:iconsize];
    // UIImageView *resizedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 45, 45)];
      UIImageView *resizedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 15, 14, 12)];
     resizedImageView.image = bankicon;

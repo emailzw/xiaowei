@@ -620,7 +620,6 @@
     [self.view addSubview:activityIndicator];
     
     [activityIndicator startAnimating];
-    NSLog(postString);
     
     //将NSSrring格式的参数转换格式为NSData，POST提交必须用NSData数据。
     NSData *postData = [postString  dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
@@ -664,7 +663,7 @@
                                                  cancelButtonTitle:nil
                                                  otherButtonTitles:@"确定"
                                  //,@"其他",    //添加其他按钮
-                                 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　,　 nil];
+                                 ,nil];
             [view show];
             
         }

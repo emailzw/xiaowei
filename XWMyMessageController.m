@@ -7,7 +7,6 @@
 //
 
 #import "XWMyMessageController.h"
-#import "MKNumberBadgeView.h"
 #import "XWMymessageDetailController.h"
 
 @interface XWMyMessageController ()
@@ -105,7 +104,7 @@
     
     //留言标题
     
-    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(20, 4.0, 155.0, 25)];
+    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(20, 4.0, 290, 25)];
     lbl.text = item.messageTitle;
     lbl.font = [UIFont boldSystemFontOfSize:14];
     [cell.contentView addSubview:lbl];
@@ -201,7 +200,6 @@
     
     NSMutableString  *url =  [[NSMutableString alloc] initWithString:SERVER_URL];
     [url appendString: [NSString  stringWithFormat: @"/message/%@/%@/%@",uid,item.productID,item.mid]];
-    NSLog(url);
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     
     

@@ -955,7 +955,6 @@ UIView *foot ;
 {
     
     if(alertView.tag==1000){
-        NSLog([NSString stringWithFormat:@"index:%i" ,buttonIndex]);
         if( buttonIndex == 1 ){
             
             NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -972,7 +971,6 @@ UIView *foot ;
         }
     }else if(alertView.tag==1001){
         
-        NSLog([NSString stringWithFormat:@"index:%i" ,buttonIndex]);
         if( buttonIndex == 1 ){
             editFlag = false;
             UIButton *homeButton = [UIButton buttonWithType:101];
@@ -1113,12 +1111,10 @@ UIView *foot ;
     [self.tableView addSubview:activityIndicator];
     
     [activityIndicator startAnimating];
-    NSLog(postString);
     
     //将NSSrring格式的参数转换格式为NSData，POST提交必须用NSData数据。
     NSData *postData = [postString  dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     
-    NSError *error;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     NSString *msgLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
     
@@ -1187,7 +1183,7 @@ UIView *foot ;
                                                                                               message:nil   //显示内容
                                                                                              delegate:nil          //委托，可以点击事件进行处理
                                                                                     cancelButtonTitle:nil
-                                                                                    otherButtonTitles:@"确定",　nil];
+                                                                                    otherButtonTitles:@"确定",nil];
                                                [view show];
                                                editFlag = false;
                                                [self.info setValue:trimedCompany forKey:@"companyName"];
@@ -1289,7 +1285,7 @@ UIView *foot ;
                                                         message:nil
                                                        delegate:nil
                                               cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil, nil];
+                                              otherButtonTitles:nil,nil];
         [alert show];
         return;
     }
@@ -1327,12 +1323,10 @@ UIView *foot ;
     [self.tableView addSubview:activityIndicator];
     
     [activityIndicator startAnimating];
-    NSLog(postString);
     
     //将NSSrring格式的参数转换格式为NSData，POST提交必须用NSData数据。
     NSData *postData = [postString  dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     
-    NSError *error;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     NSString *msgLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
     
@@ -1401,7 +1395,7 @@ UIView *foot ;
                                                                                               message:nil   //显示内容
                                                                                              delegate:nil          //委托，可以点击事件进行处理
                                                                                     cancelButtonTitle:nil
-                                                                                    otherButtonTitles:@"确定",　nil];
+                                                                                    otherButtonTitles:@"确定",nil];
                                                [view show];
                                                editFlag = false;
                                                [self.info setValue:trimedCompany forKey:@"companyName"];
@@ -1490,7 +1484,7 @@ UIView *foot ;
     [formatter setDateFormat:dateFormat];
     // 將選取後的日期 填入 UITextField
     self.birthday.text = [NSString stringWithFormat:@"%@",[formatter stringFromDate:datePicker.date]];
-    self.birthday.resignFirstResponder;
+    [self.birthday resignFirstResponder];
     foot.hidden =false;
 
 }

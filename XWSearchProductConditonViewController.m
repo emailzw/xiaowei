@@ -35,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     //注册键盘事件用于隐藏提交按钮
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -82,7 +82,7 @@
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     gesture.numberOfTapsRequired = 1;//手势敲击的次数
     gesture.cancelsTouchesInView = NO;
-
+    
     [self.view addGestureRecognizer:gesture];
     
 }
@@ -192,7 +192,7 @@
         lbl.text = @"请选择";
     }
     
-
+    
     
     
     //注册地
@@ -220,7 +220,7 @@
         lbl.text = @"请选择";
     }
     
-
+    
     
 }
 
@@ -262,7 +262,7 @@
     if(indexPath.row == 0){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"row0"];
         cell.tag = 11;
-
+        
         cell.textLabel.text = @"贷款主体：";
         cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
         //下面这句相同效果
@@ -282,7 +282,7 @@
         cell.textLabel.text = @"所属行业或类型：";
         cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
         cell.tag = 12;
-
+        
         //下面这句相同效果
         // [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:15]];
         cell.textLabel.textColor = UIColorFromRGB(0x000000);
@@ -304,18 +304,18 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         
-      
+        
         self.amountDemand = [[PSTextField alloc] initWithFrame:CGRectMake(100, 4.5, 170,35)
-                                                  cornerRadio:5
-                                                  borderColor:RGB(166.0, 166.0, 166.0)
-                                                  borderWidth:0
-                                                   lightColor:RGB(55.0, 154.0, 255.0)
-                                                    lightSize:8
-                                             lightBorderColor:RGB(235.0, 235.0, 235.0)
-                                              backgroundColor:UIColorFromRGB(0xdff0ff)
-                            ];
+                                                   cornerRadio:5
+                                                   borderColor:RGB(166.0, 166.0, 166.0)
+                                                   borderWidth:0
+                                                    lightColor:RGB(55.0, 154.0, 255.0)
+                                                     lightSize:8
+                                              lightBorderColor:RGB(235.0, 235.0, 235.0)
+                                               backgroundColor:UIColorFromRGB(0xdff0ff)
+                             ];
         PSTextField *tf = self.amountDemand;
-       // tf.placeholder = @"（万元）";
+        // tf.placeholder = @"（万元）";
         tf.delegate = self;
         tf.clearButtonMode = UITextFieldViewModeWhileEditing;
         
@@ -330,9 +330,9 @@
         unit.font = [UIFont systemFontOfSize:15];
         unit.text = @"万元";
         unit.textColor =UIColorFromRGB(0x9e9e9e);
-
+        
         [cell.contentView addSubview:unit];
-
+        
         
         /*  UITextField  *tf = [[UITextField alloc] initWithFrame:CGRectMake(100.0, 4.5, 210.0, 35.0)];
          tf.placeholder = @"（万元）";
@@ -356,18 +356,18 @@
         
         
         self.loanLimitPeriod = [[PSTextField alloc] initWithFrame:CGRectMake(100, 4.5, 170,35)
-                                                  cornerRadio:5
-                                                  borderColor:RGB(166.0, 166.0, 166.0)
-                                                  borderWidth:0
-                                                   lightColor:RGB(55.0, 154.0, 255.0)
-                                                    lightSize:8
-                                             lightBorderColor:RGB(235.0, 235.0, 235.0)
-                                              backgroundColor:UIColorFromRGB(0xdff0ff)
-                            ];
+                                                      cornerRadio:5
+                                                      borderColor:RGB(166.0, 166.0, 166.0)
+                                                      borderWidth:0
+                                                       lightColor:RGB(55.0, 154.0, 255.0)
+                                                        lightSize:8
+                                                 lightBorderColor:RGB(235.0, 235.0, 235.0)
+                                                  backgroundColor:UIColorFromRGB(0xdff0ff)
+                                ];
         
         UITextField  *tf = self.loanLimitPeriod;
         
-      //  tf.placeholder = @"（月）";
+        //  tf.placeholder = @"（月）";
         tf.delegate = self;
         tf.clearButtonMode = UITextFieldViewModeWhileEditing;
         
@@ -384,7 +384,7 @@
         unit.textColor =UIColorFromRGB(0x9e9e9e);
         
         [cell.contentView addSubview:unit];
-
+        
         
         /*  UITextField  *tf = [[UITextField alloc] initWithFrame:CGRectMake(100.0, 4.5, 210.0, 35.0)];
          tf.placeholder = @"（万元）";
@@ -400,7 +400,7 @@
         cell.textLabel.text = @"企业成立年限：";
         cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
         cell.tag = 14;
-
+        
         //下面这句相同效果
         // [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:15]];
         cell.textLabel.textColor = UIColorFromRGB(0x000000);
@@ -417,7 +417,7 @@
         cell.textLabel.text = @"企业注册地：";
         cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
         cell.tag = 18;
-
+        
         //下面这句相同效果
         // [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:15]];
         cell.textLabel.textColor = UIColorFromRGB(0x000000);
@@ -450,7 +450,7 @@
                                               backgroundColor:UIColorFromRGB(0xdff0ff)
                             ];
         UITextField  *tf  = self.totalAssets;
-//        tf.placeholder = @"（万元）";
+        //        tf.placeholder = @"（万元）";
         tf.delegate = self;
         tf.clearButtonMode = UITextFieldViewModeWhileEditing;
         
@@ -467,7 +467,7 @@
         unit.textColor =UIColorFromRGB(0x9e9e9e);
         
         [cell.contentView addSubview:unit];
-
+        
         
         /*  UITextField  *tf = [[UITextField alloc] initWithFrame:CGRectMake(100.0, 4.5, 210.0, 35.0)];
          tf.placeholder = @"（万元）";
@@ -489,16 +489,16 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         self.businessIncome = [[PSTextField alloc] initWithFrame:CGRectMake(100, 4.5, 170,35)
-                                                  cornerRadio:5
-                                                  borderColor:RGB(166.0, 166.0, 166.0)
-                                                  borderWidth:0
-                                                   lightColor:RGB(55.0, 154.0, 255.0)
-                                                    lightSize:8
-                                             lightBorderColor:RGB(235.0, 235.0, 235.0)
-                                              backgroundColor:UIColorFromRGB(0xdff0ff)
-                            ];
+                                                     cornerRadio:5
+                                                     borderColor:RGB(166.0, 166.0, 166.0)
+                                                     borderWidth:0
+                                                      lightColor:RGB(55.0, 154.0, 255.0)
+                                                       lightSize:8
+                                                lightBorderColor:RGB(235.0, 235.0, 235.0)
+                                                 backgroundColor:UIColorFromRGB(0xdff0ff)
+                               ];
         UITextField  *tf  = self.businessIncome;
-       // tf.placeholder = @"（万元）";
+        // tf.placeholder = @"（万元）";
         tf.delegate = self;
         tf.clearButtonMode = UITextFieldViewModeWhileEditing;
         
@@ -515,7 +515,7 @@
         unit.textColor =UIColorFromRGB(0x9e9e9e);
         
         [cell.contentView addSubview:unit];
-
+        
         
         /*  UITextField  *tf = [[UITextField alloc] initWithFrame:CGRectMake(100.0, 4.5, 210.0, 35.0)];
          tf.placeholder = @"（万元）";
@@ -554,14 +554,14 @@
         
         
         self.bankname = [[PSTextField alloc] initWithFrame:CGRectMake(100, 4.5, 210,35)
-                                                  cornerRadio:5
-                                                  borderColor:RGB(166.0, 166.0, 166.0)
-                                                  borderWidth:0
-                                                   lightColor:RGB(55.0, 154.0, 255.0)
-                                                    lightSize:8
-                                             lightBorderColor:RGB(235.0, 235.0, 235.0)
-                                              backgroundColor:UIColorFromRGB(0xdff0ff)
-                            ];
+                                               cornerRadio:5
+                                               borderColor:RGB(166.0, 166.0, 166.0)
+                                               borderWidth:0
+                                                lightColor:RGB(55.0, 154.0, 255.0)
+                                                 lightSize:8
+                                          lightBorderColor:RGB(235.0, 235.0, 235.0)
+                                           backgroundColor:UIColorFromRGB(0xdff0ff)
+                         ];
         UITextField  *tf = self.bankname;
         tf.placeholder = @"";
         tf.delegate = self;
@@ -696,440 +696,459 @@
 
 - (void)commit {
     @try{
-    //数据验证
-//    if([self.mainbodyOptions count]==0){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择贷款主体"
-//                                                        message:nil
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"确定"
-//                                              otherButtonTitles:nil, nil];
-//        [alert show];
-//        return;
-//    }
-//    
-//    
-//    if([self.tradeOptions count]==0){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择所属行业或类型"
-//                                                        message:nil
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"确定"
-//                                              otherButtonTitles:nil, nil];
-//        [alert show];
-//        return;
-//    }
-//    
-    NSString* trimedAmount = [self.amountDemand.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-
-//    if([trimedAmount length]==0){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入资金需求"
-//                                                        message:nil
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"确定"
-//                                              otherButtonTitles:nil, nil];
-//        [alert show];
-//        return;
-//    }
-//    
-//    if(![self isPureInt:trimedAmount]){
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"资金需求格式错误"
-//                                                            message:nil
-//                                                           delegate:self
-//                                                  cancelButtonTitle:@"确定"
-//                                                  otherButtonTitles:nil, nil];
-//            [alert show];
-//            return;
-//
-//    }
-//    
-//    
-    
-    NSString* trimedloanLimitPeriod = [self.loanLimitPeriod.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-//    
-//    if([trimedloanLimitPeriod length]==0){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入贷款期限"
-//                                                        message:nil
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"确定"
-//                                              otherButtonTitles:nil, nil];
-//        [alert show];
-//        return;
-//    }
-//    
-//    if(![self isPureInt:trimedloanLimitPeriod]){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"贷款期限格式错误"
-//                                                        message:nil
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"确定"
-//                                              otherButtonTitles:nil, nil];
-//        [alert show];
-//        return;
-//        
-//    }
-//
-//    
-//    
-//    if([self.establishYearOptions count]==0){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择企业成立年限"
-//                                                        message:nil
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"确定"
-//                                              otherButtonTitles:nil, nil];
-//        [alert show];
-//        return;
-//    }
-//    
-//    if([self.registerPlaceOptions count]==0){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择企业注册地"
-//                                                        message:nil
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"确定"
-//                                              otherButtonTitles:nil, nil];
-//        [alert show];
-//        return;
-//    }
-    
-  
-    
-    NSString* trimedtotalAssets = [self.totalAssets.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-//    if([trimedtotalAssets length]==0){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入企业总资产"
-//                                                        message:nil
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"确定"
-//                                              otherButtonTitles:nil, nil];
-//        [alert show];
-//        return;
-//    }
-//    if(![self isPureInt:trimedtotalAssets]){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"企业总资产格式错误"
-//                                                        message:nil
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"确定"
-//                                              otherButtonTitles:nil, nil];
-//        [alert show];
-//        return;
-//        
-//    }
-//
-    
-    
-    NSString* trimedbusinessIncome = [self.businessIncome.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-//    if([trimedbusinessIncome length]==0){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入年营业收入"
-//                                                        message:nil
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"确定"
-//                                              otherButtonTitles:nil, nil];
-//        [alert show];
-//        return;
-//    }
-//    
-//    if(![self isPureInt:trimedbusinessIncome]){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"年营业收入格式错误"
-//                                                        message:nil
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"确定"
-//                                              otherButtonTitles:nil, nil];
-//        [alert show];
-//        return;
-//        
-//    }
-//
-//
-//    
-//    if([self.guarantOptions count]==0){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择担保方式"
-//                                                        message:nil
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"确定"
-//                                              otherButtonTitles:nil, nil];
-//        [alert show];
-//        return;
-//    }
-
-    
-    
-    
-    NSMutableString  *urlstring =  [[NSMutableString alloc] initWithString:SERVER_URL];
-    [urlstring appendString:@"product/list"];
-    NSURL *url = [NSURL URLWithString:urlstring];
-    //贷款主体
-    NSString *strMainbody =[[self.mainbodyOptions objectAtIndex:0] objectForKey:@"Key"];
-    if (strMainbody == nil){
-        strMainbody = @"";
-    }
-    //所属行业或类型
-    NSString *strTrade =[[self.tradeOptions objectAtIndex:0] objectForKey:@"Key"];
-    if (strTrade == nil){
-        strTrade = @"";
-    }
-
-    //成立年限
-    NSString *strEstablish =[[self.establishYearOptions objectAtIndex:0] objectForKey:@"Key"];
-    if (strEstablish == nil){
-        strEstablish = @"";
-    }
-    //注册地
-    NSString *strRegisterPlace =[[self.registerPlaceOptions objectAtIndex:0] objectForKey:@"Key"];
-    if (strRegisterPlace == nil){
-        strRegisterPlace = @"";
-    }
-    //但保方式
-   // NSString *strGuarenteeType =[[self.guarantOptions objectAtIndex:0] objectForKey:@"Key"];
-    
-    NSString *strGuarenteeType = [[NSString alloc] init];
-    for(int i=0;i<self.guarantOptions.count;i++){
-        NSDictionary *dict =  [self.guarantOptions objectAtIndex:i];
-        NSString *s = [dict objectForKey:@"Key"];
-        strGuarenteeType =  [NSString stringWithFormat:@"%@,%@",strGuarenteeType,s];
-    }
-    if([strGuarenteeType length]>0){
-        strGuarenteeType= [strGuarenteeType substringFromIndex:1];
-    }
-    
-    NSString *postString =[NSString stringWithFormat:
-    @"isIndividual=%@&loanAmountRequirement=%@&tradeType=%@&loanLimitPeriod=%@&ageLimit=%@&registerAddrType=%@&totalAssets=%@&businessIncome=%@&guaranteeType=%@&bankname=%@",strMainbody,trimedAmount,strTrade,trimedloanLimitPeriod,strEstablish,strRegisterPlace,trimedtotalAssets,trimedbusinessIncome,strGuarenteeType,self.bankname.text];
-    
-    
-    UIActivityIndicatorView *activityIndicator;
-    activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
-    CGPoint center  = CGPointMake(self.view.center.x, self.view.center.y-50);
-    [activityIndicator setCenter:center];
-    [activityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
-    [self.view addSubview:activityIndicator];
-    
-    [activityIndicator startAnimating];
-    NSLog(postString);
-    
-    //将NSSrring格式的参数转换格式为NSData，POST提交必须用NSData数据。
-    NSData *postData = [postString  dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
-    
-    NSError *error;
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    
-    NSString *msgLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
-    NSLog(@"postLength=%@",msgLength);
-  
-    //这里设置为 application/x-www-form-urlencoded ，如果设置为其它的，比如text/html;charset=utf-8，或者 text/html 等，都会出错。不知道什么原因。
-    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:msgLength forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPMethod:@"POST"];
-    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setTimeoutInterval:10.0];
-
-    
-  
-    NSMutableArray *result ;
-   
-    
-    
-    
-    @try {
-    
+        //数据验证
+        //    if([self.mainbodyOptions count]==0){
+        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择贷款主体"
+        //                                                        message:nil
+        //                                                       delegate:self
+        //                                              cancelButtonTitle:@"确定"
+        //                                              otherButtonTitles:nil, nil];
+        //        [alert show];
+        //        return;
+        //    }
+        //
+        //
+        //    if([self.tradeOptions count]==0){
+        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择所属行业或类型"
+        //                                                        message:nil
+        //                                                       delegate:self
+        //                                              cancelButtonTitle:@"确定"
+        //                                              otherButtonTitles:nil, nil];
+        //        [alert show];
+        //        return;
+        //    }
+        //
+        NSString* trimedAmount = [self.amountDemand.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         
-        NSOperationQueue  *queue = [[NSOperationQueue alloc] init];
-        [NSURLConnection sendAsynchronousRequest:request
-                                           queue:[NSOperationQueue mainQueue]
-                               completionHandler:^(NSURLResponse *response,  NSData *data, NSError *error) {
-                                   if (error != nil) {
-                                       NSLog(@"Error on load = %@", [error localizedDescription]);
-                                   }else {
-                                       [activityIndicator stopAnimating];
-                                       // check the HTTP status
-                                       if ([response isKindOfClass:[NSHTTPURLResponse class]]) {                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                                           if (httpResponse.statusCode != 200) {
-                                               return;                    }
-                                           NSLog(@"Headers: %@", [httpResponse allHeaderFields]);
-                                           NSDictionary  *rawresult = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves  error:&error];
-                                           
-                                           NSArray *queryproducts = [rawresult objectForKey:@"message"];
-                                           NSString *code = [rawresult objectForKey:@"code"];
-                                           NSLog(@"查询结果 %@", rawresult );
-                                           
-                                           if(![code isEqualToString:@"101"]){
-                                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，没有符合要求的产品"
-                                                                                               message:[NSString stringWithFormat:@"错误代码：%@",code]
-                                                                                              delegate:self
-                                                                                     cancelButtonTitle:@"确定"
-                                                                                     otherButtonTitles:nil, nil];
-                                               [alert show];
-                                               return;
+        //    if([trimedAmount length]==0){
+        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入资金需求"
+        //                                                        message:nil
+        //                                                       delegate:self
+        //                                              cancelButtonTitle:@"确定"
+        //                                              otherButtonTitles:nil, nil];
+        //        [alert show];
+        //        return;
+        //    }
+        //
+        //    if(![self isPureInt:trimedAmount]){
+        //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"资金需求格式错误"
+        //                                                            message:nil
+        //                                                           delegate:self
+        //                                                  cancelButtonTitle:@"确定"
+        //                                                  otherButtonTitles:nil, nil];
+        //            [alert show];
+        //            return;
+        //
+        //    }
+        //
+        //
+        
+        NSString* trimedloanLimitPeriod = [self.loanLimitPeriod.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        //
+        //    if([trimedloanLimitPeriod length]==0){
+        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入贷款期限"
+        //                                                        message:nil
+        //                                                       delegate:self
+        //                                              cancelButtonTitle:@"确定"
+        //                                              otherButtonTitles:nil, nil];
+        //        [alert show];
+        //        return;
+        //    }
+        //
+        //    if(![self isPureInt:trimedloanLimitPeriod]){
+        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"贷款期限格式错误"
+        //                                                        message:nil
+        //                                                       delegate:self
+        //                                              cancelButtonTitle:@"确定"
+        //                                              otherButtonTitles:nil, nil];
+        //        [alert show];
+        //        return;
+        //
+        //    }
+        //
+        //
+        //
+        //    if([self.establishYearOptions count]==0){
+        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择企业成立年限"
+        //                                                        message:nil
+        //                                                       delegate:self
+        //                                              cancelButtonTitle:@"确定"
+        //                                              otherButtonTitles:nil, nil];
+        //        [alert show];
+        //        return;
+        //    }
+        //
+        //    if([self.registerPlaceOptions count]==0){
+        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择企业注册地"
+        //                                                        message:nil
+        //                                                       delegate:self
+        //                                              cancelButtonTitle:@"确定"
+        //                                              otherButtonTitles:nil, nil];
+        //        [alert show];
+        //        return;
+        //    }
+        
+        
+        
+        NSString* trimedtotalAssets = [self.totalAssets.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        //    if([trimedtotalAssets length]==0){
+        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入企业总资产"
+        //                                                        message:nil
+        //                                                       delegate:self
+        //                                              cancelButtonTitle:@"确定"
+        //                                              otherButtonTitles:nil, nil];
+        //        [alert show];
+        //        return;
+        //    }
+        //    if(![self isPureInt:trimedtotalAssets]){
+        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"企业总资产格式错误"
+        //                                                        message:nil
+        //                                                       delegate:self
+        //                                              cancelButtonTitle:@"确定"
+        //                                              otherButtonTitles:nil, nil];
+        //        [alert show];
+        //        return;
+        //
+        //    }
+        //
+        
+        
+        NSString* trimedbusinessIncome = [self.businessIncome.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        //    if([trimedbusinessIncome length]==0){
+        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入年营业收入"
+        //                                                        message:nil
+        //                                                       delegate:self
+        //                                              cancelButtonTitle:@"确定"
+        //                                              otherButtonTitles:nil, nil];
+        //        [alert show];
+        //        return;
+        //    }
+        //
+        //    if(![self isPureInt:trimedbusinessIncome]){
+        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"年营业收入格式错误"
+        //                                                        message:nil
+        //                                                       delegate:self
+        //                                              cancelButtonTitle:@"确定"
+        //                                              otherButtonTitles:nil, nil];
+        //        [alert show];
+        //        return;
+        //
+        //    }
+        //
+        //
+        //
+        //    if([self.guarantOptions count]==0){
+        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择担保方式"
+        //                                                        message:nil
+        //                                                       delegate:self
+        //                                              cancelButtonTitle:@"确定"
+        //                                              otherButtonTitles:nil, nil];
+        //        [alert show];
+        //        return;
+        //    }
+        
+        
+        
+        
+        NSMutableString  *urlstring =  [[NSMutableString alloc] initWithString:SERVER_URL];
+        [urlstring appendString:@"product/list"];
+        NSURL *url = [NSURL URLWithString:urlstring];
+        //贷款主体
+        
+        NSString *strMainbody=@"";
+        if(self.mainbodyOptions.count>0){
+            strMainbody =[[self.mainbodyOptions objectAtIndex:0] objectForKey:@"Key"];
+        }
+        if (strMainbody == nil){
+            strMainbody = @"";
+        }
+        //所属行业或类型
+        NSString *strTrade =@"";
+        if(self.tradeOptions.count>0){
+            strTrade=[[self.tradeOptions objectAtIndex:0] objectForKey:@"Key"];
+        }
+        if (strTrade == nil){
+            strTrade = @"";
+        }
+        //成立年限
+        
+        NSString *strEstablish = @"";
+        if(self.establishYearOptions.count>0){
+            strEstablish = [[self.establishYearOptions objectAtIndex:0] objectForKey:@"Key"];
+        }
+        
+        if (strEstablish == nil){
+            strEstablish = @"";
+        }
+        //注册地
+        NSString *strRegisterPlace =@"";
+        if(self.registerPlaceOptions.count>0){
+            strRegisterPlace=[[self.registerPlaceOptions objectAtIndex:0] objectForKey:@"Key"];
+        }
+
+        if (strRegisterPlace == nil){
+            strRegisterPlace = @"";
+        }
+        //但保方式
+        // NSString *strGuarenteeType =[[self.guarantOptions objectAtIndex:0] objectForKey:@"Key"];
+        
+        NSString *strGuarenteeType = [[NSString alloc] init];
+        for(int i=0;i<self.guarantOptions.count;i++){
+            NSDictionary *dict =  [self.guarantOptions objectAtIndex:i];
+            NSString *s = [dict objectForKey:@"Key"];
+            strGuarenteeType =  [NSString stringWithFormat:@"%@,%@",strGuarenteeType,s];
+        }
+        if([strGuarenteeType length]>0){
+            strGuarenteeType= [strGuarenteeType substringFromIndex:1];
+        }
+        
+        NSString *postString =[NSString stringWithFormat:
+                               @"isIndividual=%@&loanAmountRequirement=%@&tradeType=%@&loanLimitPeriod=%@&ageLimit=%@&registerAddrType=%@&totalAssets=%@&businessIncome=%@&guaranteeType=%@&bankname=%@",strMainbody,trimedAmount,strTrade,trimedloanLimitPeriod,strEstablish,strRegisterPlace,trimedtotalAssets,trimedbusinessIncome,strGuarenteeType,self.bankname.text];
+        
+        
+        UIActivityIndicatorView *activityIndicator;
+        activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+        CGPoint center  = CGPointMake(self.view.center.x, self.view.center.y-50);
+        [activityIndicator setCenter:center];
+        [activityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+        [self.view addSubview:activityIndicator];
+        
+        [activityIndicator startAnimating];
+        
+        //将NSSrring格式的参数转换格式为NSData，POST提交必须用NSData数据。
+        NSData *postData = [postString  dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+        
+        NSString *msgLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+        NSLog(@"postLength=%@",msgLength);
+        
+        //这里设置为 application/x-www-form-urlencoded ，如果设置为其它的，比如text/html;charset=utf-8，或者 text/html 等，都会出错。不知道什么原因。
+        [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        [request addValue:msgLength forHTTPHeaderField:@"Content-Length"];
+        [request setHTTPMethod:@"POST"];
+        [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+        [request setTimeoutInterval:10.0];
+        
+        
+            
+        
+        
+        
+        @try {
+            
+            
+            [NSURLConnection sendAsynchronousRequest:request
+                                               queue:[NSOperationQueue mainQueue]
+                                   completionHandler:^(NSURLResponse *response,  NSData *data, NSError *error) {
+                                       if (error != nil) {
+                                           [activityIndicator stopAnimating];
+                                           NSLog(@"Error on load = %@", [error localizedDescription]);
+                                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"通讯错误"
+                                                                                           message:[NSString stringWithFormat:@"%@",[error localizedDescription]]
+                                                                                          delegate:self
+                                                                                 cancelButtonTitle:@"确定"
+                                                                                 otherButtonTitles:nil, nil];
+                                           [alert show];
+                                           return;
+
+                                       }else {
+                                           [activityIndicator stopAnimating];
+                                           // check the HTTP status
+                                           if ([response isKindOfClass:[NSHTTPURLResponse class]]) {                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                               if (httpResponse.statusCode != 200) {
+                                                   return;                    }
+                                               NSLog(@"Headers: %@", [httpResponse allHeaderFields]);
+                                               NSDictionary  *rawresult = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves  error:&error];
+                                               
+                                               NSArray *queryproducts = [rawresult objectForKey:@"message"];
+                                               NSString *code = [rawresult objectForKey:@"code"];
+                                               NSLog(@"查询结果 %@", rawresult );
+                                               
+                                               if(![code isEqualToString:@"101"]){
+                                                   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，没有符合要求的产品"
+                                                                                                   message:[NSString stringWithFormat:@"错误代码：%@",code]
+                                                                                                  delegate:self
+                                                                                         cancelButtonTitle:@"确定"
+                                                                                         otherButtonTitles:nil, nil];
+                                                   [alert show];
+                                                   return;
+                                               }
+                                               NSMutableArray *result ;
+                                               
+                                               result = [[NSMutableArray alloc] init];
+                                               XWSearchResultItem *item = [[XWSearchResultItem alloc] init];
+                                               
+                                               
+                                               for(int i=0;i<[queryproducts count];i++){
+                                                   item = [[XWSearchResultItem alloc] init];
+                                                   
+                                                   item.bankName = [queryproducts[i] objectForKey:@"bankname"];
+                                                   item.productName = [queryproducts[i] objectForKey:@"productname"];
+                                                   item.productDesc= [queryproducts[i] objectForKey:@"repaymentType"];
+                                                   item.productid= [queryproducts[i] objectForKey:@"productid"];
+                                                   
+                                                   //item.releaseDate=@"2014/4/15";
+                                                   [result addObject:item];
+                                                   
+                                               }
+                                               
+                                               XWSearchProductResultViewController *controller = [[ XWSearchProductResultViewController alloc] initWithNibName:@"XWSearchProductResultViewController" bundle:nil];
+                                               controller.results = result;
+                                               controller.title =[NSString stringWithFormat:@"共搜索到%d个产品",[queryproducts count]];
+                                               
+                                               [self.navigationController pushViewController:controller  animated:YES];
                                            }
-                                           NSMutableArray *result ;
-                                           
-                                           result = [[NSMutableArray alloc] init];
-                                           XWSearchResultItem *item = [[XWSearchResultItem alloc] init];
-                                           
-                                           
-                                           for(int i=0;i<[queryproducts count];i++){
-                                               item = [[XWSearchResultItem alloc] init];
-                                               
-                                               item.bankName = [queryproducts[i] objectForKey:@"bankname"];
-                                               item.productName = [queryproducts[i] objectForKey:@"productname"];
-                                               item.productDesc= [queryproducts[i] objectForKey:@"repaymentType"];
-                                               item.productid= [queryproducts[i] objectForKey:@"productid"];
-                                               
-                                               //item.releaseDate=@"2014/4/15";
-                                               [result addObject:item];
-                                               
-                                           }
-                                           
-                                           XWSearchProductResultViewController *controller = [[ XWSearchProductResultViewController alloc] initWithNibName:@"XWSearchProductResultViewController" bundle:nil];
-                                           controller.results = result;
-                                           controller.title = @"产品查询结果";
-                                           
-                                           [self.navigationController pushViewController:controller  animated:YES];
                                        }
                                    }
-                               }
-         ];
-        
-    
-    
-        /*
-        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-        NSDictionary  *rawresult = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves  error:&error];
-        
-        NSArray *queryproducts = [rawresult objectForKey:@"message"];
-        NSString *code = [rawresult objectForKey:@"code"];
-        NSLog(@"查询结果 %@", rawresult );
-        
-        if(![code isEqualToString:@"101"]){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，没有符合要求的产品"
-                                                            message:[NSString stringWithFormat:@"错误代码：%@",code]
+             ];
+            
+            
+            
+            /*
+             NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+             NSDictionary  *rawresult = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves  error:&error];
+             
+             NSArray *queryproducts = [rawresult objectForKey:@"message"];
+             NSString *code = [rawresult objectForKey:@"code"];
+             NSLog(@"查询结果 %@", rawresult );
+             
+             if(![code isEqualToString:@"101"]){
+             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，没有符合要求的产品"
+             message:[NSString stringWithFormat:@"错误代码：%@",code]
+             delegate:self
+             cancelButtonTitle:@"确定"
+             otherButtonTitles:nil, nil];
+             [alert show];
+             return;
+             }
+             
+             
+             
+             
+             
+             result = [[NSMutableArray alloc] init];
+             XWSearchResultItem *item = [[XWSearchResultItem alloc] init];
+             
+             
+             for(int i=0;i<[queryproducts count];i++){
+             item = [[XWSearchResultItem alloc] init];
+             
+             item.bankName = [queryproducts[i] objectForKey:@"bankname"];
+             item.productName = [queryproducts[i] objectForKey:@"productname"];
+             item.productDesc= [queryproducts[i] objectForKey:@"repaymentType"];
+             item.productid= [queryproducts[i] objectForKey:@"productid"];
+             
+             //item.releaseDate=@"2014/4/15";
+             [result addObject:item];
+             
+             }
+             
+             */
+            
+        }@catch (NSException *exception) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
+                                                            message:nil
                                                            delegate:self
                                                   cancelButtonTitle:@"确定"
                                                   otherButtonTitles:nil, nil];
+            [activityIndicator stopAnimating];
+            
             [alert show];
             return;
         }
-        
-        
-        
-        
-        
-        result = [[NSMutableArray alloc] init];
-        XWSearchResultItem *item = [[XWSearchResultItem alloc] init];
-        
-        
-        for(int i=0;i<[queryproducts count];i++){
-            item = [[XWSearchResultItem alloc] init];
-
-            item.bankName = [queryproducts[i] objectForKey:@"bankname"];
-            item.productName = [queryproducts[i] objectForKey:@"productname"];
-            item.productDesc= [queryproducts[i] objectForKey:@"repaymentType"];
-            item.productid= [queryproducts[i] objectForKey:@"productid"];
-
-            //item.releaseDate=@"2014/4/15";
-            [result addObject:item];
+        @finally {
             
         }
-
-*/
         
-    }@catch (NSException *exception) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
-                                                        message:nil
-                                                       delegate:self
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil, nil];
-        [activityIndicator stopAnimating];
-
-        [alert show];
-        return;
-    }
-    @finally {
-
-    }
-    
-    /*
-    result = [[NSMutableArray alloc] init];
-    XWSearchResultItem *item = [[XWSearchResultItem alloc] init];
-
-    item.bankIcon = @"zheshang";
-    item.bankName = @"浙商银行上海分行";
-    item.productName =@"三年贷";
-    item.productDesc=@"还款方式：分期还款，一次还本";
-    item.releaseDate=@"2014/4/15";
-    item.productid=@"1";
-    [result addObject:item];
-    
-    item = [[XWSearchResultItem alloc] init];
-    item.bankIcon = @"zheshang";
-    item.bankName = @"浙商银行上海分行";
-    item.productName =@"一日贷";
-    item.productDesc=@"还款方式：分期还款，一次还本";
-    item.releaseDate=@"2014/4/15";
-    [result addObject:item];
-
-    
-    item = [[XWSearchResultItem alloc] init];
-    item.bankIcon = @"zheshang";
-    item.bankName = @"浙商银行上海分行";
-    item.productName =@"全额贷";
-    item.productDesc=@"还款方式：分期还款，一次还本";
-    item.releaseDate=@"2014/4/15";
-    [result addObject:item];
-    
-    
-    item = [[XWSearchResultItem alloc] init];
-    item.bankIcon = @"zheshang";
-    item.bankName = @"浙商银行上海分行";
-    item.productName =@"小企业固定资产贷";
-    item.productDesc=@"还款方式：按期还本付息";
-    item.releaseDate=@"2014/4/15";
-    [result addObject:item];
-    
-    
-    
-    item = [[XWSearchResultItem alloc] init];
-    item.bankIcon = @"nanjing";
-    item.bankName = @"南京银行上海分行";
-    item.productName =@"小企业抵（质）押循环贷";
-    item.productDesc =@"还款方式：借款人与我行一次性签订合同，由借款人提供抵押品担保";
-    item.releaseDate=@"2014/4/14";
-    [result addObject:item];
-    item = [[XWSearchResultItem alloc] init];
-    item.bankIcon = @"huaxia";
-    item.bankName = @"华夏银行上海分行	";
-    item.productName =@"宽限期还本付息贷";
-    item.productDesc =@"";
-    item.releaseDate=@"2014/5/11";
-    [result addObject:item];
-    item = [[XWSearchResultItem alloc] init];
-    item.bankIcon = @"huaxia";
-    item.bankName = @"华夏银行上海分行";
-    item.productName =@"循环贷";
-    item.productDesc =@"随借随还";
-    item.releaseDate=@"2014/5/11";
-    [result addObject:item];
-    item = [[XWSearchResultItem alloc] init];
-    item.bankIcon = @"jiaotong";
-    item.bankName = @"交通银行上海市分行";
-    item.productName =@"物业融资";
-    item.productDesc =@"按月或按季还本付息";
-    item.releaseDate=@"2014/5/14";
-    [result addObject:item];
-    
-    item = [[XWSearchResultItem alloc] init];
-    item.bankIcon = @"zhaoshang";
-    item.bankName = @"招商银行股份有限公司上海分行";
-    item.productName =@"自主贷";
-    item.productDesc =@"1年以上须分期还款，1年以内可到期一次性还款";
-    item.releaseDate=@"2014/5/14";
-    [result addObject:item];
-    */
-//    
-//    XWSearchProductResultViewController *controller = [[ XWSearchProductResultViewController alloc] initWithNibName:@"XWSearchProductResultViewController" bundle:nil];
-//    controller.results = result;
-//    controller.title = @"产品查询结果";
-//    
-//    [self.navigationController pushViewController:controller  animated:YES];
+        /*
+         result = [[NSMutableArray alloc] init];
+         XWSearchResultItem *item = [[XWSearchResultItem alloc] init];
+         
+         item.bankIcon = @"zheshang";
+         item.bankName = @"浙商银行上海分行";
+         item.productName =@"三年贷";
+         item.productDesc=@"还款方式：分期还款，一次还本";
+         item.releaseDate=@"2014/4/15";
+         item.productid=@"1";
+         [result addObject:item];
+         
+         item = [[XWSearchResultItem alloc] init];
+         item.bankIcon = @"zheshang";
+         item.bankName = @"浙商银行上海分行";
+         item.productName =@"一日贷";
+         item.productDesc=@"还款方式：分期还款，一次还本";
+         item.releaseDate=@"2014/4/15";
+         [result addObject:item];
+         
+         
+         item = [[XWSearchResultItem alloc] init];
+         item.bankIcon = @"zheshang";
+         item.bankName = @"浙商银行上海分行";
+         item.productName =@"全额贷";
+         item.productDesc=@"还款方式：分期还款，一次还本";
+         item.releaseDate=@"2014/4/15";
+         [result addObject:item];
+         
+         
+         item = [[XWSearchResultItem alloc] init];
+         item.bankIcon = @"zheshang";
+         item.bankName = @"浙商银行上海分行";
+         item.productName =@"小企业固定资产贷";
+         item.productDesc=@"还款方式：按期还本付息";
+         item.releaseDate=@"2014/4/15";
+         [result addObject:item];
+         
+         
+         
+         item = [[XWSearchResultItem alloc] init];
+         item.bankIcon = @"nanjing";
+         item.bankName = @"南京银行上海分行";
+         item.productName =@"小企业抵（质）押循环贷";
+         item.productDesc =@"还款方式：借款人与我行一次性签订合同，由借款人提供抵押品担保";
+         item.releaseDate=@"2014/4/14";
+         [result addObject:item];
+         item = [[XWSearchResultItem alloc] init];
+         item.bankIcon = @"huaxia";
+         item.bankName = @"华夏银行上海分行	";
+         item.productName =@"宽限期还本付息贷";
+         item.productDesc =@"";
+         item.releaseDate=@"2014/5/11";
+         [result addObject:item];
+         item = [[XWSearchResultItem alloc] init];
+         item.bankIcon = @"huaxia";
+         item.bankName = @"华夏银行上海分行";
+         item.productName =@"循环贷";
+         item.productDesc =@"随借随还";
+         item.releaseDate=@"2014/5/11";
+         [result addObject:item];
+         item = [[XWSearchResultItem alloc] init];
+         item.bankIcon = @"jiaotong";
+         item.bankName = @"交通银行上海市分行";
+         item.productName =@"物业融资";
+         item.productDesc =@"按月或按季还本付息";
+         item.releaseDate=@"2014/5/14";
+         [result addObject:item];
+         
+         item = [[XWSearchResultItem alloc] init];
+         item.bankIcon = @"zhaoshang";
+         item.bankName = @"招商银行股份有限公司上海分行";
+         item.productName =@"自主贷";
+         item.productDesc =@"1年以上须分期还款，1年以内可到期一次性还款";
+         item.releaseDate=@"2014/5/14";
+         [result addObject:item];
+         */
+        //
+        //    XWSearchProductResultViewController *controller = [[ XWSearchProductResultViewController alloc] initWithNibName:@"XWSearchProductResultViewController" bundle:nil];
+        //    controller.results = result;
+        //    controller.title = @"产品查询结果";
+        //
+        //    [self.navigationController pushViewController:controller  animated:YES];
     }  @catch (NSException *exception) {
     }
-        @finally {}
+    @finally {}
     
 }
 
@@ -1139,7 +1158,7 @@
     NSMutableArray *items = [[NSMutableArray alloc] init];
     
     
-
+    
     UIActivityIndicatorView *activityIndicator;
     activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
     CGPoint center  = CGPointMake(view.center.x, view.center.y-50);
@@ -1157,7 +1176,7 @@
         
         NSError *error;
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:3];
-
+        
         NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
         NSDictionary *raw = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves  error:&error];
         NSString *code = [raw objectForKey:@"code"];
@@ -1197,7 +1216,7 @@
         return  nil;
     }
     [activityIndicator stopAnimating];
-
+    
     return items;
     
 }
@@ -1331,7 +1350,7 @@
             
             NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"customertype" View:self.view ];
             
-                 /*
+            /*
              
              NSMutableArray *items = [[NSMutableArray alloc] init];
              NSDictionary *section = [NSDictionary dictionaryWithObjectsAndKeys:@"公司",@"Value",@"company",@"Key",nil];
@@ -1356,35 +1375,35 @@
             self.trade = [[ XWSingleSelectionTableViewController alloc] initWithNibName:@"XWSingleSelectionTableViewController" bundle:nil];
             
             NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"typeOfEnterprise"  View:self.view];
-
             
-         
+            
+            
             /*
-            
-            NSMutableArray *items = [[NSMutableArray alloc] init];
-            NSDictionary *section = [NSDictionary dictionaryWithObjectsAndKeys:@"制造业",@"Value",@"company",@"Key",nil];
-            [items addObject:section];
-            section = [NSDictionary dictionaryWithObjectsAndKeys:@"批发、零售业",@"Value",@"person",@"Key",nil];
-            [items addObject:section];
-            section = [NSDictionary dictionaryWithObjectsAndKeys:@"服务业",@"Value",@"person",@"Key",nil];
-            [items addObject:section];
-            section = [NSDictionary dictionaryWithObjectsAndKeys:@"科技型",@"Value",@"person",@"Key",nil];
-            [items addObject:section];
-            section = [NSDictionary dictionaryWithObjectsAndKeys:@"其他",@"Value",@"person",@"Key",nil];
-            [items addObject:section];
-            */
+             
+             NSMutableArray *items = [[NSMutableArray alloc] init];
+             NSDictionary *section = [NSDictionary dictionaryWithObjectsAndKeys:@"制造业",@"Value",@"company",@"Key",nil];
+             [items addObject:section];
+             section = [NSDictionary dictionaryWithObjectsAndKeys:@"批发、零售业",@"Value",@"person",@"Key",nil];
+             [items addObject:section];
+             section = [NSDictionary dictionaryWithObjectsAndKeys:@"服务业",@"Value",@"person",@"Key",nil];
+             [items addObject:section];
+             section = [NSDictionary dictionaryWithObjectsAndKeys:@"科技型",@"Value",@"person",@"Key",nil];
+             [items addObject:section];
+             section = [NSDictionary dictionaryWithObjectsAndKeys:@"其他",@"Value",@"person",@"Key",nil];
+             [items addObject:section];
+             */
             
             
             self.trade.menuItems = items;
             self.tradeOptions =  [[NSMutableArray alloc] init];
             self.trade.target = self.tradeOptions;
             self.trade.title =@"所属行业";
-
+            
             
         }
         
         [self.navigationController pushViewController:self.trade  animated:YES];
-
+        
         
     }//成立年限
     else if (indexPath.row == 4){
@@ -1392,35 +1411,35 @@
             self.establishYear = [[ XWSingleSelectionTableViewController alloc] initWithNibName:@"XWSingleSelectionTableViewController" bundle:nil];
             
             NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"ageLimit"  View:self.view];
-
             
             
-/*
-            NSMutableArray *items = [[NSMutableArray alloc] init];
-            NSDictionary *section = [NSDictionary dictionaryWithObjectsAndKeys:@"1年",@"Value",@"company",@"Key",nil];
-            [items addObject:section];
-            section = [NSDictionary dictionaryWithObjectsAndKeys:@"2年",@"Value",@"person",@"Key",nil];
-            [items addObject:section];
-            section = [NSDictionary dictionaryWithObjectsAndKeys:@"3年",@"Value",@"person",@"Key",nil];
-            [items addObject:section];
-            section = [NSDictionary dictionaryWithObjectsAndKeys:@"4年",@"Value",@"person",@"Key",nil];
-            [items addObject:section];
-            section = [NSDictionary dictionaryWithObjectsAndKeys:@"5年",@"Value",@"person",@"Key",nil];
-            [items addObject:section];
-            section = [NSDictionary dictionaryWithObjectsAndKeys:@"5年以上",@"Value",@"person",@"Key",nil];
-            [items addObject:section];
- 
- */
+            
+            /*
+             NSMutableArray *items = [[NSMutableArray alloc] init];
+             NSDictionary *section = [NSDictionary dictionaryWithObjectsAndKeys:@"1年",@"Value",@"company",@"Key",nil];
+             [items addObject:section];
+             section = [NSDictionary dictionaryWithObjectsAndKeys:@"2年",@"Value",@"person",@"Key",nil];
+             [items addObject:section];
+             section = [NSDictionary dictionaryWithObjectsAndKeys:@"3年",@"Value",@"person",@"Key",nil];
+             [items addObject:section];
+             section = [NSDictionary dictionaryWithObjectsAndKeys:@"4年",@"Value",@"person",@"Key",nil];
+             [items addObject:section];
+             section = [NSDictionary dictionaryWithObjectsAndKeys:@"5年",@"Value",@"person",@"Key",nil];
+             [items addObject:section];
+             section = [NSDictionary dictionaryWithObjectsAndKeys:@"5年以上",@"Value",@"person",@"Key",nil];
+             [items addObject:section];
+             
+             */
             self.establishYear.menuItems = items;
             self.establishYearOptions =  [[NSMutableArray alloc] init];
             self.establishYear.target = self.establishYearOptions;
             self.establishYear.title =@"成立年限";
-
+            
             
         }
         
         [self.navigationController pushViewController:self.establishYear  animated:YES];
-
+        
         
     }//企业注册地
     else if (indexPath.row == 5){
@@ -1428,29 +1447,29 @@
             self.registerPlace = [[ XWSingleSelectionTableViewController alloc] initWithNibName:@"XWSingleSelectionTableViewController" bundle:nil];
             
             NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"registerAddrType"  View:self.view];
- 
+            
             
             /*
-            NSMutableArray *items = [[NSMutableArray alloc] init];
-            NSDictionary *section = [NSDictionary dictionaryWithObjectsAndKeys:@"本地",@"Value",@"company",@"Key",nil];
-            [items addObject:section];
-            section = [NSDictionary dictionaryWithObjectsAndKeys:@"异地",@"Value",@"person",@"Key",nil];
-            [items addObject:section];
-            section = [NSDictionary dictionaryWithObjectsAndKeys:@"不限",@"Value",@"person",@"Key",nil];
-            [items addObject:section];
+             NSMutableArray *items = [[NSMutableArray alloc] init];
+             NSDictionary *section = [NSDictionary dictionaryWithObjectsAndKeys:@"本地",@"Value",@"company",@"Key",nil];
+             [items addObject:section];
+             section = [NSDictionary dictionaryWithObjectsAndKeys:@"异地",@"Value",@"person",@"Key",nil];
+             [items addObject:section];
+             section = [NSDictionary dictionaryWithObjectsAndKeys:@"不限",@"Value",@"person",@"Key",nil];
+             [items addObject:section];
              */
-             
-             
-             self.registerPlace.menuItems = items;
+            
+            
+            self.registerPlace.menuItems = items;
             self.registerPlaceOptions =  [[NSMutableArray alloc] init];
             self.registerPlace.target = self.registerPlaceOptions;
             self.registerPlace.title =@"企业注册地";
-
+            
             
         }
         
         [self.navigationController pushViewController:self.registerPlace  animated:YES];
-
+        
         
     }//担保方式
     else if (indexPath.row == 8){

@@ -246,7 +246,6 @@ UIView *foot;
 
 - (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     
-    foot;
     UIButton *button =  [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button setTitle: @"确定" forState:UIControlStateNormal];
     
@@ -318,7 +317,6 @@ UIView *foot;
     [self.view addSubview:activityIndicator];
     
     [activityIndicator startAnimating];
-    NSLog(postString);
     
     //将NSSrring格式的参数转换格式为NSData，POST提交必须用NSData数据。
     NSData *postData = [postString  dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
@@ -392,7 +390,7 @@ UIView *foot;
                                                                                               message:Nil   //显示内容
                                                                                              delegate:self          //委托，可以点击事件进行处理
                                                                                     cancelButtonTitle:nil
-                                                                                    otherButtonTitles:@"确定",　nil];
+                                                                                    otherButtonTitles:@"确定",nil];
                                                [view show];
                                                
                                            }

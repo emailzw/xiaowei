@@ -47,7 +47,7 @@
                                              cancelButtonTitle:@"取消"
                                              otherButtonTitles:@"登录"
                              //,@"其他",    //添加其他按钮
-                             　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　,　 nil];
+                             ,nil];
         [view show];
         return;
     }

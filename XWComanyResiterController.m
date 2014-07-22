@@ -498,12 +498,10 @@
     [self.tableView addSubview:activityIndicator];
     
     [activityIndicator startAnimating];
-    NSLog(postString);
     
     //将NSSrring格式的参数转换格式为NSData，POST提交必须用NSData数据。
     NSData *postData = [postString  dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     
-    NSError *error;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     NSString *msgLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
 
@@ -577,7 +575,7 @@
                                                                                               message:Nil   //显示内容
                                                                                              delegate:self          //委托，可以点击事件进行处理
                                                                                     cancelButtonTitle:nil
-                                                                                    otherButtonTitles:@"确定",　nil];
+                                                                                    otherButtonTitles:@"确定",nil];
                                                [view show];
                                                
                                            }
@@ -631,11 +629,12 @@
 }
 
 
-- (BOOL)textFieldDidEndEditing:(UITextField *)theTextField {
+
+- (void)textFieldDidEndEditing:(UITextField *)theTextField {
     //  if (theTextField == self.textField) {
     [theTextField resignFirstResponder];
     //}
-    return YES;
+ //   return YES;
 }
 
 

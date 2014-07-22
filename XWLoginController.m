@@ -301,7 +301,6 @@ NSString *code;
     [self.view addSubview:activityIndicator];
     
     [activityIndicator startAnimating];
-    NSLog(postString);
     
     //将NSSrring格式的参数转换格式为NSData，POST提交必须用NSData数据。
     NSData *postData = [postString  dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
@@ -374,8 +373,6 @@ NSString *code;
                                                 NSDictionary *msgs = [rawresult objectForKey:@"message"];
                                                NSString *uid =[msgs objectForKey:@"customerID"];
                                                NSString *name =[msgs objectForKey:@"customerName"];
-                                               NSDictionary *login = [NSDictionary dictionaryWithObject:uid forKey:LOGIN];
-                                               NSDictionary *loginName  = [NSDictionary dictionaryWithObject:name forKey:LOGIN_NAME];
 
                                                //[[NSUserDefaults standardUserDefaults] registerDefaults:login];
                                               // [[NSUserDefaults standardUserDefaults] registerDefaults:loginName];
@@ -388,7 +385,7 @@ NSString *code;
                                                                                               message:Nil   //显示内容
                                                                                              delegate:self          //委托，可以点击事件进行处理
                                                                                     cancelButtonTitle:nil
-                                                                                    otherButtonTitles:@"确定",　nil];
+                                                                                    otherButtonTitles:@"确定",nil];
                                                [view show];
                                                
                                            }

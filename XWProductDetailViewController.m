@@ -40,7 +40,6 @@
         
         
         NSString *uid =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN];
-        NSString *uname =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_NAME];
         
         if (uid == nil){
             [url appendString: [NSString  stringWithFormat: @"product/detail/%@",self.productID]];
@@ -563,7 +562,6 @@
     
     
     NSString *uid =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN];
-    NSString *uname =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_NAME];
     
     if (uid == nil){
         
@@ -573,7 +571,7 @@
                                              cancelButtonTitle:@"取消"
                                              otherButtonTitles:@"登录"
                              //,@"其他",    //添加其他按钮
-                             　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　,　 nil];
+                             ,nil];
         [view show];
         return;
     }
@@ -622,7 +620,7 @@
                                         cancelButtonTitle:nil
                                         otherButtonTitles:@"确定"
                          //,@"其他",    //添加其他按钮
-                         　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　,　 nil];
+                         ,nil];
     [view show];
     
     //收藏按钮变为取消收藏
@@ -652,7 +650,6 @@
     @try{
         
         NSString *uid =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN];
-        NSString *uname =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_NAME];
         if (uid == nil){
             
             UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"登录提示"    //标题
@@ -661,7 +658,7 @@
                                                  cancelButtonTitle:@"取消"
                                                  otherButtonTitles:@"登录"
                                  //,@"其他",    //添加其他按钮
-                                 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　,　 nil];
+                                 ,nil];
             [view show];
             return;
         }
@@ -706,7 +703,7 @@
                                          cancelButtonTitle:nil
                                          otherButtonTitles:@"确定"
                          //,@"其他",    //添加其他按钮
-                         　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　,　 nil];
+                         ,nil];
     [view show];
     
     //收藏按钮变为取消收藏
@@ -852,7 +849,6 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
   
-     NSLog([NSString stringWithFormat:@"index:%i" ,buttonIndex]);
     if( buttonIndex == 1 ){
         XWLoginController *viewController = [[XWLoginController alloc] init] ;
         [self.navigationController pushViewController:viewController animated:YES];    }

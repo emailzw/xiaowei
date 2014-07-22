@@ -335,13 +335,13 @@ UIDatePicker *datePicker;
 // 按下完成鈕後的 method
 -(void) cancelPicker {
     // endEditing: 是結束編輯狀態的 method
-        // 以下幾行是測試用 可以依照自己的需求增減屬性
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:@"yyyy-MM-dd" options:0 locale:nil];
-        [formatter setDateFormat:dateFormat];
-        // 將選取後的日期 填入 UITextField
-        self.birthday.text = [NSString stringWithFormat:@"%@",[formatter stringFromDate:datePicker.date]];
-    self.birthday.resignFirstResponder;
+    // 以下幾行是測試用 可以依照自己的需求增減屬性
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:@"yyyy-MM-dd" options:0 locale:nil];
+    [formatter setDateFormat:dateFormat];
+    // 將選取後的日期 填入 UITextField
+    self.birthday.text = [NSString stringWithFormat:@"%@",[formatter stringFromDate:datePicker.date]];
+    [self.birthday resignFirstResponder];
 }
 
 
@@ -455,12 +455,10 @@ UIDatePicker *datePicker;
     [self.tableView addSubview:activityIndicator];
     
     [activityIndicator startAnimating];
-    NSLog(postString);
     
     //将NSSrring格式的参数转换格式为NSData，POST提交必须用NSData数据。
     NSData *postData = [postString  dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     
-    NSError *error;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     NSString *msgLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
     
@@ -539,7 +537,7 @@ UIDatePicker *datePicker;
                                                                                               message:Nil   //显示内容
                                                                                              delegate:self          //委托，可以点击事件进行处理
                                                                                     cancelButtonTitle:nil
-                                                                                    otherButtonTitles:@"确定",　nil];
+                                                                                    otherButtonTitles:@"确定",nil];
                                                view.tag=1000;
                                                [view show];
                                                

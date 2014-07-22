@@ -163,10 +163,15 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     NSArray *dialog  = [self.info objectForKey:@"dialog"];
-    NSDictionary *info = [dialog objectAtIndex:indexPath.row];
-    return [self getRowHeightByKey:@"dialogContent" width:290];
+    if(indexPath.row <= dialog.count){
+        
+        NSDictionary *info = [dialog objectAtIndex:indexPath.row];
+        NSString *message = [info objectForKey:@"dialogContent"];
+        return [self getRowHeightByKey:message width:290];
+    }else{
+        return 44;
+    }
 }
 
 
@@ -180,7 +185,7 @@
     
     
     CGSize msgSie = [str sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:constrainedSize lineBreakMode:NSLineBreakByWordWrapping];
-    int height =  msgSie.height+15;
+    int height =  msgSie.height+30;
     return height > 48 ?height :48;
 }
 

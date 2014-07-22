@@ -8,7 +8,6 @@
 
 #import "XWAppDelegate.h"
 #import "MainPage.h"
-#import "WXApi.h"
 
 
 @implementation XWAppDelegate
@@ -70,7 +69,7 @@
 
 void UncaughtExceptionHandler(NSException *exception)
 {
-    NSLog([NSString  stringWithFormat:@"系统出现异常:%@", exception]);
+    NSLog([NSString stringWithFormat:@"系统出现异常:%@",exception]);
     
 }
 
