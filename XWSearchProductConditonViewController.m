@@ -1410,7 +1410,7 @@
         if(!self.establishYear){
             self.establishYear = [[ XWSingleSelectionTableViewController alloc] initWithNibName:@"XWSingleSelectionTableViewController" bundle:nil];
             
-            NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"ageLimit"  View:self.view];
+            NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"ageLimit2"  View:self.view];
             
             
             
@@ -1446,7 +1446,7 @@
         if(!self.registerPlace){
             self.registerPlace = [[ XWSingleSelectionTableViewController alloc] initWithNibName:@"XWSingleSelectionTableViewController" bundle:nil];
             
-            NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"registerAddrType"  View:self.view];
+            NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"registerAddrType2"  View:self.view];
             
             
             /*

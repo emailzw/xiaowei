@@ -49,6 +49,11 @@
 		72847E62197E6DDB00CAFE39 /* middle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72847E61197E6DDB00CAFE39 /* middle.jpg */; };
 		72847E65197E6E4600CAFE39 /* main-message.png in Resources */ = {isa = PBXBuildFile; fileRef = 72847E63197E6E4600CAFE39 /* main-message.png */; };
 		72847E66197E6E4600CAFE39 /* usericon.png in Resources */ = {isa = PBXBuildFile; fileRef = 72847E64197E6E4600CAFE39 /* usericon.png */; };
+		72847E6E197EB64200CAFE39 /* btn_close_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 72847E68197EB64200CAFE39 /* btn_close_normal.png */; };
+		72847E6F197EB64200CAFE39 /* btn_close_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72847E69197EB64200CAFE39 /* btn_close_normal@2x.png */; };
+		72847E70197EB64200CAFE39 /* btn_close_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 72847E6A197EB64200CAFE39 /* btn_close_selected.png */; };
+		72847E71197EB64200CAFE39 /* btn_close_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72847E6B197EB64200CAFE39 /* btn_close_selected@2x.png */; };
+		72847E72197EB64200CAFE39 /* DXAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72847E6D197EB64200CAFE39 /* DXAlertView.m */; };
 		72AA4C6C1936255900A0B3FD /* XWChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AA4C6A1936255900A0B3FD /* XWChangePasswordViewController.m */; };
 		72AA4C6D1936255900A0B3FD /* XWChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72AA4C6B1936255900A0B3FD /* XWChangePasswordViewController.xib */; };
 		72AF64DB1934DDA2004FA986 /* XWSingleSelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF64D91934DDA2004FA986 /* XWSingleSelectionTableViewController.m */; };
@@ -156,6 +161,12 @@
 		72847E61197E6DDB00CAFE39 /* middle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = middle.jpg; path = image/middle.jpg; sourceTree = "<group>"; };
 		72847E63197E6E4600CAFE39 /* main-message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "main-message.png"; path = "image/main-message.png"; sourceTree = "<group>"; };
 		72847E64197E6E4600CAFE39 /* usericon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = usericon.png; path = image/usericon.png; sourceTree = "<group>"; };
+		72847E68197EB64200CAFE39 /* btn_close_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_close_normal.png; sourceTree = "<group>"; };
+		72847E69197EB64200CAFE39 /* btn_close_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_close_normal@2x.png"; sourceTree = "<group>"; };
+		72847E6A197EB64200CAFE39 /* btn_close_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_close_selected.png; sourceTree = "<group>"; };
+		72847E6B197EB64200CAFE39 /* btn_close_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_close_selected@2x.png"; sourceTree = "<group>"; };
+		72847E6C197EB64200CAFE39 /* DXAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXAlertView.h; sourceTree = "<group>"; };
+		72847E6D197EB64200CAFE39 /* DXAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXAlertView.m; sourceTree = "<group>"; };
 		72AA4C691936255900A0B3FD /* XWChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWChangePasswordViewController.h; sourceTree = "<group>"; };
 		72AA4C6A1936255900A0B3FD /* XWChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWChangePasswordViewController.m; sourceTree = "<group>"; };
 		72AA4C6B1936255900A0B3FD /* XWChangePasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWChangePasswordViewController.xib; sourceTree = "<group>"; };
@@ -331,6 +342,7 @@
 		725D18891923279200B9CE31 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				72847E67197EB64200CAFE39 /* Vendor */,
 				72847E34197E3BEA00CAFE39 /* Menu */,
 				722C2B94190EA4CF0019D715 /* PSTextField.h */,
 				722C2B95190EA4CF0019D715 /* PSTextField.m */,
@@ -352,6 +364,20 @@
 				72847E5F197E63AA00CAFE39 /* NAMenuItemViewIP4.xib */,
 			);
 			name = Menu;
+			sourceTree = "<group>";
+		};
+		72847E67197EB64200CAFE39 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				72847E68197EB64200CAFE39 /* btn_close_normal.png */,
+				72847E69197EB64200CAFE39 /* btn_close_normal@2x.png */,
+				72847E6A197EB64200CAFE39 /* btn_close_selected.png */,
+				72847E6B197EB64200CAFE39 /* btn_close_selected@2x.png */,
+				72847E6C197EB64200CAFE39 /* DXAlertView.h */,
+				72847E6D197EB64200CAFE39 /* DXAlertView.m */,
+			);
+			name = Vendor;
+			path = "../../../../Downloads/DXAlertView-master/Vendor";
 			sourceTree = "<group>";
 		};
 		72AF64D21934DA76004FA986 /* ProductSearch */ = {
@@ -624,7 +650,9 @@
 				72AF64F21935A55A004FA986 /* XWNewinfoViewController.xib in Resources */,
 				72CFE3861972DFEB00A0E31D /* XWLoginController.xib in Resources */,
 				72847E4E197E5F7200CAFE39 /* middle.png in Resources */,
+				72847E71197EB64200CAFE39 /* btn_close_selected@2x.png in Resources */,
 				72847E4C197E5F7200CAFE39 /* btn.png in Resources */,
+				72847E6E197EB64200CAFE39 /* btn_close_normal.png in Resources */,
 				72CA6A6F192D01350041F728 /* XWRegisterController.xib in Resources */,
 				72AF64E519359317004FA986 /* XWMyfavolistViewController.xib in Resources */,
 				72847E47197E5F4700CAFE39 /* register.png in Resources */,
@@ -635,10 +663,12 @@
 				72AA4C6D1936255900A0B3FD /* XWChangePasswordViewController.xib in Resources */,
 				72207DCF19172690004A1F97 /* icon@2x.png in Resources */,
 				72847E4D197E5F7200CAFE39 /* middle-small.png in Resources */,
+				72847E6F197EB64200CAFE39 /* btn_close_normal@2x.png in Resources */,
 				72C33FDF19094B4D0070FA26 /* Main.storyboard in Resources */,
 				72847E41197E5F4700CAFE39 /* about.png in Resources */,
 				722C2B91190D71330019D715 /* XWSearchProductConditonViewController.xib in Resources */,
 				72847E65197E6E4600CAFE39 /* main-message.png in Resources */,
+				72847E70197EB64200CAFE39 /* btn_close_selected.png in Resources */,
 				72847E48197E5F4700CAFE39 /* share.png in Resources */,
 				72847E66197E6E4600CAFE39 /* usericon.png in Resources */,
 				72AF64EA1935A2A9004FA986 /* XWAboutViewController.xib in Resources */,
@@ -668,6 +698,7 @@
 				72CFE36A197125A000A0E31D /* TOActivityChrome.m in Sources */,
 				7239A5FC190F94AD00F2004E /* XWGuarantSelectViewController.m in Sources */,
 				72207DD219172E8A004A1F97 /* XWProductDetail.m in Sources */,
+				72847E72197EB64200CAFE39 /* DXAlertView.m in Sources */,
 				725D189319287F7600B9CE31 /* XWMymessageDetailController.m in Sources */,
 				72CFE37F1972C4FA00A0E31D /* MainPage.m in Sources */,
 				72AF64DB1934DDA2004FA986 /* XWSingleSelectionTableViewController.m in Sources */,

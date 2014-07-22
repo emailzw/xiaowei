@@ -9,10 +9,20 @@
 #import "XWProductDetailViewController.h"
 #import "XWContactBankViewController.h"
 #import "XWLoginController.h"
+#import "DXAlertView.h"
 
 @interface XWProductDetailViewController ()
 
 @end
+
+
+@interface UIAlertView (extended)
+    - (UITextField *) textFieldAtIndex: (int) index;
+    - (void) addTextFieldWithValue: (NSString *) value label: (NSString *) label;
+    - (void) addSubview:(UIView *)view;
+
+    @end
+
 
 @implementation XWProductDetailViewController
 
@@ -900,14 +910,46 @@
                 
             }
             NSString *message = [raw objectForKey:@"message"];
-            UIAlertView * alert =
-            [[UIAlertView alloc]
-             initWithTitle:nil
-             message: message
-             delegate:self
-             cancelButtonTitle:nil
-             otherButtonTitles:@"确定", nil];
+//            UIAlertView * alert =
+//            [[UIAlertView alloc]
+//             initWithTitle:nil
+//             message: message
+//             delegate:self
+//             cancelButtonTitle:nil
+//             otherButtonTitles:@"确定", nil];
+//           [alert addTextFieldWithValue:@"增加field" label:@"增加value"];
+//            UITextView *utl = [[UITextView alloc] initWithFrame:CGRectMake(25, 30, 100, 200)];
+//            utl.text = message;
+//            [alert addSubview:utl];
+        
+            
+         
+            
+            
+            DXAlertView *alert = [[DXAlertView alloc] initWithTitle:nil contentText:nil leftButtonTitle:nil rightButtonTitle:@"确定"];
+            [alert setRootViewController:self];
+            //网址
+            UITextView *utl = [[UITextView alloc] initWithFrame:CGRectMake(20, 20, 180, 80)];
+            utl.text = message;
+            utl.backgroundColor = [UIColor clearColor];
+            utl.editable = NO;
+            utl.dataDetectorTypes = UIDataDetectorTypeAll;
+            utl.font = [UIFont systemFontOfSize:14];
+            utl.textAlignment = NSTextAlignmentCenter;
+            
+            
+            [alert addSubview:utl];
             [alert show];
+            
+            alert.rightBlock = ^() {
+                NSLog(@"left button clicked");
+            };
+            
+            alert.dismissBlock = ^() {
+            };
+
+           
+            
             return;
             
             

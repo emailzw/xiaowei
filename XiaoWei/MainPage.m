@@ -19,7 +19,7 @@
 #import "XWSearchResultItem.h"
 #import "XWMyinfoTabViewController.h"
 #import "XWMessageListItem.h"
-
+#import "DXAlertView.h"
 
 @interface MainPage(){
     NSArray *activity;
@@ -1021,6 +1021,8 @@
 
 - (void)password:(UIButton *)sender {
     
+    
+       
     NSString *uid =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN];
     
     if (uid == nil){
