@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "PSTextField.h"
 
 
 
-@interface XWContactBankViewController : UITableViewController <UITextFieldDelegate,UIAlertViewDelegate>
+@interface XWContactBankViewController : UITableViewController <UITextFieldDelegate,UIAlertViewDelegate,UITextViewDelegate>
 @property (nonatomic, retain) UITextView *utv ;
+@property (strong, nonatomic) PSTextField *mtitle;
+@property (strong, nonatomic) PSTextField *message;
+@property (strong, nonatomic) NSDictionary *info;
 
 @end

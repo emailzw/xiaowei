@@ -41,6 +41,23 @@
     [super viewDidLoad];
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil] ;
+    
+    
+    //退回首页
+    UIButton *homeButton = [UIButton buttonWithType:101];
+    
+    [homeButton addTarget:self action:@selector(home) forControlEvents:UIControlEventTouchUpInside];
+    [homeButton setTitle:@"首页" forState:UIControlStateNormal];
+    
+    UIBarButtonItem *homeItem = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
+    
+    
+    homeItem.tintColor = [UIColor whiteColor];
+    [homeItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                      [UIColor whiteColor],NSForegroundColorAttributeName,
+                                      [UIFont boldSystemFontOfSize:19], NSFontAttributeName, nil] forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem =  homeItem;
+
 
 
     // Uncomment the following line to preserve selection between presentations.
@@ -191,6 +208,10 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
  
- 
+
+- (void)home{
+    [self.navigationController popToRootViewControllerAnimated:true];
+
+}
 
 @end

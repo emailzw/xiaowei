@@ -15,6 +15,10 @@
 
 @implementation XWChangePasswordViewController
 
+
+NSString *code;
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -23,7 +27,6 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.title = @"密码修改";
 }
 
@@ -56,7 +59,7 @@
         cell.textLabel.textColor = UIColorFromRGB(0x000000);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        UITextField  *tf = [[PSTextField alloc] initWithFrame:CGRectMake(90, 4.5, 210,35)
+        self.oldpassoword= [[PSTextField alloc] initWithFrame:CGRectMake(90, 4.5, 210,35)
                                                   cornerRadio:5
                                                   borderColor:RGB(166.0, 166.0, 166.0)
                                                   borderWidth:0
@@ -65,14 +68,16 @@
                                              lightBorderColor:RGB(235.0, 235.0, 235.0)
                                               backgroundColor:UIColorFromRGB(0xdff0ff)
                             ];
-        tf.delegate = self;
-        tf.clearButtonMode = UITextFieldViewModeWhileEditing;
+        self.oldpassoword.delegate = self;
+        self.oldpassoword.clearButtonMode = UITextFieldViewModeWhileEditing;
         
-        tf.font = [UIFont systemFontOfSize:15];
-        tf.textAlignment = NSTextAlignmentLeft;
-        tf.keyboardType = UIKeyboardTypeDefault;
-        tf.returnKeyType = UIReturnKeyDone;
-        [cell.contentView addSubview:tf];
+        self.oldpassoword.font = [UIFont systemFontOfSize:15];
+        self.oldpassoword.textAlignment = NSTextAlignmentLeft;
+        self.oldpassoword.keyboardType = UIKeyboardTypeDefault;
+        self.oldpassoword.returnKeyType = UIReturnKeyDone;
+        self.oldpassoword.secureTextEntry = YES;
+
+        [cell.contentView addSubview:self.oldpassoword];
         
     }else if(indexPath.row == 1){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"row1"];
@@ -83,7 +88,7 @@
         
         
         
-        UITextField  *tf = [[PSTextField alloc] initWithFrame:CGRectMake(90, 4.5, 210,35)
+        self.password = [[PSTextField alloc] initWithFrame:CGRectMake(90, 4.5, 210,35)
                                                   cornerRadio:5
                                                   borderColor:RGB(166.0, 166.0, 166.0)
                                                   borderWidth:0
@@ -92,14 +97,16 @@
                                              lightBorderColor:RGB(235.0, 235.0, 235.0)
                                               backgroundColor:UIColorFromRGB(0xdff0ff)
                             ];
-        tf.delegate = self;
-        tf.clearButtonMode = UITextFieldViewModeWhileEditing;
+        self.password.delegate = self;
+        self.password.clearButtonMode = UITextFieldViewModeWhileEditing;
         
-        tf.font = [UIFont systemFontOfSize:15];
-        tf.textAlignment = NSTextAlignmentLeft;
-        tf.keyboardType = UIKeyboardTypeDefault;
-        tf.returnKeyType = UIReturnKeyDone;
-        [cell.contentView addSubview:tf];
+        self.password.font = [UIFont systemFontOfSize:15];
+        self.password.textAlignment = NSTextAlignmentLeft;
+        self.password.keyboardType = UIKeyboardTypeDefault;
+        self.password.returnKeyType = UIReturnKeyDone;
+        self.password.secureTextEntry = YES;
+
+        [cell.contentView addSubview:self.password];
         
     }
     else if(indexPath.row == 2){
@@ -111,7 +118,7 @@
         
         
         
-        UITextField  *tf = [[PSTextField alloc] initWithFrame:CGRectMake(90, 4.5, 210,35)
+        self.password2 = [[PSTextField alloc] initWithFrame:CGRectMake(90, 4.5, 210,35)
                                                   cornerRadio:5
                                                   borderColor:RGB(166.0, 166.0, 166.0)
                                                   borderWidth:0
@@ -120,14 +127,15 @@
                                              lightBorderColor:RGB(235.0, 235.0, 235.0)
                                               backgroundColor:UIColorFromRGB(0xdff0ff)
                             ];
-        tf.delegate = self;
-        tf.clearButtonMode = UITextFieldViewModeWhileEditing;
+        self.password2.delegate = self;
+        self.password2.clearButtonMode = UITextFieldViewModeWhileEditing;
         
-        tf.font = [UIFont systemFontOfSize:15];
-        tf.textAlignment = NSTextAlignmentLeft;
-        tf.keyboardType = UIKeyboardTypeDefault;
-        tf.returnKeyType = UIReturnKeyDone;
-        [cell.contentView addSubview:tf];
+        self.password2.font = [UIFont systemFontOfSize:15];
+        self.password2.textAlignment = NSTextAlignmentLeft;
+        self.password2.keyboardType = UIKeyboardTypeDefault;
+        self.password2.returnKeyType = UIReturnKeyDone;
+        self.password2.secureTextEntry = YES;
+        [cell.contentView addSubview:self.password2];
         
         
     }
@@ -175,38 +183,172 @@
 }
 
 -(void) commit{
-    /* NSMutableArray *result = [[NSMutableArray alloc] init];
-     XWMessageListItem *item = [[XWMessageListItem alloc] init];
-     
-     item.messageTitle = @"关于“三年贷”产品的咨询";
-     item.postDate = @"2014/4/15";
-     item.status = @"已读取";
-     
-     [result addObject:item];
-     
-     XWMyMessageController *controller = [[ XWMyMessageController alloc] initWithNibName:@"XWMyMessageController" bundle:nil];
-     controller.results = result;
-     controller.title = @"我的留言";
-     
-     [self.navigationController pushViewController:controller  animated:YES];*/
+    NSString *uid =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN];
+   
+    NSString* trimedoldpassoword = [self.oldpassoword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if([trimedoldpassoword length]==0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入原密码"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
     
     
     
-    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"密码修改成功"    //标题
-                                                   message:Nil   //显示内容
-                                                  delegate:self          //委托，可以点击事件进行处理
-                                         cancelButtonTitle:nil
-                                         otherButtonTitles:@"确定"
-                         //,@"其他",    //添加其他按钮
-                         　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　,　 nil];
-    [view show];
     
-    //  [self.navigationController popViewControllerAnimated:true];
+    NSString* trimedPassword = [self.password.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if([trimedPassword length]==0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入新密码"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    
+    NSString* trimedPassword2 = [self.password2.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if([trimedPassword2 length]==0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入确认密码"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+
+    
+    NSMutableString  *urlstring =  [[NSMutableString alloc] initWithString:SERVER_URL];
+    [urlstring appendString:@"changePassword"];
+    NSURL *url = [NSURL URLWithString:urlstring];
+    
+    
+    NSString *postString =[NSString stringWithFormat:
+                           @"customerID=%@&oldPwd=%@&newPwd=%@&newPwd2=%@",uid,trimedoldpassoword,trimedPassword,trimedPassword2];
+    
+    
+    UIActivityIndicatorView *activityIndicator;
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+    CGPoint center  = CGPointMake(self.view.center.x, self.view.center.y-50);
+    [activityIndicator setCenter:center];
+    [activityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:activityIndicator];
+    
+    [activityIndicator startAnimating];
+    NSLog(postString);
+    
+    //将NSSrring格式的参数转换格式为NSData，POST提交必须用NSData数据。
+    NSData *postData = [postString  dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    NSString *msgLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    
+    
+    //这里设置为 application/x-www-form-urlencoded ，如果设置为其它的，比如text/html;charset=utf-8，或者 text/html 等，都会出错。不知道什么原因。
+    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:msgLength forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setTimeoutInterval:5.0];
+    
+    
+    @try {
+        
+        
+        //NSOperationQueue  *queue = [[NSOperationQueue alloc] init];
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response,  NSData *data, NSError *error) {
+                                   if (error != nil) {
+                                       NSLog(@"Error on load = %@", [error localizedDescription]);
+                                       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
+                                                                                       message:nil
+                                                                                      delegate:self
+                                                                             cancelButtonTitle:@"确定"
+                                                                             otherButtonTitles:nil, nil];
+                                       [activityIndicator stopAnimating];
+                                       
+                                       [alert show];
+                                       
+                                   }else {
+                                       // check the HTTP status
+                                       if ([response isKindOfClass:[NSHTTPURLResponse class]]) {                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                           if (httpResponse.statusCode != 200) {
+                                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
+                                                                                               message:nil
+                                                                                              delegate:self
+                                                                                     cancelButtonTitle:@"确定"
+                                                                                     otherButtonTitles:nil, nil];
+                                               [activityIndicator stopAnimating];
+                                               
+                                               [alert show];
+                                               return;
+                                           }
+                                           NSLog(@"Headers: %@", [httpResponse allHeaderFields]);
+                                           NSDictionary  *rawresult = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves  error:&error];
+                                           
+                                           NSString *message = [rawresult objectForKey:@"message"];
+                                           code = [rawresult objectForKey:@"code"];
+                                           //  NSString *uid = [rawresult objectForKey:@"id"];
+                                           
+                                           NSLog(@"提交 %@", rawresult );
+                                           [activityIndicator stopAnimating];
+                                           
+                                           if(![code isEqualToString:@"101"]){
+                                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"密码修改失败"
+                                                                                               message:[NSString stringWithFormat:@"错误:%@,代码：%@",message,code]
+                                                                                              delegate:self
+                                                                                     cancelButtonTitle:@"确定"
+                                                                                     otherButtonTitles:nil, nil];
+                                               [alert show];
+                                               return;
+                                               
+                                           }else{
+                                               UIAlertView *view = [[UIAlertView alloc] initWithTitle:
+                                                                    [NSString stringWithFormat:@"密码修改成功！"]//标题
+                                                                                              message:Nil   //显示内容
+                                                                                             delegate:self          //委托，可以点击事件进行处理
+                                                                                    cancelButtonTitle:nil
+                                                                                    otherButtonTitles:@"确定",　nil];
+                                               [view show];
+                                               
+                                           }
+                                       }
+                                   }
+                               }
+         ];
+    }@catch (NSException *exception) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [activityIndicator stopAnimating];
+        
+        [alert show];
+        return;
+    }
+    @finally {
+        
+    }
+
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [self.navigationController popViewControllerAnimated:true];
+    
+    if([code isEqualToString:@"101"]){
+        [self.navigationController popViewControllerAnimated:true];
+    }
     
 }
 
@@ -265,5 +407,26 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 */
+
+
+
+#pragma mark -  Textfield delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    //  if (theTextField == self.textField) {
+    [theTextField resignFirstResponder];
+    //}
+    
+    return YES;
+}
+
+
+- (BOOL)textFieldDidEndEditing:(UITextField *)theTextField {
+    //  if (theTextField == self.textField) {
+    [theTextField resignFirstResponder];
+    //}
+    return YES;
+}
+
 
 @end

@@ -8,7 +8,7 @@
 
 #import "XWProductDetailViewController.h"
 #import "XWContactBankViewController.h"
-#import "UnderlineUILabel.h"
+#import "XWLoginController.h"
 
 @interface XWProductDetailViewController ()
 
@@ -30,32 +30,28 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"产品详情";
-
-    UIButton *favoButton = [UIButton buttonWithType:101];
-
-    [favoButton addTarget:self action:@selector(favorite) forControlEvents:UIControlEventTouchUpInside];
-    [favoButton setTitle:@"收藏" forState:UIControlStateNormal];
     
-    UIBarButtonItem *favaItem = [[UIBarButtonItem alloc] initWithCustomView:favoButton];
-    
-    
-    favaItem.tintColor = [UIColor whiteColor];
-    [favaItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                      [UIColor whiteColor],NSForegroundColorAttributeName,
-                                      [UIFont boldSystemFontOfSize:19], NSFontAttributeName, nil] forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem =  favaItem;
 
     //加载产品数据
     NSDictionary *detail;
     @try{
         
         NSMutableString  *url =  [[NSMutableString alloc] initWithString:SERVER_URL];
-        [url appendString: [NSString  stringWithFormat: @"product/detail/%@",self.productID]];
         
+        
+        NSString *uid =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN];
+        NSString *uname =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_NAME];
+        
+        if (uid == nil){
+            [url appendString: [NSString  stringWithFormat: @"product/detail/%@",self.productID]];
+        }else{
+            [url appendString: [NSString  stringWithFormat: @"product/detail/%@/%@",uid,self.productID]];
+        }
         NSError *error;
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
         NSDictionary *raw = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves  error:&error];
+    //    NSLog(raw);
         NSString *code = [raw objectForKey:@"code"];
         if(![code isEqualToString:@"101"]){
             UIAlertView * alert =
@@ -85,7 +81,40 @@
         return ;
     }
     self.productDetail = detail;
-    
+    BOOL favo = [self isFavorit];
+    if(!favo){
+        UIButton *favoButton = [UIButton buttonWithType:101];
+        
+        [favoButton addTarget:self action:@selector(favorite) forControlEvents:UIControlEventTouchUpInside];
+        [favoButton setTitle:@"收藏" forState:UIControlStateNormal];
+        
+        UIBarButtonItem *favaItem = [[UIBarButtonItem alloc] initWithCustomView:favoButton];
+        
+        
+        favaItem.tintColor = [UIColor whiteColor];
+        [favaItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                          [UIColor whiteColor],NSForegroundColorAttributeName,
+                                          [UIFont boldSystemFontOfSize:19], NSFontAttributeName, nil] forState:UIControlStateNormal];
+        self.navigationItem.rightBarButtonItem =  favaItem;
+
+        
+    }else{
+        UIButton *favoButton = [UIButton buttonWithType:101];
+        
+        [favoButton addTarget:self action:@selector(cancelFavorite) forControlEvents:UIControlEventTouchUpInside];
+        [favoButton setTitle:@"取消收藏" forState:UIControlStateNormal];
+        
+        UIBarButtonItem *favaItem = [[UIBarButtonItem alloc] initWithCustomView:favoButton];
+        
+        
+        favaItem.tintColor = [UIColor whiteColor];
+        [favaItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                          [UIColor whiteColor],NSForegroundColorAttributeName,
+                                          [UIFont boldSystemFontOfSize:19], NSFontAttributeName, nil] forState:UIControlStateNormal];
+        self.navigationItem.rightBarButtonItem =  favaItem;
+        
+
+    }
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -93,6 +122,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -532,6 +562,59 @@
     
     
     
+    NSString *uid =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN];
+    NSString *uname =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_NAME];
+    
+    if (uid == nil){
+        
+        UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"登录提示"    //标题
+                                                       message:@"该功能需要登录后使用，您目前还没有登录。"   //显示内容
+                                                      delegate:self          //委托，可以点击事件进行处理
+                                             cancelButtonTitle:@"取消"
+                                             otherButtonTitles:@"登录"
+                             //,@"其他",    //添加其他按钮
+                             　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　,　 nil];
+        [view show];
+        return;
+    }
+    
+    
+    //收藏产品
+    @try{
+        
+        NSMutableString  *url =  [[NSMutableString alloc] initWithString:SERVER_URL];
+        [url appendString: [NSString  stringWithFormat: @"/collect/add/%@/%@",uid,self.productID]];
+        
+        NSError *error;
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSDictionary *raw = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves  error:&error];
+        NSString *code = [raw objectForKey:@"code"];
+        if(![code isEqualToString:@"101"]){
+            UIAlertView * alert =
+            [[UIAlertView alloc]
+             initWithTitle:@"错误"
+             message: [[NSString alloc] initWithFormat:@"收藏失败:%@",code]
+             delegate:self
+             cancelButtonTitle:nil
+             otherButtonTitles:@"确定", nil];
+            [alert show];
+            return;
+            
+        }
+        
+    }@catch (NSException *e){
+        NSLog(@"Exception: %@", e);
+        UIAlertView * alert =
+        [[UIAlertView alloc]
+         initWithTitle:@"错误"
+         message: [[NSString alloc] initWithFormat:@"系统错误"]
+         delegate:self
+         cancelButtonTitle:nil
+         otherButtonTitles:@"确定", nil];
+        [alert show];
+        return ;
+    }
     
     UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"收藏成功！"    //标题
                                                   message:Nil   //显示内容
@@ -541,15 +624,128 @@
                          //,@"其他",    //添加其他按钮
                          　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　,　 nil];
     [view show];
+    
+    //收藏按钮变为取消收藏
+    UIButton *favoButton = [UIButton buttonWithType:101];
+    
+    [favoButton addTarget:self action:@selector(cancelFavorite) forControlEvents:UIControlEventTouchUpInside];
+    [favoButton setTitle:@"取消收藏" forState:UIControlStateNormal];
+    
+    UIBarButtonItem *favaItem = [[UIBarButtonItem alloc] initWithCustomView:favoButton];
+    
+    
+    favaItem.tintColor = [UIColor whiteColor];
+    [favaItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                      [UIColor whiteColor],NSForegroundColorAttributeName,
+                                      [UIFont boldSystemFontOfSize:19], NSFontAttributeName, nil] forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem =  favaItem;
+
+    
+}
+
+
+
+
+
+-(void)cancelFavorite{
+    //取消收藏产品
+    @try{
+        
+        NSString *uid =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN];
+        NSString *uname =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_NAME];
+        if (uid == nil){
+            
+            UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"登录提示"    //标题
+                                                           message:@"该功能需要登录后使用，您目前还没有登录。"   //显示内容
+                                                          delegate:self          //委托，可以点击事件进行处理
+                                                 cancelButtonTitle:@"取消"
+                                                 otherButtonTitles:@"登录"
+                                 //,@"其他",    //添加其他按钮
+                                 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　,　 nil];
+            [view show];
+            return;
+        }
+
+        NSMutableString  *url =  [[NSMutableString alloc] initWithString:SERVER_URL];
+        [url appendString: [NSString  stringWithFormat: @"/collect/cancel/%@/%@",uid,self.productID]];
+        
+        NSError *error;
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSDictionary *raw = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves  error:&error];
+        NSString *code = [raw objectForKey:@"code"];
+        if(![code isEqualToString:@"101"]){
+            UIAlertView * alert =
+            [[UIAlertView alloc]
+             initWithTitle:@"错误"
+             message: [[NSString alloc] initWithFormat:@"操作失败:%@",code]
+             delegate:self
+             cancelButtonTitle:nil
+             otherButtonTitles:@"确定", nil];
+            [alert show];
+            return;
+            
+        }
+        
+    }@catch (NSException *e){
+        NSLog(@"Exception: %@", e);
+        UIAlertView * alert =
+        [[UIAlertView alloc]
+         initWithTitle:@"错误"
+         message: [[NSString alloc] initWithFormat:@"系统错误"]
+         delegate:self
+         cancelButtonTitle:nil
+         otherButtonTitles:@"确定", nil];
+        [alert show];
+        return ;
+    }
+    
+    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"取消成功！"    //标题
+                                                   message:Nil   //显示内容
+                                                  delegate:nil          //委托，可以点击事件进行处理
+                                         cancelButtonTitle:nil
+                                         otherButtonTitles:@"确定"
+                         //,@"其他",    //添加其他按钮
+                         　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　,　 nil];
+    [view show];
+    
+    //收藏按钮变为取消收藏
+    UIButton *favoButton = [UIButton buttonWithType:101];
+    
+    [favoButton addTarget:self action:@selector(favorite) forControlEvents:UIControlEventTouchUpInside];
+    [favoButton setTitle:@"收藏" forState:UIControlStateNormal];
+    
+    UIBarButtonItem *favaItem = [[UIBarButtonItem alloc] initWithCustomView:favoButton];
+    
+    
+    favaItem.tintColor = [UIColor whiteColor];
+    [favaItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                      [UIColor whiteColor],NSForegroundColorAttributeName,
+                                      [UIFont boldSystemFontOfSize:19], NSFontAttributeName, nil] forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem =  favaItem;
+    
+    
 }
 
 - (void)contact
 {
-   XWContactBankViewController  *controller = [[ XWContactBankViewController alloc] initWithNibName:@"XWContactBankViewController" bundle:nil];
+ /*  XWContactBankViewController  *controller = [[ XWContactBankViewController alloc] initWithNibName:@"XWContactBankViewController" bundle:nil];
    // controller.results = result;
     controller.title = @"资金需求为1万、贷款期限为2月、 本地注册资金为100万、担保方式为";
+  
+    [self.navigationController pushViewController:controller  animated:YES];*/
     
-    [self.navigationController pushViewController:controller  animated:YES];
+    
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:nil
+                                  delegate:self
+                                  cancelButtonTitle:@"取消"
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:@"我要留言", @"产品链接或联系人热线",nil];
+    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [actionSheet showInView:self.view];
+    
 }
 
 /*
@@ -627,6 +823,16 @@
     }
 }
 
+
+-  (BOOL) isFavorit {
+    if(self.productDetail == nil){
+        return false;
+    }
+    BOOL value = [[self.productDetail objectForKey:@"isCollected" ] boolValue];
+   
+    return value;
+}
+
 -  (int) getRowHeightByKey: (NSString*) key width:(NSInteger) width{
     
     
@@ -639,5 +845,100 @@
     int height =  msgSie.height+15;
     return height > 38 ?height :38;
 }
+
+
+
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+  
+     NSLog([NSString stringWithFormat:@"index:%i" ,buttonIndex]);
+    if( buttonIndex == 1 ){
+        XWLoginController *viewController = [[XWLoginController alloc] init] ;
+        [self.navigationController pushViewController:viewController animated:YES];    }
+    
+}
+
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //我要留言
+    if (buttonIndex == 0) {
+        
+        XWContactBankViewController  *controller = [[ XWContactBankViewController alloc] initWithNibName:@"XWContactBankViewController" bundle:nil];
+        // controller.results = result;
+        
+        NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
+        
+        
+        [info setObject:[self getKeyValue:@"bankname"] forKey:@"reciever"];
+        [info setObject:self.productID  forKey:@"productID"];
+        
+        controller.info  = info;
+        [self.navigationController pushViewController:controller  animated:YES];
+        
+    }
+    //网点信息
+    else if(buttonIndex == 1){
+        @try{
+            
+            NSMutableString  *url =  [[NSMutableString alloc] initWithString:SERVER_URL];
+            [url appendString: [NSString stringWithFormat: @"/message/hotline/%@",self.productID]];
+            
+            NSError *error;
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:3];
+            
+            NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+            NSDictionary *raw = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves  error:&error];
+            NSString *code = [raw objectForKey:@"code"];
+            if(![code isEqualToString:@"101"]){
+                UIAlertView * alert =
+                [[UIAlertView alloc]
+                 initWithTitle:@"错误"
+                 message: [[NSString alloc] initWithFormat:@"数据加载失败:%@",code]
+                 delegate:self
+                 cancelButtonTitle:nil
+                 otherButtonTitles:@"确定", nil];
+                [alert show];
+                return;
+                
+            }
+            NSString *message = [raw objectForKey:@"message"];
+            UIAlertView * alert =
+            [[UIAlertView alloc]
+             initWithTitle:nil
+             message: message
+             delegate:self
+             cancelButtonTitle:nil
+             otherButtonTitles:@"确定", nil];
+            [alert show];
+            return;
+            
+            
+        }@catch (NSException *e){
+            NSLog(@"Exception: %@", e);
+            UIAlertView * alert =
+            [[UIAlertView alloc]
+             initWithTitle:@"错误"
+             message: [[NSString alloc] initWithFormat:@"数据加载失败"]
+             delegate:self
+             cancelButtonTitle:nil
+             otherButtonTitles:@"确定", nil];
+            [alert show];
+            return  ;
+        }
+    }
+    
+}
+- (void)actionSheetCancel:(UIActionSheet *)actionSheet{
+    
+}
+-(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    
+}
+-(void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex{
+    
+}  
+
 
 @end

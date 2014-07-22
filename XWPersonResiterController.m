@@ -17,7 +17,7 @@
 @implementation XWPersonResiterController
 
 
-
+UIDatePicker *datePicker;
 
 
 
@@ -30,7 +30,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 6;
+    return 8;
 }
 
 
@@ -192,14 +192,48 @@
         cell.textLabel.text = @"出生年月：";
         cell.textLabel.font = [UIFont systemFontOfSize:15];
         cell.textLabel.textColor = UIColorFromRGB(0x000000);
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(230.0, 0.0, 100.0, 44.0)];
-        lbl.text = @"请选择";
-        lbl.font = [UIFont boldSystemFontOfSize:15];;
-        lbl.textColor =UIColorFromRGB(0x9e9e9e);
-        [cell.contentView addSubview:lbl];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        
+        if(self.birthday == nil){
+            self.birthday = [[PSTextField alloc] initWithFrame:CGRectMake(90, 4.5, 210,35)
+                                                       cornerRadio:5
+                                                       borderColor:RGB(166.0, 166.0, 166.0)
+                                                       borderWidth:0
+                                                        lightColor:RGB(55.0, 154.0, 255.0)
+                                                         lightSize:8
+                                                  lightBorderColor:RGB(235.0, 235.0, 235.0)
+                                                   backgroundColor:UIColorFromRGB(0xdff0ff)
+                                 ];
+        }
+        
+        // 建立 UITextFiel
+        // 記得要設定 delegate
+        self.birthday .delegate = self;
+        // 加入 view 中
+        [cell addSubview:self.birthday ];
+        
+        // 建立 UIDatePicker
+         datePicker = [[UIDatePicker alloc] init];
+        
+        datePicker.datePickerMode = UIDatePickerModeDate;
+
+        self.birthday .inputView = datePicker;
+        
+        // 建立 UIToolbar
+        UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+        // 選取日期完成鈕 並給他一個 selector
+        UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
+                                                                              action:@selector(cancelPicker)];
+        // 把按鈕加進 UIToolbar
+        toolBar.items = [NSArray arrayWithObject:right];
+        // 以下這行也是重點 (螢光筆畫兩行) 
+        // 原本應該是鍵盤上方附帶內容的區塊 改成一個 UIToolbar 並加上完成鈕
+        self.birthday.inputAccessoryView = toolBar;
+        
+        
+    
+    
     } else if(indexPath.row == 5){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"row7"];
         cell.textLabel.text = @"所属公司：";
@@ -253,7 +287,7 @@
         
         tf.font = [UIFont systemFontOfSize:15];
         tf.textAlignment = NSTextAlignmentLeft;
-        tf.keyboardType = UIKeyboardTypeDefault;
+        tf.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         tf.returnKeyType = UIReturnKeyDone;
         [cell.contentView addSubview:tf];
     }else if(indexPath.row == 7){
@@ -298,12 +332,21 @@
     return cell;
 }
 
-
+// 按下完成鈕後的 method
+-(void) cancelPicker {
+    // endEditing: 是結束編輯狀態的 method
+        // 以下幾行是測試用 可以依照自己的需求增減屬性
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:@"yyyy-MM-dd" options:0 locale:nil];
+        [formatter setDateFormat:dateFormat];
+        // 將選取後的日期 填入 UITextField
+        self.birthday.text = [NSString stringWithFormat:@"%@",[formatter stringFromDate:datePicker.date]];
+    self.birthday.resignFirstResponder;
+}
 
 
 -(void) commit{
-    
-    
+
     
     NSString* trimedUsercode = [self.userCode.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
@@ -329,7 +372,7 @@
         [alert show];
         return;
     }
-
+    
     
     
     NSString* trimedPassword = [self.Password.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -368,12 +411,10 @@
         
     }
     
-    
-    
     NSString* trimedcontactPerson = [self.company.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if([trimedcontactPerson length]==0){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输公司名"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入所属公司"
                                                         message:nil
                                                        delegate:self
                                               cancelButtonTitle:@"确定"
@@ -385,7 +426,7 @@
     NSString* trimedcontactTel = [self.contactPhone.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if([trimedcontactTel length]==0){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入联系人电话"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入联系电话"
                                                         message:nil
                                                        delegate:self
                                               cancelButtonTitle:@"确定"
@@ -395,16 +436,15 @@
     }
     
     
-    
+    NSString* trimedBirthday = [self.birthday.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     NSMutableString  *urlstring =  [[NSMutableString alloc] initWithString:SERVER_URL];
     [urlstring appendString:@"register/individual"];
     NSURL *url = [NSURL URLWithString:urlstring];
-   
     
     
     NSString *postString =[NSString stringWithFormat:
-                           @"customerType=企业&customerLoginNo=%@&customerPwd=%@&customerPwd2=%@&registerAddrType=%@&ageLimit=%@&industry2=%@&contactPerson=%@&contactPhone=%@&customerName=%@",trimedUsercode,trimedPassword,trimedPassword2,strRegisterPlace,strEstablish,strTrade,trimedcontactPerson,trimedcontactTel,trimedCompany];
+                           @"customerType=个人&customerLoginNo=%@&customerPwd=%@&customerPwd2=%@&companyName=%@&contactPhone=%@&customerName=%@&birthday=%@",trimedUsercode,trimedPassword,trimedPassword2,trimedcontactPerson,trimedcontactTel,trimedCompany,trimedBirthday];
     
     
     UIActivityIndicatorView *activityIndicator;
@@ -423,7 +463,7 @@
     NSError *error;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     NSString *msgLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
-
+    
     
     //这里设置为 application/x-www-form-urlencoded ，如果设置为其它的，比如text/html;charset=utf-8，或者 text/html 等，都会出错。不知道什么原因。
     [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -431,7 +471,7 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [request setTimeoutInterval:5.0];
- 
+    
     
     @try {
         
@@ -470,6 +510,8 @@
                                            
                                            NSString *message = [rawresult objectForKey:@"message"];
                                            NSString *code = [rawresult objectForKey:@"code"];
+                                           NSString *uid = [rawresult objectForKey:@"id"];
+
                                            NSLog(@"提交 %@", rawresult );
                                            [activityIndicator stopAnimating];
                                            
@@ -483,12 +525,22 @@
                                                return;
                                                
                                            }else{
+                                               		
+                                               //注册用户 ID 到系统默认变量中
+                                               [[NSUserDefaults standardUserDefaults] setObject:uid forKey:LOGIN];
+                                               
+                                               
+
+                                               
+                                               
+                                               
                                                
                                                UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"注册成功！"    //标题
                                                                                               message:Nil   //显示内容
                                                                                              delegate:self          //委托，可以点击事件进行处理
                                                                                     cancelButtonTitle:nil
                                                                                     otherButtonTitles:@"确定",　nil];
+                                               view.tag=1000;
                                                [view show];
                                                
                                            }
@@ -513,15 +565,12 @@
     
 
     
-    
-    
-    //  [self.navigationController popViewControllerAnimated:true];
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.row == 9){
-        return 60;
+    if(indexPath.row == 7){
+        return 160;
     }else{
         return  44;
     }
@@ -553,10 +602,10 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField == self.company) {
         
-        [self.tableView setContentOffset:CGPointMake(0, 112) animated:YES];
+        [self.tableView setContentOffset:CGPointMake(0, 120) animated:YES];
     }else if (textField == self.contactPhone) {
         
-        [self.tableView setContentOffset:CGPointMake(0, 155) animated:YES];
+        [self.tableView setContentOffset:CGPointMake(0, 150) animated:YES];
     }
 }
 
@@ -664,7 +713,21 @@
         [lbl setFrame:CGRectMake(230, fm.origin.y, 100, fm.size.height)];
         lbl.text = @"请选择";
     }
+*/
+    
+    
+    
+}
 
-}*/
 
+
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(alertView.tag==1000){
+    [self.navigationController popToRootViewControllerAnimated:true];
+    }
+}
+
+@end
 

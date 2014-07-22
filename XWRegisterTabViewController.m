@@ -7,9 +7,9 @@
 //
 
 #import "XWRegisterTabViewController.h"
-#import "XWRegisterController.h"
-#import "XWRegisterPersonController.h"
 #import "XWComanyResiterController.h"
+#import "XWPersonResiterController.h"
+
 
 @interface XWRegisterTabViewController ()
 
@@ -34,6 +34,13 @@
     
     [self.segment setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
     
+    
+    [self.segment addTarget:self
+                     action:@selector(segmentChange:)
+           forControlEvents:UIControlEventValueChanged];
+    
+    
+    
   //  UISegmentedControl *segment = UISegmentedControl
     NSArray *contents = [[NSArray alloc] initWithObjects:@"企业注册",@"个人注册",nil];
     [self.segment initWithItems:contents];
@@ -46,11 +53,11 @@
    //  self.person = [[XWRegisterPersonController alloc] init];
 
     self.company = [[XWComanyResiterController alloc] init];
-    
     self.tableview.dataSource = self.company;
     self.tableview.delegate =  self.company;
     self.company.tableView = self.tableview;
     self.company.navigationController = self.navigationController;
+    
 
     
 //    XWRegisterPersonController  *cmp = [[XWRegisterPersonController alloc] initWithNibName:@"XWRegisterPersonController" bundle:nil];
@@ -59,6 +66,39 @@
     [self.view addSubview: self.tableview];
     
     
+}
+
+
+-(void)segmentChange:(UISegmentedControl *)seg{
+    
+    NSInteger Index = seg.selectedSegmentIndex;
+        
+    
+    switch (Index) {
+            
+        case 0:
+            if (self.company == nil) {
+                self.company = [[XWComanyResiterController alloc] init];
+            }
+            self.tableview.dataSource = self.company;
+            self.tableview.delegate = self.company;
+            [self.tableview reloadData ];
+            
+            break;
+            
+        case 1:
+            if (self.person == nil) {
+                self.person = [[XWPersonResiterController alloc] init];
+            }
+            self.tableview.dataSource = self.person;
+            self.tableview.delegate = self.person;
+            self.person.tableView = self.tableview;
+            self.person.navigationController = self.navigationController;
+
+            [self.tableview reloadData ];
+            
+            break;
+    }
 }
 
 
@@ -78,7 +118,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    //self.tableview.backgroundView = [UIView new];
+    //self.tableview.backgroundView.backgroundColor = [UIColor clearColor];
+    //self.tableview.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
+    
+    self.navigationItem.title = @"用户注册";
+
+
 }
 
 - (void)didReceiveMemoryWarning

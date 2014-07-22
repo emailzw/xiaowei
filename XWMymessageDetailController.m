@@ -18,7 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"浙商银行上海分行";
+    self.title =   [self.info objectForKey:@"leaveMessageReceiver"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -42,7 +42,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {	
-    return 3;
+    
+    NSArray *dialog  = [self.info objectForKey:@"dialog"];
+    return dialog.count;
 }
 
 
@@ -60,7 +62,8 @@
     headerLabel.highlightedTextColor = [UIColor whiteColor];
     headerLabel.font = [UIFont boldSystemFontOfSize:15];
     headerLabel.frame = CGRectMake(10.0, 4.0, 200, 30.0);
-    headerLabel.text =  @"关于“三年贷“产品的咨询”";
+    headerLabel.text =  [self.info objectForKey:@"leaveMessageTitle"];
+    
     [customView addSubview:headerLabel];
     
     
@@ -73,20 +76,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MessgeCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:CellIdentifier];
-    }
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:CellIdentifier];
     cell.accessoryType = UITableViewCellAccessoryNone;
     
-    if(indexPath.row ==0){
     
-    //我的留言
+    NSArray *dialog  = [self.info objectForKey:@"dialog"];
+    NSDictionary *info = [dialog objectAtIndex:indexPath.row];
+    
     
     UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(12, 4.0, 155.0, 20)];
     [lbl setFont:[UIFont systemFontOfSize:13]];
-    lbl.text = @"我的留言";
-    lbl.textColor = [UIColor blueColor];
+    lbl.text =  [info objectForKey:@"name"];
+    if(indexPath.row %2 ==1){
+        lbl.textColor = [UIColor redColor];
+    }else{
+        lbl.textColor = [UIColor blueColor];
+
+    }
 
     [cell.contentView addSubview:lbl];
     
@@ -94,94 +100,27 @@
     //留言日期
     
     lbl = [[UILabel alloc] initWithFrame:CGRectMake(200, 4, 120, 20)];
-    lbl.text = [NSString stringWithFormat:@"%@",@"2014-01-01 15:37"];
+    lbl.text = [info objectForKey:@"dialogDate"];
     lbl.font = [UIFont systemFontOfSize:13];
     lbl.textColor =UIColorFromRGB(0x9e9e9e);
     [cell.contentView addSubview:lbl];
-  
-        
-        //留言消息（mine）
-        CGSize constrainedSize = CGSizeMake(300, 1000);
-        lbl = [[UILabel alloc] initWithFrame:CGRectMake(12, 23, 290, 30)];
-        lbl.font = [UIFont systemFontOfSize:13];
-        
-        lbl.text = [NSString stringWithFormat:@"三年贷可以个人申请吗？最高额度是多少？贷款期限最长可以到多久？"];
-        CGSize msgSie = [lbl.text sizeWithFont:lbl.font constrainedToSize:constrainedSize lineBreakMode:NSLineBreakByWordWrapping];
-        lbl.lineBreakMode = NSLineBreakByWordWrapping;
-        lbl.numberOfLines = 0;
-
-        [lbl setFrame:CGRectMake(12,23,290, msgSie.height)];
-        lbl.textColor =UIColorFromRGB(0x000000);
-        [cell.contentView addSubview:lbl];
-    }else if (indexPath.row ==1){
-        //银行
-        
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(12, 4.0, 155.0, 20)];
-        [lbl setFont:[UIFont systemFontOfSize:13]];
-        lbl.text = @"浙江银行上海分行";
-        lbl.textColor = [UIColor redColor];
-        
-        [cell.contentView addSubview:lbl];
-        
-        
-        //留言日期
-        
-        lbl = [[UILabel alloc] initWithFrame:CGRectMake(200, 4, 120, 20)];
-        lbl.text = [NSString stringWithFormat:@"%@",@"2014-01-02 11:22"];
-        lbl.font = [UIFont systemFontOfSize:13];
-        lbl.textColor =UIColorFromRGB(0x9e9e9e);
-        [cell.contentView addSubview:lbl];
-        
-        
-        //留言消息（mine）
-        CGSize constrainedSize = CGSizeMake(300, 1000);
-        lbl = [[UILabel alloc] initWithFrame:CGRectMake(12, 23, 290, 30)];
-        lbl.font = [UIFont systemFontOfSize:13];
-        
-        lbl.text = [NSString stringWithFormat:@"您好，三年贷可以个人申请，最高额度为500万元，期限最长36个月。"];
-        CGSize msgSie = [lbl.text sizeWithFont:lbl.font constrainedToSize:constrainedSize lineBreakMode:NSLineBreakByWordWrapping];
-        lbl.lineBreakMode = NSLineBreakByWordWrapping;
-        lbl.numberOfLines = 0;
-
-        
-        [lbl setFrame:CGRectMake(12,23,290, msgSie.height)];
-        lbl.textColor =UIColorFromRGB(0x000000);
-        [cell.contentView addSubview:lbl];
-    }else if(indexPath.row ==2){
-        
-        //我的留言
-        
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(12, 4.0, 155.0, 20)];
-        [lbl setFont:[UIFont systemFontOfSize:13]];
-        lbl.text = @"我的留言";
-        lbl.textColor = [UIColor blueColor];
-        
-        [cell.contentView addSubview:lbl];
-        
-        
-        //留言日期
-        
-        lbl = [[UILabel alloc] initWithFrame:CGRectMake(200, 4, 120, 20)];
-        lbl.text = [NSString stringWithFormat:@"%@",@"2014-01-02 14:11"];
-        lbl.font = [UIFont systemFontOfSize:13];
-        lbl.textColor =UIColorFromRGB(0x9e9e9e);
-        [cell.contentView addSubview:lbl];
-        
-        
-        //留言消息（mine）
-        CGSize constrainedSize = CGSizeMake(300, 1000);
-        lbl = [[UILabel alloc] initWithFrame:CGRectMake(12, 23, 290, 30)];
-        lbl.font = [UIFont systemFontOfSize:13];
-        
-        lbl.text = [NSString stringWithFormat:@"请尽快联系我，我符合该产品的要求，急需！！"];
-        CGSize msgSie = [lbl.text sizeWithFont:lbl.font constrainedToSize:constrainedSize lineBreakMode:NSLineBreakByWordWrapping];
-        lbl.lineBreakMode = NSLineBreakByWordWrapping;
-        lbl.numberOfLines = 0;
-        
-        [lbl setFrame:CGRectMake(12,23,290, msgSie.height)];
-        lbl.textColor =UIColorFromRGB(0x000000);
-        [cell.contentView addSubview:lbl];
-    }    return cell;
+    
+    
+    //留言消息（mine）
+    CGSize constrainedSize = CGSizeMake(300, 1000);
+    lbl = [[UILabel alloc] initWithFrame:CGRectMake(12, 23, 290, 30)];
+    lbl.font = [UIFont systemFontOfSize:13];
+    
+    lbl.text = [info objectForKey:@"dialogContent"];
+    CGSize msgSie = [lbl.text sizeWithFont:lbl.font constrainedToSize:constrainedSize lineBreakMode:NSLineBreakByWordWrapping];
+    lbl.lineBreakMode = NSLineBreakByWordWrapping;
+    lbl.numberOfLines = 0;
+    
+    [lbl setFrame:CGRectMake(12,23,290, msgSie.height)];
+    lbl.textColor =UIColorFromRGB(0x000000);
+    [cell.contentView addSubview:lbl];
+    
+    return cell;
     
     
     
@@ -192,14 +131,14 @@
 
 
 
-
+/*
 
 
 - (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     
     UIView *result = nil;
     UIButton *button =  [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle: @"留言" forState:UIControlStateNormal];
+    [button setTitle: @"回复" forState:UIControlStateNormal];
     
     [button addTarget:self action:@selector(contact) forControlEvents:UIControlEventTouchUpInside];
     
@@ -217,29 +156,46 @@
     result = [[UIView alloc] initWithFrame:button.frame ];
     [result addSubview:button];
     
-    /*
-     //在弹出的键盘上面加一个view来放置退出键盘的Done按钮
-     UIToolbar * topView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-     [topView setBarStyle:UIBarStyleDefault];
-     UIBarButtonItem * btnSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-     UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(dismissKeyBoard)];
-     NSArray * buttonsArray = [NSArray arrayWithObjects:btnSpace, doneButton, nil];
-     
-     [topView setItems:buttonsArray];
-     [self.utv setInputAccessoryView:topView];*/
     
     return result;
 }
+*/
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSArray *dialog  = [self.info objectForKey:@"dialog"];
+    NSDictionary *info = [dialog objectAtIndex:indexPath.row];
+    return [self getRowHeightByKey:@"dialogContent" width:290];
+}
+
+
+
+-  (int) getRowHeightByKey: (NSString*) key width:(NSInteger) width{
+    
+    
+    NSString *str  = key;
+    
+    CGSize constrainedSize = CGSizeMake(width, 1000);
+    
+    
+    CGSize msgSie = [str sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:constrainedSize lineBreakMode:NSLineBreakByWordWrapping];
+    int height =  msgSie.height+15;
+    return height > 48 ?height :48;
+}
 
 
 - (void)contact
 {
     XWContactBankViewController  *controller = [[ XWContactBankViewController alloc] initWithNibName:@"XWContactBankViewController" bundle:nil];
     // controller.results = result;
-    controller.title = @"资金需求为1万、贷款期限为2月、 本地注册资金为100万、担保方式为";
     
+    NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
+    
+    [info setObject:[self.info objectForKey:@"leaveMessageReceiver"] forKey:@"reciever"];
+    [info setObject:[self.info objectForKey:@"productID"]  forKey:@"productID"];
+    
+    controller.info  = info;
     [self.navigationController pushViewController:controller  animated:YES];
 }
 

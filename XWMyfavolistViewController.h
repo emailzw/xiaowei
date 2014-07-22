@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XWMyfavolistViewController : UITableViewController
+@interface XWMyfavolistViewController : UITableViewController 
 @property (nonatomic, retain) NSArray *results;
 - (UIImage*)imageWithImage:(UIImage*)image
               scaledToSize:(CGSize)newSize;

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XWRegisterPersonController.h"
 #import "XWComanyResiterController.h"
+#import "XWPersonResiterController.h"
 
-@interface XWRegisterTabViewController : UIViewController 
-@property (nonatomic, strong) XWRegisterPersonController *person;
+@interface XWRegisterTabViewController : UITableViewController 
+@property (nonatomic, strong) XWPersonResiterController *person;
 @property (nonatomic, strong) XWComanyResiterController *company;
 @property (nonatomic, strong) UISegmentedControl *segment;
 @property (nonatomic, strong) UITableView *tableview;

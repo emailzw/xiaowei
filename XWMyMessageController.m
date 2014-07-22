@@ -34,7 +34,7 @@
 {
     [super viewDidLoad];
     
-    NSMutableArray *result = [[NSMutableArray alloc] init];
+  /*  NSMutableArray *result = [[NSMutableArray alloc] init];
     XWMessageListItem *item = [[XWMessageListItem alloc] init];
     
     item.messageTitle = @"关于“三年贷”产品的咨询";
@@ -58,6 +58,7 @@
     
     
     self.results = result;
+   */
     self.title = @"我的留言";
 
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil] ;
@@ -104,7 +105,7 @@
     
     //留言标题
     
-    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(55, 4.0, 155.0, 25)];
+    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(20, 4.0, 155.0, 25)];
     lbl.text = item.messageTitle;
     lbl.font = [UIFont boldSystemFontOfSize:14];
     [cell.contentView addSubview:lbl];
@@ -112,7 +113,7 @@
     
     //留言日期
     
-    lbl = [[UILabel alloc] initWithFrame:CGRectMake(55, 30, 155.0, 15)];
+    lbl = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, 155.0, 15)];
     lbl.text = [NSString stringWithFormat:@"留言日期:%@",item.postDate];
     lbl.font = [UIFont boldSystemFontOfSize:10];
     lbl.textColor =UIColorFromRGB(0x9e9e9e);
@@ -128,7 +129,7 @@
     lbl.font = [UIFont boldSystemFontOfSize:10];
     lbl.textColor =UIColorFromRGB(0x9e9e9e);
     [cell.contentView addSubview:lbl];
-    
+  /*
     if(indexPath.row==0){
 //MKNumberBadgeView *num = [MKNumberBadgeView
     MKNumberBadgeView *numview = [[MKNumberBadgeView alloc] initWithFrame:CGRectMake(10, 2, 40, 30)];
@@ -137,7 +138,7 @@
     numview.value=2;
     numview.font = [UIFont boldSystemFontOfSize:13];
     [cell.contentView addSubview:numview];
-    }
+    }*/
     return cell;
 
 }
@@ -187,14 +188,109 @@
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    XWMymessageDetailController *detailViewController = [[XWMymessageDetailController alloc] initWithNibName:@"XWMymessageDetailController" bundle:nil];
     
-    // Pass the selected object to the new view controller.
     
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    
+    XWMessageListItem *item =[self.results objectAtIndex:indexPath.row];
+
+    
+    NSString *uid =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN];
+    
+    //获取留言
+    
+    
+    NSMutableString  *url =  [[NSMutableString alloc] initWithString:SERVER_URL];
+    [url appendString: [NSString  stringWithFormat: @"/message/%@/%@/%@",uid,item.productID,item.mid]];
+    NSLog(url);
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    
+    UIActivityIndicatorView *activityIndicator;
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+    CGPoint center  = CGPointMake(self.view.center.x, self.view.center.y-50);
+    [activityIndicator setCenter:center];
+    [activityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:activityIndicator];
+    
+    [activityIndicator startAnimating];
+    
+    
+    @try {
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response,  NSData *data, NSError *error) {
+                                   if (error != nil) {
+                                       NSLog(@"Error on load = %@", [error localizedDescription]);
+                                       [activityIndicator stopAnimating];
+                                       
+                                       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"通讯错误"
+                                                                                       message:nil
+                                                                                      delegate:nil
+                                                                             cancelButtonTitle:@"确定"
+                                                                             otherButtonTitles:nil, nil];
+                                       [alert show];
+                                       return;
+                                   }else {
+                                       [activityIndicator stopAnimating];
+                                       // check the HTTP status
+                                       if ([response isKindOfClass:[NSHTTPURLResponse class]]) {                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                           if (httpResponse.statusCode != 200) {
+                                               return;                    }
+                                           NSLog(@"Headers: %@", [httpResponse allHeaderFields]);
+                                           NSDictionary  *rawresult = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves  error:&error];
+                                           
+                                           NSMutableDictionary *t =
+                                           [[NSMutableDictionary alloc ] initWithDictionary:
+                                           [rawresult objectForKey:@"message"]];
+                                           
+                                     
+                                           
+                                           NSString *code = [rawresult objectForKey:@"code"];
+                                           NSLog(@"查询结果 %@", rawresult );
+                                           
+                                           if(![code isEqualToString:@"101"]){
+                                               UIAlertView * alert =
+                                               [[UIAlertView alloc]
+                                                initWithTitle:@"错误"
+                                                message: [[NSString alloc] initWithFormat:@"用户信息获取:%@",code]
+                                                delegate:nil
+                                                cancelButtonTitle:nil
+                                                otherButtonTitles:@"确定", nil];
+                                               [alert show];
+                                               return;
+                                               
+                                           }else if([code isEqualToString:@"101"]){
+                                               
+                                               
+                                               XWMymessageDetailController  *detailViewController = [[XWMymessageDetailController alloc] initWithNibName:@"XWMymessageDetailController" bundle:nil];
+                                              [t setObject:item.productID forKey:@"productID"];
+                                               detailViewController.info = t;
+                                               [self.navigationController pushViewController:detailViewController animated:YES];
+                                           }//end 101
+                                       }
+                                   }
+                               }
+         ];
+        
+        
+        
+        
+    }@catch (NSException *exception) {
+        [activityIndicator stopAnimating];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        
+        [alert show];
+        return;
+    }
+    @finally {
+        
+    }
+
 }
 
 

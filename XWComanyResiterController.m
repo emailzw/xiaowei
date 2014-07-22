@@ -290,7 +290,7 @@
         
         tf.font = [UIFont systemFontOfSize:15];
         tf.textAlignment = NSTextAlignmentLeft;
-        tf.keyboardType = UIKeyboardTypeDefault;
+        tf.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         tf.returnKeyType = UIReturnKeyDone;
         [cell.contentView addSubview:tf];
     }else if(indexPath.row == 9){
@@ -347,7 +347,7 @@
     if([trimedUsercode length]==0){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入用户名"
                                                         message:nil
-                                                       delegate:self
+                                                       delegate:nil
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil, nil];
         [alert show];
@@ -360,7 +360,7 @@
     if([trimedCompany length]==0){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入公司名称"
                                                         message:nil
-                                                       delegate:self
+                                                       delegate:nil
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil, nil];
         [alert show];
@@ -374,7 +374,7 @@
     if([trimedPassword length]==0){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入用户密码"
                                                         message:nil
-                                                       delegate:self
+                                                       delegate:nil
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil, nil];
         [alert show];
@@ -387,7 +387,7 @@
     if([trimedPassword2 length]==0){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请再次输入用户密码"
                                                         message:nil
-                                                       delegate:self
+                                                       delegate:nil
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil, nil];
         [alert show];
@@ -397,7 +397,7 @@
     if(![trimedPassword isEqualToString:trimedPassword2]){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"两次输入的密码不一致"
                                                         message:nil
-                                                       delegate:self
+                                                       delegate:nil
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil, nil];
         [alert show];
@@ -409,7 +409,7 @@
     if([self.establishYearOptions count]==0){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择企业成立年限"
                                                         message:nil
-                                                       delegate:self
+                                                       delegate:nil
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil, nil];
         [alert show];
@@ -419,7 +419,7 @@
     if([self.registerPlaceOptions count]==0){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择企业注册地"
                                                         message:nil
-                                                       delegate:self
+                                                       delegate:nil
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil, nil];
         [alert show];
@@ -430,7 +430,7 @@
     if([self.tradeOptions count]==0){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择所属行业或类型"
                                                         message:nil
-                                                       delegate:self
+                                                       delegate:nil
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil, nil];
         [alert show];
@@ -442,7 +442,7 @@
     if([trimedcontactPerson length]==0){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入联系人"
                                                         message:nil
-                                                       delegate:self
+                                                       delegate:nil
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil, nil];
         [alert show];
@@ -454,7 +454,7 @@
     if([trimedcontactTel length]==0){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入联系人电话"
                                                         message:nil
-                                                       delegate:self
+                                                       delegate:nil
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil, nil];
         [alert show];
@@ -527,7 +527,7 @@
                                        NSLog(@"Error on load = %@", [error localizedDescription]);
                                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
                                                                                        message:nil
-                                                                                      delegate:self
+                                                                                      delegate:nil
                                                                              cancelButtonTitle:@"确定"
                                                                              otherButtonTitles:nil, nil];
                                        [activityIndicator stopAnimating];
@@ -540,7 +540,7 @@
                                            if (httpResponse.statusCode != 200) {
                                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
                                                                                                message:nil
-                                                                                              delegate:self
+                                                                                              delegate:nil
                                                                                      cancelButtonTitle:@"确定"
                                                                                      otherButtonTitles:nil, nil];
                                                [activityIndicator stopAnimating];
@@ -553,19 +553,25 @@
                                            
                                            NSString *message = [rawresult objectForKey:@"message"];
                                            NSString *code = [rawresult objectForKey:@"code"];
+                                           NSString *uid = [rawresult objectForKey:@"id"];
+
                                            NSLog(@"提交 %@", rawresult );
                                            [activityIndicator stopAnimating];
                                            
                                            if(![code isEqualToString:@"101"]){
                                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"用户注册失败"
                                                                                                message:[NSString stringWithFormat:@"错误:%@,代码：%@",message,code]
-                                                                                              delegate:self
+                                                                                              delegate:nil
                                                                                      cancelButtonTitle:@"确定"
                                                                                      otherButtonTitles:nil, nil];
                                                [alert show];
                                                return;
                                                
                                            }else{
+                                               //注册用户 ID 到系统默认变量中
+                                               [[NSUserDefaults standardUserDefaults] setObject:uid forKey:LOGIN];
+                                               
+                                               
                                                
                                                UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"注册成功！"    //标题
                                                                                               message:Nil   //显示内容
@@ -582,7 +588,7 @@
     }@catch (NSException *exception) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
                                                         message:nil
-                                                       delegate:self
+                                                       delegate:nil
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil, nil];
         [activityIndicator stopAnimating];
@@ -636,10 +642,10 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField == self.contactPerson) {
         
-        [self.tableView setContentOffset:CGPointMake(0, 112) animated:YES];
+        [self.tableView setContentOffset:CGPointMake(0, 132) animated:YES];
     }else if (textField == self.contactPhone) {
         
-        [self.tableView setContentOffset:CGPointMake(0, 155) animated:YES];
+        [self.tableView setContentOffset:CGPointMake(0, 185) animated:YES];
     }
 }
 
@@ -811,6 +817,17 @@
     }
 
 }
+
+
+
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.navigationController popToRootViewControllerAnimated:true];
+    
+}
+
+
 
 
 @end

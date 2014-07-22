@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XWProductDetailViewController : UITableViewController
+@interface XWProductDetailViewController : UITableViewController<UIActionSheetDelegate>
 @property (nonatomic, retain) NSString *productID;
 @property (nonatomic, retain) NSDictionary *productDetail;
 @end

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PSTextField.h"
+
 
 @interface XWChangePasswordViewController : UITableViewController
+@property (strong, nonatomic) PSTextField *oldpassoword;
+@property (strong, nonatomic) PSTextField *password;
+@property (strong, nonatomic) PSTextField *password2;
 
 @end

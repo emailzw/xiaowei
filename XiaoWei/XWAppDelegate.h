@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainPage.h"
 
 
 @class MenuViewController;
@@ -15,6 +16,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) MenuViewController *viewController;
+@property (strong, nonatomic) MainPage *viewController;
+
+
 
 @end

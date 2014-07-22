@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface XWMymessageDetailController : UITableViewController
-
+@property (nonatomic, retain) NSDictionary *info;
 @end

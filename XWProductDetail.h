@@ -26,5 +26,7 @@
 @property (nonatomic, retain) NSString *repaymentType;
 @property (nonatomic, retain) NSString *checktime;
 @property (nonatomic, retain) NSString *productFeature;
+@property  BOOL isCollected;
+
 
 @end

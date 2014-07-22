@@ -10,7 +10,6 @@
 #import "PSTextField.h"
 #import "XWSingleSelectionTableViewController.h"
 #import "XWSearchProductConditonViewController.h"
-#import "XWRegisterPersonController.h"
 @interface XWRegisterController ()
 
 @end 
@@ -69,10 +68,7 @@
     self.tab = Index;
     
     NSLog(@"Index %i", Index);
-    XWRegisterPersonController *personSource;
-
-    
-    switch (Index) {
+      switch (Index) {
             
         case 0:
             
@@ -83,13 +79,9 @@
             break;
             
         case 1:
-         //   XWRegisterPersonController* personRegister =[XWRegisterPersonController ] init
-            personSource = [[XWRegisterPersonController  alloc] init];
-            self.tableView.dataSource = personSource;
-            self.tableView.delegate = personSource;
-            [self.tableView reloadData ];
-            break;
-    }
+              break;
+              
+           }
 }
 
 

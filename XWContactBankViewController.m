@@ -17,6 +17,9 @@
 
 @implementation XWContactBankViewController
 
+NSString *code;
+UIView *foot;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -56,7 +59,7 @@
         cell.textLabel.textColor = UIColorFromRGB(0x000000);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(80, 0.0, 200, 44.0)];
-        lbl.text = @"宁波银行上海分行";
+        lbl.text = [self.info objectForKey:@"reciever"];
         lbl.font = [UIFont boldSystemFontOfSize:15];;
         lbl.textColor =UIColorFromRGB(0x9e9e9e);
         [cell.contentView addSubview:lbl];
@@ -69,7 +72,7 @@
         
         
         
-        UITextField  *tf = [[PSTextField alloc] initWithFrame:CGRectMake(80, 4.5, 220,35)
+        self.mtitle = [[PSTextField alloc] initWithFrame:CGRectMake(80, 4.5, 230,35)
                                                   cornerRadio:5
                                                   borderColor:RGB(166.0, 166.0, 166.0)
                                                   borderWidth:0
@@ -78,15 +81,42 @@
                                              lightBorderColor:RGB(235.0, 235.0, 235.0)
                                               backgroundColor:UIColorFromRGB(0xdff0ff)
                             ];
-        tf.placeholder = @"请输入您的留言标题";
-        tf.delegate = self;
-        tf.clearButtonMode = UITextFieldViewModeWhileEditing;
+        self.mtitle.delegate = self;
+        self.mtitle.clearButtonMode = UITextFieldViewModeWhileEditing;
         
-        tf.font = [UIFont systemFontOfSize:15];
-        tf.textAlignment = NSTextAlignmentLeft;
-        tf.keyboardType = UIKeyboardTypeDefault;
-        tf.returnKeyType = UIReturnKeyDone;
-        [cell.contentView addSubview:tf];
+        self.mtitle.font = [UIFont systemFontOfSize:15];
+        self.mtitle.textAlignment = NSTextAlignmentLeft;
+        self.mtitle.keyboardType = UIKeyboardTypeDefault;
+        self.mtitle.returnKeyType = UIReturnKeyDone;
+        //在弹出的键盘上面加一个view来放置退出键盘的Done按钮
+        UIToolbar * topView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+        [topView setBarStyle:UIBarStyleDefault];
+        UIBarButtonItem * btnSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+        UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(dismissKeyBoard)];
+        NSArray * buttonsArray = [NSArray arrayWithObjects:btnSpace, doneButton, nil];
+        
+        [topView setItems:buttonsArray];
+        [self.mtitle setInputAccessoryView:topView];
+
+        
+//        self.title = [[PSTextField alloc] initWithFrame:CGRectMake(80, 4.5, 220,35)
+//                                                  cornerRadio:5
+//                                                  borderColor:RGB(166.0, 166.0, 166.0)
+//                                                  borderWidth:0
+//                                                   lightColor:RGB(55.0, 154.0, 255.0)
+//                                                    lightSize:8
+//                                             lightBorderColor:RGB(235.0, 235.0, 235.0)
+//                                              backgroundColor:UIColorFromRGB(0xdff0ff)
+//                            ];
+//        self.title.placeholder = @"请输入您的留言标题";
+//        self.title.delegate = self;
+//        self.title.clearButtonMode = UITextFieldViewModeWhileEditing;
+//        
+//        self.title.font = [UIFont systemFontOfSize:15];
+//        self.title.textAlignment = NSTextAlignmentLeft;
+//        self.title.keyboardType = UIKeyboardTypeDefault;
+//        self.title.returnKeyType = UIReturnKeyDone;
+        [cell.contentView addSubview:self.mtitle];
 
     }
     else if(indexPath.row == 2){
@@ -97,45 +127,59 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         
-//        
-//    UITextField  *tf = [[PSTextField alloc] initWithFrame:CGRectMake(80, 4.5, 220,120)
-//                                                  cornerRadio:5
-//                                                  borderColor:RGB(166.0, 166.0, 166.0)
-//                                                  borderWidth:0
-//                                                   lightColor:RGB(55.0, 154.0, 255.0)
-//                                                    lightSize:8
-//                                             lightBorderColor:RGB(235.0, 235.0, 235.0)
-//                                              backgroundColor:UIColorFromRGB(0xdff0ff)
-//                            ];
-//        tf.placeholder = @"请输入您的留言内容";
-//        tf.delegate = self;
-//        tf.clearButtonMode = UITextFieldViewModeWhileEditing;
-//        tf.
-//        
-//        tf.font = [UIFont systemFontOfSize:15];
-//        tf.textAlignment = NSTextAlignmentLeft;
-//        tf.keyboardType = UIKeyboardTypeDefault;
-//        tf.returnKeyType = UIReturnKeyDone;
-//        [cell.contentView addSubview:tf];
+ 
+        self.utv = [[UITextView alloc]initWithFrame:CGRectMake(80,4.5,230,120)];
+        self.utv.layer.borderColor = RGB(166.0, 166.0, 166.0).CGColor;
+        self.utv.layer.borderWidth =0;
+        self.utv.delegate = self;
+
         
-        UITextView *utv = [[UITextView alloc]initWithFrame:CGRectMake(80,4.5,220,120)];
-        utv.layer.borderColor = RGB(166.0, 166.0, 166.0).CGColor;
-        utv.layer.borderWidth =0;
+        self.utv.layer.cornerRadius =5.0;
+        self.utv.font = [UIFont systemFontOfSize:15];
+        self.utv.backgroundColor = UIColorFromRGB(0xdff0ff);
+        //在弹出的键盘上面加一个view来放置退出键盘的Done按钮
+        UIToolbar * topView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+        [topView setBarStyle:UIBarStyleDefault];
+        UIBarButtonItem * btnSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+        UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(dismissKeyBoard)];
+        NSArray * buttonsArray = [NSArray arrayWithObjects:btnSpace, doneButton, nil];
         
-        utv.layer.cornerRadius =5.0;
-        utv.font = [UIFont systemFontOfSize:15];
-        utv.backgroundColor = UIColorFromRGB(0xdff0ff);
-        [cell.contentView addSubview:utv];
-        self.utv=utv;
+        [topView setItems:buttonsArray];
+        [self.utv setInputAccessoryView:topView];
+        [cell.contentView addSubview:self.utv];
         
+    }else if(indexPath.row==3){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"row3"];
+
+        UIButton *button =  [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [button setTitle: @"确定" forState:UIControlStateNormal];
+        
+        [button addTarget:self action:@selector(commit) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont boldSystemFontOfSize:19];
+        [button setBackgroundImage:[UIImage imageNamed:@"btn.png"] forState:UIControlStateNormal];
+        //button.backgroundColor = [UIColor clearColor];
+        
+        [button sizeToFit];
+        button.frame = CGRectMake(20,10.0f,280,38);
+        //container的宽度比UILabel多出是个像素这些像素用于缩进
+        //  CGRect resultFrame = CGRectMake(0.0f, 0.0f,button.frame.size.height,button.frame.size.width + 10.0f);
+        [cell.contentView addSubview:button];
+
+        
+        
+       
     }
     return cell;
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.row == 2){
         return 130;
-    }else{
+    }else {
         return  44;
     }
 }
@@ -202,7 +246,7 @@
 
 - (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     
-    UIView *result = nil;
+    foot;
     UIButton *button =  [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button setTitle: @"确定" forState:UIControlStateNormal];
     
@@ -219,58 +263,160 @@
     //container的宽度比UILabel多出是个像素这些像素用于缩进
     //  CGRect resultFrame = CGRectMake(0.0f, 0.0f,button.frame.size.height,button.frame.size.width + 10.0f);
     
-    result = [[UIView alloc] initWithFrame:button.frame ];
-    [result addSubview:button];
+    foot = [[UIView alloc] initWithFrame:button.frame ];
+    [foot addSubview:button];
     
-    /*
-    //在弹出的键盘上面加一个view来放置退出键盘的Done按钮
-    UIToolbar * topView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-    [topView setBarStyle:UIBarStyleDefault];
-    UIBarButtonItem * btnSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(dismissKeyBoard)];
-    NSArray * buttonsArray = [NSArray arrayWithObjects:btnSpace, doneButton, nil];
-  
-    [topView setItems:buttonsArray];
-    [self.utv setInputAccessoryView:topView];*/
-    
-    return result;
+    return foot;
 }
 
 -(void) commit{
-   /* NSMutableArray *result = [[NSMutableArray alloc] init];
-    XWMessageListItem *item = [[XWMessageListItem alloc] init];
     
-    item.messageTitle = @"关于“三年贷”产品的咨询";
-    item.postDate = @"2014/4/15";
-    item.status = @"已读取";
-    
-    [result addObject:item];
-    
-    XWMyMessageController *controller = [[ XWMyMessageController alloc] initWithNibName:@"XWMyMessageController" bundle:nil];
-    controller.results = result;
-    controller.title = @"我的留言";
-    
-    [self.navigationController pushViewController:controller  animated:YES];*/
-    
-    
-    
-    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"你的留言已提交"    //标题
-                                                   message:Nil   //显示内容
-                                                  delegate:self          //委托，可以点击事件进行处理
-                                         cancelButtonTitle:nil
-                                         otherButtonTitles:@"确定"
-                         //,@"其他",    //添加其他按钮
-                         　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　,　 nil];
-    [view show];
+    NSString *uid =  [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN];
 
-  //  [self.navigationController popViewControllerAnimated:true];
+    
+    NSString* trimedtitle = [self.mtitle.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if([trimedtitle length]==0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请留言标题"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    
+    
+    
+    NSString* trimedMessage = [self.utv.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if([trimedMessage length]==0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入留言正文"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    NSMutableString  *urlstring =  [[NSMutableString alloc] initWithString:SERVER_URL];
+    [urlstring appendString:@"message/leave"];
+    NSURL *url = [NSURL URLWithString:urlstring];
+    
+    
+    NSString *postString =[NSString stringWithFormat:
+                           @"customerID=%@&productID=%@&LeaveMessageTitle=%@&LeaveMessageType=咨询&LeaveMessageContent=%@",uid,[self.info objectForKey:@"productID"],trimedtitle,trimedMessage  ];
+    
+    
+    UIActivityIndicatorView *activityIndicator;
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+    CGPoint center  = CGPointMake(self.view.center.x, self.view.center.y-50);
+    [activityIndicator setCenter:center];
+    [activityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:activityIndicator];
+    
+    [activityIndicator startAnimating];
+    NSLog(postString);
+    
+    //将NSSrring格式的参数转换格式为NSData，POST提交必须用NSData数据。
+    NSData *postData = [postString  dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    NSString *msgLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    
+    
+    //这里设置为 application/x-www-form-urlencoded ，如果设置为其它的，比如text/html;charset=utf-8，或者 text/html 等，都会出错。不知道什么原因。
+    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:msgLength forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setTimeoutInterval:5.0];
+    
+    
+    @try {
+        
+        
+        //NSOperationQueue  *queue = [[NSOperationQueue alloc] init];
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response,  NSData *data, NSError *error) {
+                                   if (error != nil) {
+                                       NSLog(@"Error on load = %@", [error localizedDescription]);
+                                       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
+                                                                                       message:nil
+                                                                                      delegate:self
+                                                                             cancelButtonTitle:@"确定"
+                                                                             otherButtonTitles:nil, nil];
+                                       [activityIndicator stopAnimating];
+                                       
+                                       [alert show];
+                                       
+                                   }else {
+                                       // check the HTTP status
+                                       if ([response isKindOfClass:[NSHTTPURLResponse class]]) {                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                           if (httpResponse.statusCode != 200) {
+                                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
+                                                                                               message:nil
+                                                                                              delegate:self
+                                                                                     cancelButtonTitle:@"确定"
+                                                                                     otherButtonTitles:nil, nil];
+                                               [activityIndicator stopAnimating];
+                                               
+                                               [alert show];
+                                               return;
+                                           }
+                                           NSLog(@"Headers: %@", [httpResponse allHeaderFields]);
+                                           NSDictionary  *rawresult = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves  error:&error];
+                                           
+                                           NSString *message = [rawresult objectForKey:@"message"];
+                                           code = [rawresult objectForKey:@"code"];
+                                           //  NSString *uid = [rawresult objectForKey:@"id"];
+                                           
+                                           NSLog(@"提交 %@", rawresult );
+                                           [activityIndicator stopAnimating];
+                                           
+                                           if(![code isEqualToString:@"101"]){
+                                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"留言提交失败"
+                                                                                               message:[NSString stringWithFormat:@"错误:%@,代码：%@",message,code]
+                                                                                              delegate:self
+                                                                                     cancelButtonTitle:@"确定"
+                                                                                     otherButtonTitles:nil, nil];
+                                               [alert show];
+                                               return;
+                                               
+                                           }else{
+                                            UIAlertView *view = [[UIAlertView alloc] initWithTitle:
+                                                                    [NSString stringWithFormat:@"留言提交成功，请等待银行工作人员的反馈"]//标题
+                                                                                              message:Nil   //显示内容
+                                                                                             delegate:self          //委托，可以点击事件进行处理
+                                                                                    cancelButtonTitle:nil
+                                                                                    otherButtonTitles:@"确定",　nil];
+                                               [view show];
+                                               
+                                           }
+                                       }
+                                   }
+                               }
+         ];
+    }@catch (NSException *exception) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [activityIndicator stopAnimating];
+        
+        [alert show];
+        return;
+    }
+    @finally {
+        
+    }
+
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    [self.navigationController popViewControllerAnimated:true];
-
-}
 
 #pragma mark - UITextField Delegate Methods
 
@@ -282,16 +428,48 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
     //  if (theTextField == self.textField) {
     [theTextField resignFirstResponder];
+    foot.hidden =false;
+
     //}
     return YES;
 }
 
 
 - (BOOL)textFieldDidEndEditing:(UITextField *)theTextField {
-    //  if (theTextField == self.textField) {
     [theTextField resignFirstResponder];
-    //}
+    foot.hidden =false;
     return YES;
 }
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+    foot.hidden =true;
+    
+}
+
+
+- (BOOL)textViewDidEndEditing:(UITextField *)theTextField {
+    [theTextField resignFirstResponder];
+    foot.hidden =false;
+    return YES;
+}
+
+- (void)textViewDidBeginEditing:(UITextField *)textField{
+    
+    foot.hidden =true;
+    
+}
+
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    if([code isEqualToString:@"101"]){
+        [self.navigationController popViewControllerAnimated:true];
+    }
+    
+}
+
 
 @end

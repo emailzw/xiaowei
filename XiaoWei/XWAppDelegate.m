@@ -7,7 +7,8 @@
 //
 
 #import "XWAppDelegate.h"
-#import "MenuViewController.h"
+#import "MainPage.h"
+#import "WXApi.h"
 
 
 @implementation XWAppDelegate
@@ -15,15 +16,28 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    
+   // [WXApi registerApp:@"wxcefa411f34485347"];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	self.viewController = [[MenuViewController alloc] init];
+    
+    NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
+
+	self.viewController = [[MainPage alloc] init];
 	self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:self.viewController] ;
     [self.window makeKeyAndVisible];
     return YES;
 
     
 }
+
+
+//
+//- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+//{
+//    return YES;
+//}
+
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -50,6 +64,14 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+
+void UncaughtExceptionHandler(NSException *exception)
+{
+    NSLog([NSString  stringWithFormat:@"系统出现异常:%@", exception]);
+    
 }
 
 @end

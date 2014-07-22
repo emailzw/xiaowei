@@ -11,6 +11,8 @@
 
 @interface XWMyMessageController : UITableViewController
 @property (nonatomic, retain) NSArray *results;
+@property (strong,nonatomic)  UINavigationController  *navigationController;
+
 - (UIImage*)imageWithImage:(UIImage*)image
               scaledToSize:(CGSize)newSize;
 @end

@@ -13,5 +13,7 @@
 @property (nonatomic, retain) NSString *status;//已读取，未读取
 @property (nonatomic) NSInteger newCount;
 @property (nonatomic, retain) NSString *postDate;
+@property (nonatomic, retain) NSString *mid;
+@property (nonatomic, retain) NSString *productID;
 
 @end
