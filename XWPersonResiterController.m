@@ -70,7 +70,9 @@ UIDatePicker *datePicker;
             tf.placeholder = @"";
             tf.delegate = self;
             tf.clearButtonMode = UITextFieldViewModeWhileEditing;
-            
+            tf.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            tf.autocorrectionType = UITextAutocorrectionTypeNo;
+
             tf.font = [UIFont systemFontOfSize:15];
             tf.textAlignment = NSTextAlignmentLeft;
             tf.keyboardType = UIKeyboardTypeDefault;
@@ -341,6 +343,8 @@ UIDatePicker *datePicker;
     [formatter setDateFormat:dateFormat];
     // 將選取後的日期 填入 UITextField
     self.birthday.text = [NSString stringWithFormat:@"%@",[formatter stringFromDate:datePicker.date]];
+    [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+
     [self.birthday resignFirstResponder];
 }
 
@@ -598,12 +602,27 @@ UIDatePicker *datePicker;
 
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField == self.company) {
-        
-        [self.tableView setContentOffset:CGPointMake(0, 120) animated:YES];
-    }else if (textField == self.contactPhone) {
-        
-        [self.tableView setContentOffset:CGPointMake(0, 150) animated:YES];
+    if(DEVICE_IS_IPHONE4){
+        if (textField == self.company) {
+            
+            [self.tableView setContentOffset:CGPointMake(0, 120) animated:YES];
+        }else if (textField == self.contactPhone) {
+            
+            [self.tableView setContentOffset:CGPointMake(0, 150) animated:YES];
+        }else if( textField == self.customerName){
+            [self.tableView setContentOffset:CGPointMake(0, 50) animated:YES];
+        }else if( textField == self.birthday){
+            [self.tableView setContentOffset:CGPointMake(0, 100) animated:YES];
+        }
+
+    }else{
+        if (textField == self.company) {
+            
+            [self.tableView setContentOffset:CGPointMake(0, 120) animated:YES];
+        }else if (textField == self.contactPhone) {
+            
+            [self.tableView setContentOffset:CGPointMake(0, 150) animated:YES];
+        }
     }
 }
 

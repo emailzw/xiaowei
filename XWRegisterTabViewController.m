@@ -48,15 +48,22 @@
     [self.segment setSelectedSegmentIndex:0];
     [self.view addSubview:self.segment];
     
-    
-    self.tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 100, 320, 468)];
-   //  self.person = [[XWRegisterPersonController alloc] init];
+    if(DEVICE_IS_IPHONE4){
+        self.tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 100, 320, 380)];
 
+    }else {
+        self.tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 100, 320, 468)];
+    }
+        //  self.person = [[XWRegisterPersonController alloc] init];
+    self.tableview.bounces =true;
+    self.tableview.scrollEnabled =true;
+//    self.tableview.alwaysBounceVertical =false;
     self.company = [[XWComanyResiterController alloc] init];
     self.tableview.dataSource = self.company;
     self.tableview.delegate =  self.company;
     self.company.tableView = self.tableview;
     self.company.navigationController = self.navigationController;
+    
     
 
     

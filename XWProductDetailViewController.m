@@ -591,7 +591,7 @@
     @try{
         
         NSMutableString  *url =  [[NSMutableString alloc] initWithString:SERVER_URL];
-        [url appendString: [NSString  stringWithFormat: @"/collect/add/%@/%@",uid,self.productID]];
+        [url appendString: [NSString  stringWithFormat: @"collect/add/%@/%@",uid,self.productID]];
         
         NSError *error;
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
@@ -674,7 +674,7 @@
         }
 
         NSMutableString  *url =  [[NSMutableString alloc] initWithString:SERVER_URL];
-        [url appendString: [NSString  stringWithFormat: @"/collect/cancel/%@/%@",uid,self.productID]];
+        [url appendString: [NSString  stringWithFormat: @"collect/cancel/%@/%@",uid,self.productID]];
         
         NSError *error;
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
@@ -889,7 +889,7 @@
         @try{
             
             NSMutableString  *url =  [[NSMutableString alloc] initWithString:SERVER_URL];
-            [url appendString: [NSString stringWithFormat: @"/message/hotline/%@",self.productID]];
+            [url appendString: [NSString stringWithFormat: @"message/hotline/%@",self.productID]];
             
             NSError *error;
             NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:3];

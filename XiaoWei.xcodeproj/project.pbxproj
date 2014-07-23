@@ -89,6 +89,8 @@
 		72CFE37F1972C4FA00A0E31D /* MainPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CFE37E1972C4FA00A0E31D /* MainPage.m */; };
 		72CFE3851972DFEB00A0E31D /* XWLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CFE3831972DFEB00A0E31D /* XWLoginController.m */; };
 		72CFE3861972DFEB00A0E31D /* XWLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72CFE3841972DFEB00A0E31D /* XWLoginController.xib */; };
+		72ED153C197FBAA80089B4DC /* bottom-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 72ED153B197FBAA80089B4DC /* bottom-small.png */; };
+		72ED153E197FBAC50089B4DC /* bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 72ED153D197FBAC50089B4DC /* bottom.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +229,8 @@
 		72CFE3821972DFEB00A0E31D /* XWLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWLoginController.h; sourceTree = "<group>"; };
 		72CFE3831972DFEB00A0E31D /* XWLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWLoginController.m; sourceTree = "<group>"; };
 		72CFE3841972DFEB00A0E31D /* XWLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWLoginController.xib; sourceTree = "<group>"; };
+		72ED153B197FBAA80089B4DC /* bottom-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bottom-small.png"; path = "image/bottom-small.png"; sourceTree = "<group>"; };
+		72ED153D197FBAC50089B4DC /* bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bottom.png; path = image/bottom.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -495,6 +499,8 @@
 		72C34004190956230070FA26 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				72ED153D197FBAC50089B4DC /* bottom.png */,
+				72ED153B197FBAA80089B4DC /* bottom-small.png */,
 				72847E63197E6E4600CAFE39 /* main-message.png */,
 				72847E64197E6E4600CAFE39 /* usericon.png */,
 				72847E61197E6DDB00CAFE39 /* middle.jpg */,
@@ -645,6 +651,7 @@
 				72207DD719173069004A1F97 /* XWProductDetailViewController.xib in Resources */,
 				725D189419287F7600B9CE31 /* XWMymessageDetailController.xib in Resources */,
 				72207DCD191722E7004A1F97 /* icon.png in Resources */,
+				72ED153E197FBAC50089B4DC /* bottom.png in Resources */,
 				725D1885192307F500B9CE31 /* XWMyMessageController.xib in Resources */,
 				72C33FD619094B4D0070FA26 /* InfoPlist.strings in Resources */,
 				72AF64F21935A55A004FA986 /* XWNewinfoViewController.xib in Resources */,
@@ -659,6 +666,7 @@
 				7219A2041916486A00A79E2F /* XWSearchProductResultViewController.xib in Resources */,
 				7239A5FD190F94AD00F2004E /* XWGuarantSelectViewController.xib in Resources */,
 				72847E46197E5F4700CAFE39 /* query.png in Resources */,
+				72ED153C197FBAA80089B4DC /* bottom-small.png in Resources */,
 				725D1880192109F700B9CE31 /* XWContactBankViewController.xib in Resources */,
 				72AA4C6D1936255900A0B3FD /* XWChangePasswordViewController.xib in Resources */,
 				72207DCF19172690004A1F97 /* icon@2x.png in Resources */,
@@ -807,7 +815,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Zhang (H65MZCP645)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -825,6 +833,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "3F119103-16C7-46EC-8E5D-1E6839ACCE00";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -845,7 +854,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Wei Zhang (H65MZCP645)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Zhang (H65MZCP645)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -856,6 +866,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "3F119103-16C7-46EC-8E5D-1E6839ACCE00";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -866,16 +877,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Wei Zhang (H65MZCP645)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Zhang (H65MZCP645)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XiaoWei/XiaoWei-Prefix.pch";
 				INFOPLIST_FILE = "XiaoWei/XiaoWei-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeixinActivity/Resources",
 				);
 				PRODUCT_NAME = "小微信贷";
+				PROVISIONING_PROFILE = "3F119103-16C7-46EC-8E5D-1E6839ACCE00";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -886,16 +899,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Wei Zhang (H65MZCP645)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Zhang (H65MZCP645)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XiaoWei/XiaoWei-Prefix.pch";
 				INFOPLIST_FILE = "XiaoWei/XiaoWei-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeixinActivity/Resources",
 				);
 				PRODUCT_NAME = "小微信贷";
+				PROVISIONING_PROFILE = "3F119103-16C7-46EC-8E5D-1E6839ACCE00";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

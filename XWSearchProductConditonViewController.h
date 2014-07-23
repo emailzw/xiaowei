@@ -38,4 +38,8 @@
 
 + (id) getOptionsFromServer:(NSString*) method  View:(UIView*) view;
 
+
+//@property (strong,nonatomic,retain)   UINavigationController  *navigationController;
+
+
 @end

@@ -697,75 +697,75 @@
 - (void)commit {
     @try{
         //数据验证
-        //    if([self.mainbodyOptions count]==0){
-        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择贷款主体"
-        //                                                        message:nil
-        //                                                       delegate:self
-        //                                              cancelButtonTitle:@"确定"
-        //                                              otherButtonTitles:nil, nil];
-        //        [alert show];
-        //        return;
-        //    }
-        //
-        //
-        //    if([self.tradeOptions count]==0){
-        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择所属行业或类型"
-        //                                                        message:nil
-        //                                                       delegate:self
-        //                                              cancelButtonTitle:@"确定"
-        //                                              otherButtonTitles:nil, nil];
-        //        [alert show];
-        //        return;
-        //    }
-        //
+        if([self.mainbodyOptions count]==0){
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择贷款主体"
+                                                                message:nil
+                                                            delegate:self
+                                                      cancelButtonTitle:@"确定"
+                                                      otherButtonTitles:nil, nil];
+            [alert show];
+                return;
+            }
+        
+        
+            if([self.tradeOptions count]==0){
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择所属行业或类型"
+                                                                message:nil
+                                                               delegate:self
+                                                      cancelButtonTitle:@"确定"
+                                                      otherButtonTitles:nil, nil];
+                [alert show];
+                return;
+            }
+        
         NSString* trimedAmount = [self.amountDemand.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         
-        //    if([trimedAmount length]==0){
-        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入资金需求"
-        //                                                        message:nil
-        //                                                       delegate:self
-        //                                              cancelButtonTitle:@"确定"
-        //                                              otherButtonTitles:nil, nil];
-        //        [alert show];
-        //        return;
-        //    }
-        //
-        //    if(![self isPureInt:trimedAmount]){
-        //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"资金需求格式错误"
-        //                                                            message:nil
-        //                                                           delegate:self
-        //                                                  cancelButtonTitle:@"确定"
-        //                                                  otherButtonTitles:nil, nil];
-        //            [alert show];
-        //            return;
-        //
-        //    }
-        //
-        //
+       /*     if([trimedAmount length]==0){
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入资金需求"
+                                                                message:nil
+                                                               delegate:self
+                                                      cancelButtonTitle:@"确定"
+                                                      otherButtonTitles:nil, nil];
+                [alert show];
+                return;
+            }
+        */
+        /*    if(![self isPureInt:trimedAmount]){
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"资金需求格式错误"
+                                                                    message:nil
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"确定"
+                                                          otherButtonTitles:nil, nil];
+                    [alert show];
+                    return;
         
-        NSString* trimedloanLimitPeriod = [self.loanLimitPeriod.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        //
-        //    if([trimedloanLimitPeriod length]==0){
-        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入贷款期限"
-        //                                                        message:nil
-        //                                                       delegate:self
-        //                                              cancelButtonTitle:@"确定"
-        //                                              otherButtonTitles:nil, nil];
-        //        [alert show];
-        //        return;
-        //    }
-        //
-        //    if(![self isPureInt:trimedloanLimitPeriod]){
-        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"贷款期限格式错误"
-        //                                                        message:nil
-        //                                                       delegate:self
-        //                                              cancelButtonTitle:@"确定"
-        //                                              otherButtonTitles:nil, nil];
-        //        [alert show];
-        //        return;
-        //
-        //    }
-        //
+            }*/
+        
+        
+        
+      NSString* trimedloanLimitPeriod = [self.loanLimitPeriod.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        /*
+            if([trimedloanLimitPeriod length]==0){
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入贷款期限"
+                                                                message:nil
+                                                               delegate:self
+                                                      cancelButtonTitle:@"确定"
+                                                      otherButtonTitles:nil, nil];
+                [alert show];
+                return;
+            }
+        
+            if(![self isPureInt:trimedloanLimitPeriod]){
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"贷款期限格式错误"
+                                                               message:nil
+                                                              delegate:self
+                                                     cancelButtonTitle:@"确定"
+                                                     otherButtonTitles:nil, nil];
+               [alert show];
+                return;
+       
+            }*/
+        
         //
         //
         //    if([self.establishYearOptions count]==0){

@@ -163,7 +163,8 @@ NSString *code;
                                                backgroundColor:UIColorFromRGB(0xdff0ff)
                              ];
             tf = self.userCode;
-            
+            tf.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            tf.autocorrectionType = UITextAutocorrectionTypeNo;
             tf.placeholder = @"";
             tf.delegate = self;
             tf.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -262,7 +263,7 @@ NSString *code;
     if([trimedUsercode length]==0){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入用户名"
                                                         message:nil
-                                                       delegate:self
+                                                       delegate:nil
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil, nil];
         [alert show];
@@ -277,7 +278,7 @@ NSString *code;
     if([trimedPassword length]==0){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入用户密码"
                                                         message:nil
-                                                       delegate:self
+                                                       delegate:nil
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil, nil];
         [alert show];
@@ -328,7 +329,7 @@ NSString *code;
                                        NSLog(@"Error on load = %@", [error localizedDescription]);
                                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
                                                                                        message:nil
-                                                                                      delegate:self
+                                                                                      delegate:nil
                                                                              cancelButtonTitle:@"确定"
                                                                              otherButtonTitles:nil, nil];
                                        [activityIndicator stopAnimating];
@@ -341,7 +342,7 @@ NSString *code;
                                            if (httpResponse.statusCode != 200) {
                                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
                                                                                                message:nil
-                                                                                              delegate:self
+                                                                                              delegate:nil
                                                                                      cancelButtonTitle:@"确定"
                                                                                      otherButtonTitles:nil, nil];
                                                [activityIndicator stopAnimating];
@@ -362,7 +363,7 @@ NSString *code;
                                            if(![code isEqualToString:@"101"]){
                                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"用户登录失败"
                                                                                                message:[NSString stringWithFormat:@"错误:%@,代码：%@",message,code]
-                                                                                              delegate:self
+                                                                                              delegate:nil
                                                                                      cancelButtonTitle:@"确定"
                                                                                      otherButtonTitles:nil, nil];
                                                [alert show];

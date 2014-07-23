@@ -78,6 +78,9 @@
             tf.placeholder = @"";
             tf.delegate = self;
             tf.clearButtonMode = UITextFieldViewModeWhileEditing;
+            tf.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            tf.autocorrectionType = UITextAutocorrectionTypeNo;
+
             
             tf.font = [UIFont systemFontOfSize:15];
             tf.textAlignment = NSTextAlignmentLeft;
@@ -639,12 +642,25 @@
 
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField == self.contactPerson) {
-        
-        [self.tableView setContentOffset:CGPointMake(0, 132) animated:YES];
-    }else if (textField == self.contactPhone) {
-        
-        [self.tableView setContentOffset:CGPointMake(0, 185) animated:YES];
+   
+    if(DEVICE_IS_IPHONE4){
+        if (textField == self.contactPerson) {
+            [self.tableView setContentOffset:CGPointMake(0, 200) animated:YES];
+        }else if (textField == self.contactPhone) {
+            
+            [self.tableView setContentOffset:CGPointMake(0, 300) animated:YES];
+        }
+        else if (textField == self.customerName) {
+            
+            [self.tableView setContentOffset:CGPointMake(0, 50) animated:YES];
+        }
+    }else{
+        if (textField == self.contactPerson) {
+            [self.tableView setContentOffset:CGPointMake(0, 132) animated:YES];
+        }else if (textField == self.contactPhone) {
+            
+            [self.tableView setContentOffset:CGPointMake(0, 185) animated:YES];
+        }
     }
 }
 

@@ -10,7 +10,7 @@
 #import "XWComanyResiterController.h"
 #import "XWPersonResiterController.h"
 
-@interface XWRegisterTabViewController : UITableViewController 
+@interface XWRegisterTabViewController : UIViewController 
 @property (nonatomic, strong) XWPersonResiterController *person;
 @property (nonatomic, strong) XWComanyResiterController *company;
 @property (nonatomic, strong) UISegmentedControl *segment;

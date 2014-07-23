@@ -199,7 +199,7 @@
     
     
     NSMutableString  *url =  [[NSMutableString alloc] initWithString:SERVER_URL];
-    [url appendString: [NSString  stringWithFormat: @"/message/%@/%@/%@",uid,item.productID,item.mid]];
+    [url appendString: [NSString  stringWithFormat: @"message/%@/%@/%@",uid,item.productID,item.mid]];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     
     
