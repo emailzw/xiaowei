@@ -10,6 +10,7 @@
 #import "XWContactBankViewController.h"
 #import "XWLoginController.h"
 #import "DXAlertView.h"
+#import "XWBankListTableViewController.h"
 
 @interface XWProductDetailViewController ()
 
@@ -749,7 +750,7 @@
                                   delegate:self
                                   cancelButtonTitle:@"取消"
                                   destructiveButtonTitle:nil
-                                  otherButtonTitles:@"我要留言", @"产品链接或联系人热线",nil];
+                                  otherButtonTitles:@"我要留言", @"产品链接或联系人热线",@"网点信息",nil];
     actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [actionSheet showInView:self.view];
     
@@ -884,7 +885,7 @@
         [self.navigationController pushViewController:controller  animated:YES];
         
     }
-    //网点信息
+    //产品链接或联系人热线
     else if(buttonIndex == 1){
         @try{
             
@@ -931,6 +932,7 @@
             //网址
             UITextView *utl = [[UITextView alloc] initWithFrame:CGRectMake(20, 20, 180, 80)];
             utl.text = message;
+//            utl.text = @"联系电话：95599";
             utl.backgroundColor = [UIColor clearColor];
             utl.editable = NO;
             utl.dataDetectorTypes = UIDataDetectorTypeAll;
@@ -965,6 +967,107 @@
             [alert show];
             return  ;
         }
+    }
+    
+    //网点信息
+    else if(buttonIndex == 2){
+
+        NSMutableString  *url =  [[NSMutableString alloc] initWithString:SERVER_URL];
+        [url appendString: [NSString  stringWithFormat: @"/message/branchnetwork/%@",self.productID]];
+      //  [url appendString: [NSString  stringWithFormat: @"/message/branchnetwork/%@",@"6"]];
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        
+        
+        UIActivityIndicatorView *activityIndicator;
+        activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+        CGPoint center  = CGPointMake(self.view.center.x, self.view.center.y-50);
+        [activityIndicator setCenter:center];
+        [activityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+        [self.view addSubview:activityIndicator];
+        
+        [activityIndicator startAnimating];
+        
+        
+        @try {
+            [NSURLConnection sendAsynchronousRequest:request
+                                               queue:[NSOperationQueue mainQueue]
+                                   completionHandler:^(NSURLResponse *response,  NSData *data, NSError *error) {
+                                       if (error != nil) {
+                                           NSLog(@"Error on load = %@", [error localizedDescription]);
+                                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"通讯错误"
+                                                                                           message:nil
+                                                                                          delegate:nil
+                                                                                 cancelButtonTitle:@"确定"
+                                                                                 otherButtonTitles:nil, nil];
+                                           [alert show];
+                                           return;
+                                       }else {
+                                           [activityIndicator stopAnimating];
+                                           // check the HTTP status
+                                           if ([response isKindOfClass:[NSHTTPURLResponse class]]) {                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                               if (httpResponse.statusCode != 200) {
+                                                   return;                    }
+                                               NSLog(@"Headers: %@", [httpResponse allHeaderFields]);
+                                               NSDictionary  *rawresult = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves  error:&error];
+                                               
+                                               NSArray *queryproducts = [rawresult objectForKey:@"message"];
+                                               NSString *code = [rawresult objectForKey:@"code"];
+                                               NSLog(@"查询结果 %@", rawresult );
+                                               
+                                               
+                                               if(![code isEqualToString:@"101"]){
+                                                   UIAlertView * alert =
+                                                   [[UIAlertView alloc]
+                                                    initWithTitle:@"错误"
+                                                    message: [[NSString alloc] initWithFormat:@"查询失败:%@",code]
+                                                    delegate:nil
+                                                    cancelButtonTitle:nil
+                                                    otherButtonTitles:@"确定", nil];
+                                                   [alert show];
+                                                   return;
+                                                   
+                                               }else if([code isEqualToString:@"101"]){
+                                                   NSMutableArray *result = [[NSMutableArray alloc] init];
+                                                   
+                                                   NSMutableDictionary *item ;
+                                                   
+                                                   for(int i=0;i<[queryproducts count];i++){
+                                                       item = [[NSMutableDictionary alloc] initWithDictionary:queryproducts[i]];
+                                                       
+                                                       [result addObject:item];
+                                                       
+                                                   }
+                                                   XWBankListTableViewController *viewController = [[XWBankListTableViewController alloc] init] ;
+                                                   viewController.results = result;
+                                                   [self.navigationController pushViewController:viewController animated:YES];
+                                               }//end 101
+                                           }
+                                       }
+                                   }
+             ];
+            
+            
+            
+            
+        }@catch (NSException *exception) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"对不起，服务故障，请稍后再试"
+                                                            message:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil, nil];
+            [activityIndicator stopAnimating];
+            
+            [alert show];
+            return;
+        }
+        @finally {
+            
+        }
+
+    
+    
+    
     }
     
 }

@@ -429,7 +429,11 @@
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        [button addTarget:self action:@selector(commit) forControlEvents:UIControlEventTouchUpInside];
+      //  [button addTarget:self action:@selector(commit) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(commit) object:button];
+        [self performSelector:@selector(commit) withObject:button afterDelay:5];
         
         
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

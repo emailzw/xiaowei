@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72182AC2199CE91E003B5E89 /* XWBankListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72182AC0199CE91E003B5E89 /* XWBankListTableViewController.m */; };
+		72182AC3199CE91E003B5E89 /* XWBankListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72182AC1199CE91E003B5E89 /* XWBankListTableViewController.xib */; };
 		7219A2031916486A00A79E2F /* XWSearchProductResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7219A2011916486A00A79E2F /* XWSearchProductResultViewController.m */; };
 		7219A2041916486A00A79E2F /* XWSearchProductResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7219A2021916486A00A79E2F /* XWSearchProductResultViewController.xib */; };
 		7219A2071916499200A79E2F /* XWSearchResultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7219A2061916499200A79E2F /* XWSearchResultItem.m */; };
@@ -104,6 +106,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		72182ABF199CE91E003B5E89 /* XWBankListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWBankListTableViewController.h; sourceTree = "<group>"; };
+		72182AC0199CE91E003B5E89 /* XWBankListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWBankListTableViewController.m; sourceTree = "<group>"; };
+		72182AC1199CE91E003B5E89 /* XWBankListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWBankListTableViewController.xib; sourceTree = "<group>"; };
 		7219A2001916486A00A79E2F /* XWSearchProductResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSearchProductResultViewController.h; sourceTree = "<group>"; };
 		7219A2011916486A00A79E2F /* XWSearchProductResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSearchProductResultViewController.m; sourceTree = "<group>"; };
 		7219A2021916486A00A79E2F /* XWSearchProductResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWSearchProductResultViewController.xib; sourceTree = "<group>"; };
@@ -408,6 +413,9 @@
 				72207DD319173068004A1F97 /* XWProductDetailViewController.h */,
 				72207DD419173069004A1F97 /* XWProductDetailViewController.m */,
 				72207DD519173069004A1F97 /* XWProductDetailViewController.xib */,
+				72182ABF199CE91E003B5E89 /* XWBankListTableViewController.h */,
+				72182AC0199CE91E003B5E89 /* XWBankListTableViewController.m */,
+				72182AC1199CE91E003B5E89 /* XWBankListTableViewController.xib */,
 			);
 			name = ProductSearch;
 			sourceTree = "<group>";
@@ -663,6 +671,7 @@
 				72CA6A6F192D01350041F728 /* XWRegisterController.xib in Resources */,
 				72AF64E519359317004FA986 /* XWMyfavolistViewController.xib in Resources */,
 				72847E47197E5F4700CAFE39 /* register.png in Resources */,
+				72182AC3199CE91E003B5E89 /* XWBankListTableViewController.xib in Resources */,
 				7219A2041916486A00A79E2F /* XWSearchProductResultViewController.xib in Resources */,
 				7239A5FD190F94AD00F2004E /* XWGuarantSelectViewController.xib in Resources */,
 				72847E46197E5F4700CAFE39 /* query.png in Resources */,
@@ -715,6 +724,7 @@
 				72847E31197E3BCC00CAFE39 /* NAMenuItem.m in Sources */,
 				72B959EB1970F06A00688786 /* XWPersonResiterController.m in Sources */,
 				72AF64E91935A2A9004FA986 /* XWAboutViewController.m in Sources */,
+				72182AC2199CE91E003B5E89 /* XWBankListTableViewController.m in Sources */,
 				72CFE36B197125A000A0E31D /* TOActivitySafari.m in Sources */,
 				722C2B90190D71330019D715 /* XWSearchProductConditonViewController.m in Sources */,
 				7219A2031916486A00A79E2F /* XWSearchProductResultViewController.m in Sources */,
@@ -877,18 +887,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Wei Zhang (H65MZCP645)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Zhang (H65MZCP645)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Zhang (PGXMWWKS24)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Zhang (PGXMWWKS24)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XiaoWei/XiaoWei-Prefix.pch";
 				INFOPLIST_FILE = "XiaoWei/XiaoWei-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeixinActivity/Resources",
 				);
 				PRODUCT_NAME = "小微信贷";
-				PROVISIONING_PROFILE = "3F119103-16C7-46EC-8E5D-1E6839ACCE00";
+				PROVISIONING_PROFILE = "F3A71E85-C0E1-4834-9D9F-4F0166EE5B72";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -899,18 +909,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Wei Zhang (H65MZCP645)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Zhang (H65MZCP645)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Zhang (PGXMWWKS24)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Zhang (PGXMWWKS24)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XiaoWei/XiaoWei-Prefix.pch";
 				INFOPLIST_FILE = "XiaoWei/XiaoWei-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeixinActivity/Resources",
 				);
 				PRODUCT_NAME = "小微信贷";
-				PROVISIONING_PROFILE = "3F119103-16C7-46EC-8E5D-1E6839ACCE00";
+				PROVISIONING_PROFILE = "F3A71E85-C0E1-4834-9D9F-4F0166EE5B72";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

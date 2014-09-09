@@ -107,7 +107,7 @@
     //    self.navigationItem.titleView = lbtitle;
     
     
-	self.navigationItem.title = @"小微企业贷款查询";
+	self.navigationItem.title = @"上海银行业小微企业贷款产品查询";
     //    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:77.0f/255.0f green:173.0f/255.0f blue:255.0f/255.0f alpha:1]];
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x4dadff)];
     
@@ -796,25 +796,41 @@
                                            NSLog(@"Headers: %@", [httpResponse allHeaderFields]);
                                            NSDictionary  *rawresult = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves  error:&error];
                                            
-                                           NSMutableDictionary *t = [rawresult objectForKey:@"message"];                                         
                                            
-                                           NSMutableDictionary *customerinfo = [[NSMutableDictionary alloc] initWithDictionary:t];
                                            
                                            NSString *code = [rawresult objectForKey:@"code"];
                                            NSLog(@"查询结果 %@", rawresult );
+                                           
+                                      
                                            
                                            if(![code isEqualToString:@"101"]){
                                                UIAlertView * alert =
                                                [[UIAlertView alloc]
                                                 initWithTitle:@"错误"
-                                                message: [[NSString alloc] initWithFormat:@"用户信息获取:%@",code]
+                                                message: [[NSString alloc] initWithFormat:@"用户信息获取失败:%@",code]
                                                 delegate:nil
                                                 cancelButtonTitle:nil
                                                 otherButtonTitles:@"确定", nil];
                                                [alert show];
+                                               
+                                               NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+                                               
+                                               
+                                               [defaults removeObjectForKey:LOGIN];
+                                               [defaults removeObjectForKey:LOGIN_NAME];
+                                               
+                                               [defaults synchronize];
+
                                                return;
                                                
                                            }else if([code isEqualToString:@"101"]){
+                                               
+                                               
+                                               NSMutableDictionary *t = [rawresult objectForKey:@"message"];
+                                               
+                                               NSMutableDictionary *customerinfo = [[NSMutableDictionary alloc] initWithDictionary:t];
+                                               
+                                               
                                                 XWMyinfoTabViewController *viewController = [[XWMyinfoTabViewController alloc] init] ;
                                                viewController.info = customerinfo;
                                               // viewController.navigationController = self.navigationController;

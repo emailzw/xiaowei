@@ -589,7 +589,12 @@
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        [button addTarget:self action:@selector(commit) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(commit:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        
+      //  [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(commit) object:button];
+        //[self performSelector:@selector(commit) withObject:button afterDelay:2];
         
         
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -694,8 +699,14 @@
 #pragma mark - 自定义函数
 
 
-- (void)commit {
+- (void)commit :(id)sender {
     @try{
+    
+        UIButton *btn =sender;
+        if(btn.selected){
+            return;
+        }
+        btn.selected=YES;
         //数据验证
         if([self.mainbodyOptions count]==0){
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择贷款主体"
@@ -934,7 +945,7 @@
         
         
             
-        
+      
         
         
         @try {
@@ -943,6 +954,8 @@
             [NSURLConnection sendAsynchronousRequest:request
                                                queue:[NSOperationQueue mainQueue]
                                    completionHandler:^(NSURLResponse *response,  NSData *data, NSError *error) {
+                                       btn.selected=NO;
+
                                        if (error != nil) {
                                            [activityIndicator stopAnimating];
                                            NSLog(@"Error on load = %@", [error localizedDescription]);

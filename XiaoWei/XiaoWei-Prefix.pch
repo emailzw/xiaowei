@@ -24,6 +24,8 @@
 
 // constant define
 #define SERVER_URL @"http://222.73.130.17:3000/"
+#define SERVER_URL_DEV @"http://loan.tonknet.com/"
+
 
 #define LOGIN @"UserCode"
 #define LOGIN_NAME @"UserName"
