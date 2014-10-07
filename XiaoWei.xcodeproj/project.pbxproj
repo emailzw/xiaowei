@@ -611,7 +611,7 @@
 				ORGANIZATIONNAME = Tonknet;
 				TargetAttributes = {
 					72C33FC719094B4D0070FA26 = {
-						DevelopmentTeam = H65MZCP645;
+						DevelopmentTeam = 5P3F2E2WNS;
 					};
 					72C33FE819094B4D0070FA26 = {
 						TestTargetID = 72C33FC719094B4D0070FA26;
@@ -825,7 +825,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Zhang (H65MZCP645)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Banking Association (5P3F2E2WNS)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -843,7 +843,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "3F119103-16C7-46EC-8E5D-1E6839ACCE00";
+				PROVISIONING_PROFILE = "187626f6-dd30-42a7-9602-04536ecd1b0f";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -864,8 +864,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Wei Zhang (H65MZCP645)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Zhang (H65MZCP645)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Banking Association (5P3F2E2WNS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Banking Association (5P3F2E2WNS)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -876,7 +876,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "3F119103-16C7-46EC-8E5D-1E6839ACCE00";
+				PROVISIONING_PROFILE = "187626f6-dd30-42a7-9602-04536ecd1b0f";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -887,8 +887,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Zhang (PGXMWWKS24)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Zhang (PGXMWWKS24)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XiaoWei/XiaoWei-Prefix.pch";
 				INFOPLIST_FILE = "XiaoWei/XiaoWei-Info.plist";
@@ -898,7 +898,7 @@
 					"$(PROJECT_DIR)/WeixinActivity/Resources",
 				);
 				PRODUCT_NAME = "小微信贷";
-				PROVISIONING_PROFILE = "F3A71E85-C0E1-4834-9D9F-4F0166EE5B72";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -909,8 +909,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Zhang (PGXMWWKS24)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Zhang (PGXMWWKS24)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XiaoWei/XiaoWei-Prefix.pch";
 				INFOPLIST_FILE = "XiaoWei/XiaoWei-Info.plist";
@@ -920,7 +920,7 @@
 					"$(PROJECT_DIR)/WeixinActivity/Resources",
 				);
 				PRODUCT_NAME = "小微信贷";
-				PROVISIONING_PROFILE = "F3A71E85-C0E1-4834-9D9F-4F0166EE5B72";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

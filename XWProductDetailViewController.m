@@ -973,7 +973,7 @@
     else if(buttonIndex == 2){
 
         NSMutableString  *url =  [[NSMutableString alloc] initWithString:SERVER_URL];
-        [url appendString: [NSString  stringWithFormat: @"/message/branchnetwork/%@",self.productID]];
+        [url appendString: [NSString  stringWithFormat: @"message/branchnetwork/%@",self.productID]];
       //  [url appendString: [NSString  stringWithFormat: @"/message/branchnetwork/%@",@"6"]];
         
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
