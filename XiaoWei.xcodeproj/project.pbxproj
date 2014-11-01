@@ -825,6 +825,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Banking Association (5P3F2E2WNS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Banking Association (5P3F2E2WNS)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -887,8 +888,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Banking Association (5P3F2E2WNS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Banking Association (5P3F2E2WNS)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XiaoWei/XiaoWei-Prefix.pch";
 				INFOPLIST_FILE = "XiaoWei/XiaoWei-Info.plist";
@@ -898,7 +899,7 @@
 					"$(PROJECT_DIR)/WeixinActivity/Resources",
 				);
 				PRODUCT_NAME = "小微信贷";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "187626f6-dd30-42a7-9602-04536ecd1b0f";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -909,8 +910,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Banking Association (5P3F2E2WNS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Banking Association (5P3F2E2WNS)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XiaoWei/XiaoWei-Prefix.pch";
 				INFOPLIST_FILE = "XiaoWei/XiaoWei-Info.plist";
@@ -920,7 +921,7 @@
 					"$(PROJECT_DIR)/WeixinActivity/Resources",
 				);
 				PRODUCT_NAME = "小微信贷";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "187626f6-dd30-42a7-9602-04536ecd1b0f";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

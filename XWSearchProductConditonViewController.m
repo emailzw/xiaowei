@@ -1361,16 +1361,17 @@
             
             
             
-            NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"customertype" View:self.view ];
+//            NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"customertype" View:self.view ];
             
-            /*
+            
              
              NSMutableArray *items = [[NSMutableArray alloc] init];
-             NSDictionary *section = [NSDictionary dictionaryWithObjectsAndKeys:@"公司",@"Value",@"company",@"Key",nil];
+             NSDictionary *section = [NSDictionary dictionaryWithObjectsAndKeys:@"企业",@"Value",@"company",@"Key",nil];
              [items addObject:section];
              section = [NSDictionary dictionaryWithObjectsAndKeys:@"个人",@"Value",@"person",@"Key",nil];
              [items addObject:section];
-             */
+            
+            
             self.mainBody.menuItems = items;
             self.mainbodyOptions =  [[NSMutableArray alloc] init];
             self.mainBody.target = self.mainbodyOptions;
@@ -1387,24 +1388,24 @@
         if(!self.trade){
             self.trade = [[ XWSingleSelectionTableViewController alloc] initWithNibName:@"XWSingleSelectionTableViewController" bundle:nil];
             
-            NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"typeOfEnterprise"  View:self.view];
+//            NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"typeOfEnterprise"  View:self.view];
             
             
             
-            /*
+            
              
              NSMutableArray *items = [[NSMutableArray alloc] init];
-             NSDictionary *section = [NSDictionary dictionaryWithObjectsAndKeys:@"制造业",@"Value",@"company",@"Key",nil];
+             NSDictionary *section = [NSDictionary dictionaryWithObjectsAndKeys:@"制造业企业",@"Value",@"制造业企业",@"Key",nil];
              [items addObject:section];
-             section = [NSDictionary dictionaryWithObjectsAndKeys:@"批发、零售业",@"Value",@"person",@"Key",nil];
+             section = [NSDictionary dictionaryWithObjectsAndKeys:@"服务业企业",@"Value",@"person",@"Key",nil];
              [items addObject:section];
-             section = [NSDictionary dictionaryWithObjectsAndKeys:@"服务业",@"Value",@"person",@"Key",nil];
+             section = [NSDictionary dictionaryWithObjectsAndKeys:@"科技型企业",@"Value",@"person",@"Key",nil];
              [items addObject:section];
-             section = [NSDictionary dictionaryWithObjectsAndKeys:@"科技型",@"Value",@"person",@"Key",nil];
+             section = [NSDictionary dictionaryWithObjectsAndKeys:@"批发、零售企业",@"Value",@"person",@"Key",nil];
              [items addObject:section];
              section = [NSDictionary dictionaryWithObjectsAndKeys:@"其他",@"Value",@"person",@"Key",nil];
              [items addObject:section];
-             */
+            
             
             
             self.trade.menuItems = items;
@@ -1420,7 +1421,7 @@
         
     }//成立年限
     else if (indexPath.row == 4){
-        if(!self.establishYear){
+//        if(!self.establishYear){
             self.establishYear = [[ XWSingleSelectionTableViewController alloc] initWithNibName:@"XWSingleSelectionTableViewController" bundle:nil];
             
             NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"ageLimit2"  View:self.view];
@@ -1449,14 +1450,14 @@
             self.establishYear.title =@"成立年限";
             
             
-        }
+//        }
         
         [self.navigationController pushViewController:self.establishYear  animated:YES];
         
         
     }//企业注册地
     else if (indexPath.row == 5){
-        if(!self.registerPlace){
+//        if(!self.registerPlace){
             self.registerPlace = [[ XWSingleSelectionTableViewController alloc] initWithNibName:@"XWSingleSelectionTableViewController" bundle:nil];
             
             NSArray *items =  [XWSearchProductConditonViewController getOptionsFromServer:@"registerAddrType2"  View:self.view];
@@ -1479,7 +1480,7 @@
             self.registerPlace.title =@"企业注册地";
             
             
-        }
+//        }
         
         [self.navigationController pushViewController:self.registerPlace  animated:YES];
         
@@ -1487,9 +1488,9 @@
     }//担保方式
     else if (indexPath.row == 8){
         
-        if(!self.guarantSelectViewController){
+//        if(!self.guarantSelectViewController){
             self.guarantSelectViewController = [[ XWGuarantSelectViewController alloc] initWithNibName:@"XWGuarantSelectViewController" bundle:nil];
-        }
+//        }
         [self.navigationController pushViewController:self.guarantSelectViewController  animated:YES];
         
     }
